@@ -1,0 +1,1103 @@
+/**
+ * This table is the list of all countries of World.
+ * This class is used to filter country of the company.
+ * @author Samuel Souza
+ */
+entity Countries {
+   /**
+   * Country Name example Brazil
+   * @type String
+   */
+	countryName String required,
+    /**
+    * This is a abbrev about country. Example: br
+    * @type String
+    */
+    iso2 String required,
+    /**
+    * To phone call. Example of Brazil: 55
+    * @type Integer
+    */
+    codeArea Integer,
+    /**
+    * Language of this Country: Example: pt_br
+    * @type String
+    */
+    language String maxlength(6),
+}
+
+/**
+ * State Providence
+ * This class is used to filter the providence of city.
+ * @author Samuel Souza
+ */
+entity StateProvinces{
+   /**
+   * Name of the State Example: California
+   * @type String
+   */
+	stateName String required,
+   /**
+   * Abbreviation of state example: CA
+   * @type String
+   */
+    abbreviation String required
+}
+
+/**
+ * Cities of the State Province.
+ * @author Samuel Souza
+ */
+entity Cities{
+   /**
+   * City Name. Example: São Paulo
+   * @type String
+   */
+	cityName String required,
+    latitude BigDecimal,
+    longitude BigDecimal
+}
+
+/**
+ * List of Company Hire this software.
+ * @author Samuel Souza
+ */
+entity Companies {
+   /**
+   * Matrix Companies Name
+   * @type String
+   */
+	companyName String required,
+    /**
+     * TradName
+     * @type String
+     */
+    tradeName String,
+    /**
+     * Company Number is like a CNPJ, EIN
+     * @type String
+     */
+    companyNumber String required,
+    /**
+     * Postal code of address the matrix company.
+     * @type String
+     */
+    postalCode String maxlength(9),
+    /**
+     * Company Address
+     * @type String
+     */
+    companyAddress String,
+    /**
+     * Company Address Complement.
+     * @type String
+     */
+    companyAddressComplement String,
+    /**
+     * Number of address.
+     * @type Integer
+     */
+    companyAddressNumber Integer,
+    /**
+     * Neighborhood, District.
+     * @type String
+     */
+    companyAddressNeighborhood String,
+    /**
+     * Phone of company
+     * @type String
+     */
+    companyTelephone String,
+    /**
+     * E-mail of the company
+     * @type String
+     */
+    companyEmail String,
+    /**
+     * Responsible Contact to call or send e-mail
+     * @type String
+     */
+    responsibleContact String,
+}
+
+relationship OneToMany{
+	 /**
+     * City of the Company
+     * @type Cities
+     */
+	Cities to Companies{cities(cityName) required},
+    StateProvinces to Cities{stateProvinces(stateName) required},
+	StateProvinces to Companies{stateProvinces(stateName) required},
+
+}
+
+/**
+ * List of Affiliates.
+ * @author Samuel Souza
+ */
+entity Affiliates {
+	branchName String required
+    /**
+     * Company Number is like a CNPJ, EIN
+     * @type String
+     */
+    branchNumber String required,
+    /**
+     * If true get all information of company.
+     * @type Boolean
+     */
+    useSameCompanyAddress Boolean,
+    /**
+     * Postal code of address the matrix company.
+     * @type String
+     */
+    branchPostalCode String maxlength(9),
+    /**
+     * Branch Address.
+     * @type String
+     */
+    branchAddress String,
+    /**
+     * Branch Address Complement.
+     * @type String
+     */
+    branchAddressComplement String,
+    /**
+     * Number of address.
+     * @type Integer
+     */
+    branchAddressNumber Integer,
+    /**
+     * Neighborhood, District.
+     * @type String
+     */
+    branchAddressNeighborhood String,
+    /**
+     * Phone of branch
+     * @type String
+     */
+    branchTelephone String,
+    /**
+     * E-mail of the branch
+     * @type String
+     */
+    branchEmail String,
+    /**
+     * Responsible Contact to call or send e-mail
+     * @type String
+     */
+    responsibleContact String,
+}
+
+relationship OneToMany{
+	StateProvinces to Affiliates{stateProvinces(stateName) required},
+    Cities to Affiliates{cities(cityName) required},
+}
+
+/**
+ * Insurances to clients
+ * @author Samuel Souza
+ */
+entity Insurances{
+	insurancesPercent BigDecimal required,
+}
+
+relationship OneToMany{
+	Affiliates to Insurances{affiliates(branchName) required}
+    StateProvinces{toInsurances(stateName)} to Insurances{toStateProvince(stateName) required},
+    StateProvinces{forInsurances(stateName)} to Insurances{forStateProvince(stateName) required}
+}
+
+/**
+ * PositionsName
+ * This class is used to filter the cities.
+ * @author Samuel Souza
+ */
+entity Positions{
+	positionName String required,
+}
+
+relationship OneToMany{
+	Affiliates to Positions{affiliates(branchName) required}
+}
+
+/**
+ *  Cost Center
+ * This class is to separate the cost center.
+ * @author Samuel Souza
+ */
+entity CostCenter{
+	costCenterName String required
+}
+
+relationship OneToMany{
+	Affiliates to CostCenter{affiliates(branchName) required}
+}
+
+/**
+ * Range Fees
+ * This class is to records fees.
+ * @author Samuel Souza
+ */
+entity AdministrativeFeesRanges{
+	minRange Float required,
+    maxRange Float required,
+    aliquot Float required,
+}
+
+relationship OneToMany{
+	Affiliates to AdministrativeFeesRanges{affiliates(branchName) required}
+}
+
+/**
+ * Customers Groups
+ * This class are the customers group.
+ * @author Samuel Souza
+ */
+entity CustomersGroups{
+	groupName String required
+}
+
+relationship OneToMany{
+	Affiliates to CustomersGroups{affiliates(branchName) required}
+}
+
+/**
+ * Fees for all systems
+ * This class are the customers group.
+ * @author Samuel Souza
+ */
+entity Fees{
+	feeDate LocalDate required,
+    feeDriverCommission Float required,
+    feeFinancialCost Float required,
+    feeTaxes Float required,
+    feeDescriptions String,
+}
+
+relationship OneToMany{
+	Affiliates to Fees{affiliates(branchName) required}
+}
+
+/**
+ * Customers.
+ * This class are the customers group.
+ * @author Samuel Souza
+ */
+entity Customers{
+	/**
+     * CLIENT NAME
+     * @type String
+     */
+	customerName String required,
+
+     /**
+     * active customers account.
+     * @type String
+     */
+    active Boolean required,
+
+    /**
+     * Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED
+     * @type String
+     */
+    customerNumber String required,
+    /**
+     * Postal code of address the matrix company.
+     * @type String
+     */
+    customerPostalCode String maxlength(9),
+    /**
+     * Branch Address.
+     * @type String
+     */
+    customerAddress String,
+    /**
+     * Branch Address Complement.
+     * @type String
+     */
+    customerAddressComplement String,
+    /**
+     * Number of address.
+     * @type Integer
+     */
+    customerAddressNumber Integer,
+    /**
+     * Neighborhood, District.
+     * @type String
+     */
+    customerAddressNeighborhood String,
+     /**
+     * Contact Telephone
+     * @type String
+     */
+    customerTelephone String,
+
+    /**
+     * Payment Terms
+     * @type Integer
+     */
+    paymentTerm Integer required,
+}
+
+/**
+ * Customers Contacts.
+ * This class list all customers.
+ * @author Samuel Souza
+ */
+entity CustomersContacts{
+	/**
+     * Contact Name
+     * @type String
+     */
+	contactName String required,
+    /**
+     * Contact Telephone
+     * @type String
+     */
+    contactTelephone String required,
+    /**
+     * contact E-mail
+     * @type String
+     */
+    contactEmail String,
+}
+
+/**
+ * Customers Attachments.
+ * This class list all customers attachments.
+ * @author Samuel Souza
+ */
+entity CustomerAttachments{
+	 /**
+     * Attach Image will only receive the file.
+     * @type ImageBlob
+     */
+	attachImage ImageBlob,
+     /**
+     * Id generate in cloudinary.
+     * @type String
+     */
+    attachUrl String required,
+    /**
+     * description about the file attached.
+     * @type String
+     */
+    attachDescription String required,
+    /**
+     * created date.
+     * @type String
+     */
+    attachedDate ZonedDateTime required,
+}
+
+relationship OneToMany{
+	Affiliates to Customers{affiliates(branchName) required},
+    Cities to Customers{cities(cityName) required}
+    CustomersGroups to Customers{customersGroups(groupName) },
+    Customers to CustomersContacts{customers(customerName) required},
+    Customers to CustomerAttachments{customers(customerName) required},
+    StatusAttachments to CustomerAttachments{statusAttachments(statusName) required},
+}
+
+relationship OneToMany{
+	Companies to Affiliates{companies(companyName) required},
+    StateProvinces to Cities{stateProvinces(stateName) required},
+    Countries to StateProvinces{countries(countryName) required},
+}
+
+/**
+ * Service Provided.
+ * This class list all services provided to suppliers.
+ * @author Samuel Souza
+ */
+entity ServiceProvided{
+    serviceName String required,
+}
+
+/**
+ * Status Attachments
+ * This class list all status for all screens.
+ * @author Samuel Souza
+ */
+entity StatusAttachments{
+	statusName String required,
+    statusDescriptions String,
+    statusObs String,
+    attachmentType AttachmentType
+}
+
+/**
+ * Attachment Type
+ * This class list all options to choose attach.
+ * @author Samuel Souza
+ */
+enum AttachmentType{
+	SUPPLIERS, VEHICLE_CONTROL, CUSTOMERS, HOUSING, QUOTATION, EMPLOYEE
+}
+
+relationship OneToMany{
+	Affiliates to StatusAttachments{affiliates(branchName) required},
+}
+
+entity Status{
+	statusName String required,
+    screenType ScreenType required
+    statusDescriptions String,
+}
+
+enum ScreenType{
+	SUPPLIERS, VEHICLE_CONTROL, CUSTOMERS, HOUSING, QUOTATION, EMPLOYEE
+}
+
+relationship OneToMany{
+	Affiliates to Status{affiliates(branchName) required},
+}
+
+/**
+ * Parking
+ * This class is the table parking.
+ * @author Samuel Souza
+ */
+entity Parking{
+
+	 /**
+     * Release the parking to run.
+     * @type Boolean
+     */
+	active Boolean required,
+
+    /**
+     * Parking Name
+     * @type String
+     */
+    parkingName String required,
+
+    /**
+     * Parking Trade Name
+     * @type String
+     */
+    parkingTradeName String,
+
+    /**
+     * Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED
+     * @type String
+     */
+    parkingNumber String,
+
+    /**
+     * Postal code of address the matrix company.
+     * @type String
+     */
+    parkingPostalCode String maxlength(9),
+    /**
+     * Branch Address.
+     * @type String
+     */
+    parkingAddress String,
+    /**
+     * Parking Address Complement.
+     * @type String
+     */
+    parkingAddressComplement String,
+    /**
+     * Number of address.
+     * @type Integer
+     */
+    parkingAddressNumber Integer,
+    /**
+     * Neighborhood, District.
+     * @type String
+     */
+    parkingAddressNeighborhood String,
+     /**
+     * Parking Contact Telephone
+     * @type String
+     */
+    parkingTelephone String,
+    /**
+     * Parking Contact Email
+     * @type String
+     */
+    parkingEmail String,
+    /**
+     * Parking Contact Name
+     * @type String
+     */
+  	parkingContactName String,
+}
+
+/**
+ * Parking Sector
+ * This class is the table Parking Sector to show the space in parking.
+ * @author Samuel Souza
+ */
+entity ParkingSector{
+	 /**
+     * Active the sector to run
+     * @type Boolean
+     */
+	active Boolean required,
+     /**
+     * Sector Name
+     * @type String
+     */
+	sectorName String required,
+     /**
+     * Parking Space the amount vacation available.
+     * @type Integer
+     */
+    parkingSpace Integer required,
+     /**
+     * Number to range initial of the vacancies
+     * @type Integer
+     */
+    parkingNumbersBegin Integer,
+    /**
+     * Number to range end of the vacancies
+     * @type Integer
+     */
+    parkingNumbersFinal Integer,
+}
+
+/**
+ * Parking Sector Space
+ * This class is the table Parking Sector Space shows the vacancies occupied.
+ * @author Samuel Souza
+ */
+entity ParkingSectorSpace{
+	/**
+     * Number of the vacancy occupied. This number must be in the range established in the related sector
+     * @type Integer
+     */
+	parkingNumber Integer required,
+    parkingStatus ParkingSpaceStatus required,
+    parkingEntryDate LocalDate,
+    parkingDepartureDate LocalDate,
+    parkingHousingItemId Long
+}
+
+enum ParkingSpaceStatus {
+	Free, Occupied, Disabled, Maintenance
+}
+
+relationship OneToMany{
+	Affiliates to Parking{affiliates(branchName) required},
+    Cities to Parking{cities(cityName) required},
+    Parking to ParkingSector{parking(parkingName) required},
+    ParkingSector to ParkingSectorSpace{parkingSector(sectorName) required}
+}
+
+/**
+ * List of suppliers
+ * This class is the list of suppliers.
+ * @author Samuel Souza
+ */
+entity Suppliers{
+	 /**
+     * Supplier Name
+     * @type String
+     */
+	supplierName String required,
+    /**
+     * Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED
+     * @type String
+     */
+    supplierNumber String,
+    /**
+     * Postal code of address the matrix company.
+     * @type String
+     */
+    supplierPostalCode String maxlength(9),
+    /**
+     * Branch Address.
+     * @type String
+     */
+    supplierAddress String,
+    /**
+     * Parking Address Complement.
+     * @type String
+     */
+    supplierAddressComplement String,
+    /**
+     * Number of address.
+     * @type Integer
+     */
+    supplierAddressNumber Integer,
+    /**
+     * Neighborhood, District.
+     * @type String
+     */
+    supplierAddressNeighborhood String,
+     /**
+     * Parking Contact Telephone
+     * @type String
+     */
+    supplierTelephone String,
+    /**
+     * Parking Contact Email
+     * @type String
+     */
+    supplierEmail String,
+    /**
+     * Parking Contact Name
+     * @type String
+     */
+  	supplierContactName String,
+}
+
+/**
+ * Supplier Banks Info
+ * This class are the list of the suppliers banks.
+ * @author Samuel Souza
+ */
+entity SupplierBanksInfo{
+
+	/**
+     * Supplier Bank Code is the number of bank
+     * @type Integer
+     */
+	supplierBankCode Integer required,
+    /**
+     * Supplier Bank Name is the name of bank
+     * @type String
+     */
+    supplierBankName String required,
+    /**
+     * Supplier Bank Branch Code is the number of agency.
+     * @type String
+     */
+    supplierBankBranchCode String,
+    /**
+     * Supplier Bank Account Number.
+     * @type String
+     */
+    supplierBankAccountNumber String,
+    /**
+     * Supplier Bank Name.
+     * @type String
+     */
+    supplierBankUserName String,
+    /**
+     * Supplier Bank Pix .
+     * @type String
+     */
+    supplierBankPixKey String,
+    /**
+     * Supplier Bank User Number.
+     * @type String
+     */
+    supplierBankUserNumber String
+}
+
+/**
+ * Supplier Contacts
+ * This class are the list of the suppliers contacts.
+ * @author Samuel Souza
+ */
+entity SupplierContacts{
+	/**
+     * Supplier Contact Name.
+     * @type String
+     */
+	supplierContactName String required,
+    /**
+     * Supplier Contact Phone.
+     * @type String
+     */
+    supplierContactPhone String,
+    /**
+     * Supplier Contact E-mail.
+     * @type String
+     */
+    supplierContactEmail String,
+
+}
+
+relationship OneToMany{
+	Affiliates to Suppliers{affiliates(branchName) required},
+    Cities to Suppliers{cities(cityName) required},
+    Suppliers to SupplierBanksInfo{suppliers(supplierName) required},
+    Suppliers to SupplierContacts{suppliers(supplierName) required},
+    ServiceProvided to Suppliers{serviceProvided(serviceName) required}
+}
+
+
+entity Employees{
+	 /**
+     * Employee Active. Check if employee is active
+     * @type Boolean
+     */
+	active Boolean required,
+    /**
+     * Employee Full Name.
+     * @type String
+     */
+	employeeFullName String required,
+    /**
+     * Employee E-mail
+     * @type String
+     */
+    employeeEmail String required,
+    /**
+     * Employee Supplier Identification Number. Identidade.
+     * @type String
+     */
+    employeeIdentificationNumber String,
+    /**
+     * Employee Number. CPF.
+     * @type String
+     */
+    employeeNumber String,
+    /**
+     * Postal code employee.
+     * @type String
+     */
+    employeePostalCode String maxlength(9),
+    /**
+     * Branch Address.
+     * @type String
+     */
+    employeeAddress String,
+    /**
+     * Employee Address Complement.
+     * @type String
+     */
+    employeeAddressComplement String,
+    /**
+     * Number of address.
+     * @type Integer
+     */
+    employeeAddressNumber Integer,
+    /**
+     * Neighborhood, District.
+     * @type String
+     */
+    employeeAddressNeighborhood String,
+
+    /**
+     * Employee Birthday.
+     * @type String
+     */
+    employeeBirthday LocalDate,
+
+}
+
+/**
+ * Employee Attachments.
+ * This class list all employees attachments.
+ * @author Samuel Souza
+ */
+entity EmployeeAttachments{
+	 /**
+     * Attach Image will only receive the file.
+     * @type ImageBlob
+     */
+	attachImage ImageBlob,
+     /**
+     * Id generate in cloudinary.
+     * @type String
+     */
+    attachUrl String required,
+    /**
+     * description about the file attached.
+     * @type String
+     */
+    attachDescription String required,
+    /**
+     * created date.
+     * @type String
+     */
+    attachedDate ZonedDateTime required,
+}
+
+/**
+ * Employee Components Data.
+ * This class is to save grid template per user.
+ * @author Samuel Souza
+ */
+entity EmployeeComponentsData{
+	/**
+     * Grid Information details.
+     * @type Text
+     */
+	 dataInfo String,
+}
+
+
+relationship OneToMany{
+	Companies to Employees{companies(companyName) required},
+    Affiliates to Employees{affiliates(branchName) },
+    Cities to Employees{cities(cityName) required},
+    Positions to Employees{positions(positionName) required},
+    Employees to EmployeeAttachments{ employees(employeeFullName) required},
+    // User to Employees{user(login) required},
+    Employees to EmployeeComponentsData{employee(employeeFullName) required}
+}
+
+entity VehicleControls {
+    vehicleControlAuthorizedOrder String,
+    vehicleControlRequest String,
+    vehicleControlSinister String,
+    vehicleControlDate LocalDate required,
+    vehicleControlKm Float,
+    vehicleControlPlate String maxlength(10)
+    vehicleControlAmount Float,
+    vehicleControlPrice Float,
+    vehicleControlMaximumDeliveryDate LocalDate,
+    vehicleControlCollectionForecast LocalDate,
+    vehicleControlCollectionDeliveryForecast LocalDate,
+    vehicleControlDateCollected LocalDate,
+    vehicleControlDeliveryDate LocalDate,
+}
+
+entity VehicleLocationStatus{
+	vehicleLocationStatusDate ZonedDateTime required,
+    vehicleLocationStatusDescription String maxlength(500) required,
+}
+
+entity VehicleControlHistory{
+	vehicleControlHistoryDate ZonedDateTime required,
+    vehicleControlHistoryDescription String maxlength(500) required,
+}
+
+entity VehicleControlItem{
+	vehicleControlStatus StatusType required,
+	vehicleControlItemPlate String required,
+    vehicleControlItemType VehicleType required,
+    vehicleControlItemFipeCode String,
+    vehicleControlItemYear String,
+    vehicleControlItemFuel String,
+    vehicleControlItemBranch String,
+    vehicleControlItemModel String,
+    vehicleControlItemFuelAbbreviation String,
+    vehicleControlItemReferenceMonth String,
+    vehicleControlItemValue Float required,
+    vehicleControlItemShippingValue Float required,
+    vehicleControlItemCTE String,
+    vehicleControlItemCTEDate LocalDate,
+}
+
+entity VehicleInspections{
+	vehicleInspectionDate ZonedDateTime required,
+    vehicleInspectionStatus InspectionStatus required,
+    vehicleInspectionModel String required,
+    vehicleInspectionLicensePlate String required,
+    vehicleInspectionKm Float,
+    vehicleInspectionLicenseYear Float,
+    vehicleInspectionHasManual Boolean,
+    vehicleInspectionHasExtraKey Boolean,
+    vehicleInspectionHasStickers Boolean,
+    vehicleInspectionGas FuelLevel,
+    vehicleInspectionRearView Boolean,
+    vehicleInspectionHorn Boolean,
+    vehicleInspectionWindshieldWiper Boolean,
+    vehicleInspectionSquirt Boolean,
+    vehicleInspectionInternalLight VehicleStatus,
+    vehicleInspectionPanelLight VehicleStatus,
+    vehicleInspectionHighLight VehicleStatus,
+    vehicleInspectionLowLight VehicleStatus,
+    vehicleInspectionTaillight VehicleStatus,
+    vehicleInspectionIndicator VehicleStatus,
+    vehicleInspectionBeacons VehicleStatus,
+    vehicleInspectionBreakLight VehicleStatus,
+    vehicleInspectionPlateLight VehicleStatus,
+    vehicleInspectionSpeedometer VehicleStatus,
+    vehicleInspectionTemperature VehicleStatus,
+    vehicleInspectionTires VehicleStatus,
+    vehicleInspectionStep VehicleStatus,
+    vehicleInspectionFireExtinguisher VehicleStatus,
+    vehicleInspectionSeatBelts VehicleStatus,
+    vehicleInspectionMonkey VehicleStatus,
+    vehicleInspectionTireIron VehicleStatus,
+    vehicleInspectionRadiatorCap VehicleStatus,
+    vehicleInspectionTriangle VehicleStatus,
+    vehicleInspectionServiceBrake VehicleStatus,
+    vehicleInspectionParkingBrake VehicleStatus,
+    vehicleInspectionOilLeaks VehicleStatus,
+    vehicleInspectionGlassActuator VehicleStatus,
+    vehicleInspectionVehicleCleaning VehicleStatus
+    vehicleInspectionSeatState VehicleStatus,
+    vehicleInspectionExhausts VehicleStatus,
+    vehicleInspectionsObs String maxlength(500),
+    vehicleInspectionsSignedUrl String,
+}
+
+entity VehicleInspectionsImagens{
+	vehicleInspectionsImagensPositions InspectionPositions required,
+    vehicleInspectionsImagensStatus VehicleStatus required,
+    vehicleInspectionsImagensObs String maxlength(500),
+    vehicleInspectionsImagensPhoto ImageBlob required,
+    vehicleInspectionsImagensPositionsX Float required,
+    vehicleInspectionsImagensPositionsY Float required
+}
+
+entity VehicleControlBilling{
+	vehicleControlBillingDate LocalDate required,
+    vehicleControlBillingExpirationDate LocalDate,
+    vehicleControlBillingPaymentDate LocalDate,
+    vehicleControlBillingSellerCommission Boolean,
+    vehicleControlBillingDriverCommission Boolean,
+    vehicleControlBillingAmount Integer required,
+    vehicleControlBillingTotalValue Float required,
+    vehicleControlBillingInsuranceDiscount Float,
+    vehicleControlBillingCustomerBank String,
+    vehicleControlBillingAnticipate Boolean,
+  	vehicleControlBillingManifest String,
+
+}
+
+entity VehicleControlExpenses{
+	vehicleControlExpensesDescription String required,
+    vehicleControlExpensesDriverType DriverType,
+    vehicleControlExpensesPurchaseOrder String,
+    vehicleControlExpensesDueDate LocalDate,
+    vehicleControlExpensesPaymentDate LocalDate,
+    vehicleControlExpensesBillingTotalValue Float,
+    vehicleControlExpensesDriverCommission Boolean
+}
+
+/**
+ * Vehicle Control Attachments.
+ * This class list all attachments.
+ * @author Samuel Souza
+ */
+entity VehicleControlAttachments{
+	 /**
+     * Attach Image will only receive the file.
+     * @type ImageBlob
+     */
+	attachImage ImageBlob,
+     /**
+     * Id generate in cloudinary.
+     * @type String
+     */
+    attachUrl String required,
+    /**
+     * description about the file attached.
+     * @type String
+     */
+    attachDescription String required,
+    /**
+     * created date.
+     * @type String
+     */
+    attachedDate ZonedDateTime required,
+}
+
+
+enum VehicleControleStatus {
+	OPEN, CLOSED, IN_PROGRESS, CONSOLIDATED
+}
+
+enum InspectionStatus {
+	ARRIVAL, DEPARTURE
+}
+
+enum FuelLevel {
+	RESERVE, LITTLE, MEDIUM, ABOVE_AVERAGE, COMPLETE
+}
+
+enum VehicleStatus {
+	DIRTY, CLEAN, SCRATCHED, DAMAGED, MASSAGED, BROKEN, WITH ODOR, NORMAL, NEW, OLD, BORED, FULL, LEAKING, HAVE, NO_HAVE
+}
+
+enum InspectionPositions{
+	FRONT, REAR, LEFT_DOOR_FRONT, LEFT_DOOR_REAR, RIGHT_DOOR_FRONT, RIGHT_DOOR_REAR, LEFT_SIDE, RIGHT_SIDE
+}
+
+enum BillingStatus{
+	APPROVED, DISAPPROVED
+}
+
+enum StatusType{
+	APPROVED, PENDENT, DISAPPROVED, CANCELLED
+}
+
+enum DriverType{
+	EXTERNAL, INTERNAL
+}
+
+enum VehicleType {
+	MOTORBIKE, CAR, TRUCK, OTHER
+}
+
+relationship OneToMany{
+    Affiliates to VehicleControls{affiliates(branchName) required},
+    Customers to VehicleControls{customers(customerName) required},
+    CustomersGroups to VehicleControls{customersGroups(groupName) required},
+    Employees to VehicleControls{ employees(employeeFullName) required},
+    Cities{originVehicleControls(cityName) } to VehicleControls{origin(cityName) required},
+    Cities{destinationVehicleControls(cityName) } to VehicleControls{destination(cityName) required},
+	VehicleControls to VehicleLocationStatus{vehicleControls required},
+    VehicleControls to VehicleControlHistory{vehicleControls required},
+    Employees to VehicleControlHistory{ employees(employeeFullName) required},
+    VehicleControlItem to VehicleInspections{vehicleControls}
+    VehicleInspections to VehicleInspectionsImagens{vehicleInspections required}
+    Status to VehicleControls{status(statusName) required},
+    Cities to VehicleLocationStatus{cities(cityName) required},
+    VehicleControls to VehicleControlBilling{vehicleControls required},
+    VehicleControls to VehicleControlItem{vehicleControls required},
+    VehicleControls to VehicleControlAttachments{vehicleControls required},
+    Fees to VehicleControlBilling{fees required},
+    VehicleControls to VehicleControlExpenses{vehicleControls required},
+    Suppliers to VehicleControlExpenses{suppliers(supplierName) required}
+    Cities{originVehicleControlExpenses(cityName) } to VehicleControlExpenses{origin(cityName) required},
+    Cities{destinationVehicleControlExpenses(cityName) } to VehicleControlExpenses{destination(cityName) required},
+    VehicleControlItem to VehicleControlExpenses{vehicleControlItem(vehicleControlItemPlate) required},
+}
+
+entity Housing {
+	housingDate LocalDate required,
+    housingEntranceDate ZonedDateTime required,
+    housingExit ZonedDateTime,
+    housingReceiptNumber Integer,
+    housingDailyPrice Float required,
+    housingDescription String maxlength(500),
+}
+
+relationship OneToMany{
+	Affiliates to Housing{affiliates(branchName) required },
+	Status to Housing{status(statusName) required }
+    Customers to Housing{customers(customerName) required },
+    Employees to Housing{ employees(employeeFullName) required },
+    Parking to Housing {parking(parkingName) },
+    CostCenter to Housing{costCenter(costCenterName) },
+    Suppliers to Housing{suppliers(supplierName) required},
+    Cities to Housing{cities(cityName) required },
+}
+
+entity HousingVehicleItem{
+	housingVehicleItemStatus StatusType required,
+	housingVehicleItemPlate String required,
+    housingVehicleItemType VehicleType required,
+    housingVehicleItemFipeCode String,
+    housingVehicleItemYear String,
+    housingVehicleItemFuel String,
+    housingVehicleItemBranch String,
+    housingVehicleItemModel String,
+    housingVehicleItemFuelAbbreviation String,
+    housingVehicleItemReferenceMonth String,
+    housingVehicleItemValue Float required,
+    housingVehicleItemShippingValue Float required,
+}
+
+relationship OneToMany{
+	Housing to HousingVehicleItem{housing(housingReceiptNumber) required}
+    ParkingSector to HousingVehicleItem{parkingSector(sectorName) },
+    ParkingSectorSpace to HousingVehicleItem{parkingSectorSpace(parkingNumber) },
+}
+
+
+paginate * with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceClass
+
+filter *
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
