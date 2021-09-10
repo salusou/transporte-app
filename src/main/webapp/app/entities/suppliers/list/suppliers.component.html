@@ -1,0 +1,163 @@
+<div>
+  <h2 id="page-heading" data-cy="SuppliersHeading">
+    <span jhiTranslate="transporteApp.suppliers.home.title">Suppliers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.suppliers.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-suppliers"
+        [routerLink]="['/suppliers/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.suppliers.home.createLabel"> Create a new Suppliers </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="suppliers?.length === 0">
+    <span jhiTranslate="transporteApp.suppliers.home.notFound">No suppliers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="suppliers && suppliers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="supplierName">
+            <span jhiTranslate="transporteApp.suppliers.supplierName">Supplier Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierNumber">
+            <span jhiTranslate="transporteApp.suppliers.supplierNumber">Supplier Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierPostalCode">
+            <span jhiTranslate="transporteApp.suppliers.supplierPostalCode">Supplier Postal Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierAddress">
+            <span jhiTranslate="transporteApp.suppliers.supplierAddress">Supplier Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierAddressComplement">
+            <span jhiTranslate="transporteApp.suppliers.supplierAddressComplement">Supplier Address Complement</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierAddressNumber">
+            <span jhiTranslate="transporteApp.suppliers.supplierAddressNumber">Supplier Address Number</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierAddressNeighborhood">
+            <span jhiTranslate="transporteApp.suppliers.supplierAddressNeighborhood">Supplier Address Neighborhood</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierTelephone">
+            <span jhiTranslate="transporteApp.suppliers.supplierTelephone">Supplier Telephone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierEmail">
+            <span jhiTranslate="transporteApp.suppliers.supplierEmail">Supplier Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="supplierContactName">
+            <span jhiTranslate="transporteApp.suppliers.supplierContactName">Supplier Contact Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affiliates.branchName">
+            <span jhiTranslate="transporteApp.suppliers.affiliates">Affiliates</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cities.cityName">
+            <span jhiTranslate="transporteApp.suppliers.cities">Cities</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="serviceProvided.serviceName">
+            <span jhiTranslate="transporteApp.suppliers.serviceProvided">Service Provided</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let suppliers of suppliers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/suppliers', suppliers.id, 'view']">{{ suppliers.id }}</a>
+          </td>
+          <td>{{ suppliers.supplierName }}</td>
+          <td>{{ suppliers.supplierNumber }}</td>
+          <td>{{ suppliers.supplierPostalCode }}</td>
+          <td>{{ suppliers.supplierAddress }}</td>
+          <td>{{ suppliers.supplierAddressComplement }}</td>
+          <td>{{ suppliers.supplierAddressNumber }}</td>
+          <td>{{ suppliers.supplierAddressNeighborhood }}</td>
+          <td>{{ suppliers.supplierTelephone }}</td>
+          <td>{{ suppliers.supplierEmail }}</td>
+          <td>{{ suppliers.supplierContactName }}</td>
+          <td>
+            <div *ngIf="suppliers.affiliates">
+              <a [routerLink]="['/affiliates', suppliers.affiliates?.id, 'view']">{{ suppliers.affiliates?.branchName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="suppliers.cities">
+              <a [routerLink]="['/cities', suppliers.cities?.id, 'view']">{{ suppliers.cities?.cityName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="suppliers.serviceProvided">
+              <a [routerLink]="['/service-provided', suppliers.serviceProvided?.id, 'view']">{{
+                suppliers.serviceProvided?.serviceName
+              }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/suppliers', suppliers.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/suppliers', suppliers.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(suppliers)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="suppliers && suppliers.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

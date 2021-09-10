@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="countries">
+      <h2 data-cy="countriesDetailsHeading"><span jhiTranslate="transporteApp.countries.detail.title">Countries</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ countries.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.countries.countryName" [ngbTooltip]="'transporteApp.countries.help.countryName' | translate"
+            >Country Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ countries.countryName }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.countries.iso2" [ngbTooltip]="'transporteApp.countries.help.iso2' | translate">Iso 2</span>
+        </dt>
+        <dd>
+          <span>{{ countries.iso2 }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.countries.codeArea" [ngbTooltip]="'transporteApp.countries.help.codeArea' | translate"
+            >Code Area</span
+          >
+        </dt>
+        <dd>
+          <span>{{ countries.codeArea }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.countries.language" [ngbTooltip]="'transporteApp.countries.help.language' | translate"
+            >Language</span
+          >
+        </dt>
+        <dd>
+          <span>{{ countries.language }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/countries', countries.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

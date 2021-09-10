@@ -1,0 +1,70 @@
+{
+  "name": "StateProvinces",
+  "fields": [
+    {
+      "fieldName": "stateName",
+      "fieldType": "String",
+      "javadoc": "Name of the State Example: California\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "abbreviation",
+      "fieldType": "String",
+      "javadoc": "Abbreviation of state example: CA\\n@type String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "stateProvinces",
+      "relationshipName": "cities"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "companies",
+      "otherEntityRelationshipName": "stateProvinces",
+      "relationshipName": "companies"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "stateProvinces",
+      "relationshipName": "affiliates"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "insurances",
+      "otherEntityRelationshipName": "toStateProvince",
+      "relationshipName": "toInsurances",
+      "otherEntityField": "stateName"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "insurances",
+      "otherEntityRelationshipName": "forStateProvince",
+      "relationshipName": "forInsurances",
+      "otherEntityField": "stateName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "countries",
+      "otherEntityRelationshipName": "stateProvinces",
+      "relationshipValidateRules": "required",
+      "relationshipName": "countries",
+      "otherEntityField": "countryName"
+    }
+  ],
+  "javadoc": "State Providence\\nThis class is used to filter the providence of city.\\n@author Samuel Souza",
+  "entityTableName": "state_provinces",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053721"
+}

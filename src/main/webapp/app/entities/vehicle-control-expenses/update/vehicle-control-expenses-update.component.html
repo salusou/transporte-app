@@ -1,0 +1,341 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vehicle-control-expenses-heading"
+        data-cy="VehicleControlExpensesCreateUpdateHeading"
+        jhiTranslate="transporteApp.vehicleControlExpenses.home.createOrEditLabel"
+      >
+        Create or edit a Vehicle Control Expenses
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesDescription"
+            for="field_vehicleControlExpensesDescription"
+            >Vehicle Control Expenses Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleControlExpensesDescription"
+            id="field_vehicleControlExpensesDescription"
+            data-cy="vehicleControlExpensesDescription"
+            formControlName="vehicleControlExpensesDescription"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleControlExpensesDescription')!.invalid &&
+              (editForm.get('vehicleControlExpensesDescription')!.dirty || editForm.get('vehicleControlExpensesDescription')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleControlExpensesDescription')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesDriverType"
+            for="field_vehicleControlExpensesDriverType"
+            >Vehicle Control Expenses Driver Type</label
+          >
+          <select
+            class="form-control"
+            name="vehicleControlExpensesDriverType"
+            formControlName="vehicleControlExpensesDriverType"
+            id="field_vehicleControlExpensesDriverType"
+            data-cy="vehicleControlExpensesDriverType"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.DriverType.null' | translate }}</option>
+            <option value="EXTERNAL">{{ 'transporteApp.DriverType.EXTERNAL' | translate }}</option>
+            <option value="INTERNAL">{{ 'transporteApp.DriverType.INTERNAL' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesPurchaseOrder"
+            for="field_vehicleControlExpensesPurchaseOrder"
+            >Vehicle Control Expenses Purchase Order</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleControlExpensesPurchaseOrder"
+            id="field_vehicleControlExpensesPurchaseOrder"
+            data-cy="vehicleControlExpensesPurchaseOrder"
+            formControlName="vehicleControlExpensesPurchaseOrder"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesDueDate"
+            for="field_vehicleControlExpensesDueDate"
+            >Vehicle Control Expenses Due Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_vehicleControlExpensesDueDate"
+              data-cy="vehicleControlExpensesDueDate"
+              type="text"
+              class="form-control"
+              name="vehicleControlExpensesDueDate"
+              ngbDatepicker
+              #vehicleControlExpensesDueDateDp="ngbDatepicker"
+              formControlName="vehicleControlExpensesDueDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="vehicleControlExpensesDueDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesPaymentDate"
+            for="field_vehicleControlExpensesPaymentDate"
+            >Vehicle Control Expenses Payment Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_vehicleControlExpensesPaymentDate"
+              data-cy="vehicleControlExpensesPaymentDate"
+              type="text"
+              class="form-control"
+              name="vehicleControlExpensesPaymentDate"
+              ngbDatepicker
+              #vehicleControlExpensesPaymentDateDp="ngbDatepicker"
+              formControlName="vehicleControlExpensesPaymentDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="vehicleControlExpensesPaymentDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesBillingTotalValue"
+            for="field_vehicleControlExpensesBillingTotalValue"
+            >Vehicle Control Expenses Billing Total Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vehicleControlExpensesBillingTotalValue"
+            id="field_vehicleControlExpensesBillingTotalValue"
+            data-cy="vehicleControlExpensesBillingTotalValue"
+            formControlName="vehicleControlExpensesBillingTotalValue"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesDriverCommission"
+            for="field_vehicleControlExpensesDriverCommission"
+            >Vehicle Control Expenses Driver Commission</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleControlExpensesDriverCommission"
+            id="field_vehicleControlExpensesDriverCommission"
+            data-cy="vehicleControlExpensesDriverCommission"
+            formControlName="vehicleControlExpensesDriverCommission"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControls" for="field_vehicleControls"
+            >Vehicle Controls</label
+          >
+          <select
+            class="form-control"
+            id="field_vehicleControls"
+            data-cy="vehicleControls"
+            name="vehicleControls"
+            formControlName="vehicleControls"
+          >
+            <option *ngIf="!editForm.get('vehicleControls')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                vehicleControlsOption.id === editForm.get('vehicleControls')!.value?.id
+                  ? editForm.get('vehicleControls')!.value
+                  : vehicleControlsOption
+              "
+              *ngFor="let vehicleControlsOption of vehicleControlsSharedCollection; trackBy: trackVehicleControlsById"
+            >
+              {{ vehicleControlsOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['vehicleControls'])!.invalid &&
+            (editForm.get(['vehicleControls'])!.dirty || editForm.get(['vehicleControls'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['vehicleControls'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControlExpenses.suppliers" for="field_suppliers"
+            >Suppliers</label
+          >
+          <select class="form-control" id="field_suppliers" data-cy="suppliers" name="suppliers" formControlName="suppliers">
+            <option *ngIf="!editForm.get('suppliers')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="suppliersOption.id === editForm.get('suppliers')!.value?.id ? editForm.get('suppliers')!.value : suppliersOption"
+              *ngFor="let suppliersOption of suppliersSharedCollection; trackBy: trackSuppliersById"
+            >
+              {{ suppliersOption.supplierName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['suppliers'])!.invalid && (editForm.get(['suppliers'])!.dirty || editForm.get(['suppliers'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['suppliers'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControlExpenses.origin" for="field_origin">Origin</label>
+          <select class="form-control" id="field_origin" data-cy="origin" name="origin" formControlName="origin">
+            <option *ngIf="!editForm.get('origin')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="citiesOption.id === editForm.get('origin')!.value?.id ? editForm.get('origin')!.value : citiesOption"
+              *ngFor="let citiesOption of citiesSharedCollection; trackBy: trackCitiesById"
+            >
+              {{ citiesOption.cityName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['origin'])!.invalid && (editForm.get(['origin'])!.dirty || editForm.get(['origin'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['origin'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControlExpenses.destination" for="field_destination"
+            >Destination</label
+          >
+          <select class="form-control" id="field_destination" data-cy="destination" name="destination" formControlName="destination">
+            <option *ngIf="!editForm.get('destination')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="citiesOption.id === editForm.get('destination')!.value?.id ? editForm.get('destination')!.value : citiesOption"
+              *ngFor="let citiesOption of citiesSharedCollection; trackBy: trackCitiesById"
+            >
+              {{ citiesOption.cityName }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['destination'])!.invalid && (editForm.get(['destination'])!.dirty || editForm.get(['destination'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['destination'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlItem"
+            for="field_vehicleControlItem"
+            >Vehicle Control Item</label
+          >
+          <select
+            class="form-control"
+            id="field_vehicleControlItem"
+            data-cy="vehicleControlItem"
+            name="vehicleControlItem"
+            formControlName="vehicleControlItem"
+          >
+            <option *ngIf="!editForm.get('vehicleControlItem')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                vehicleControlItemOption.id === editForm.get('vehicleControlItem')!.value?.id
+                  ? editForm.get('vehicleControlItem')!.value
+                  : vehicleControlItemOption
+              "
+              *ngFor="let vehicleControlItemOption of vehicleControlItemsSharedCollection; trackBy: trackVehicleControlItemById"
+            >
+              {{ vehicleControlItemOption.vehicleControlItemPlate }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['vehicleControlItem'])!.invalid &&
+            (editForm.get(['vehicleControlItem'])!.dirty || editForm.get(['vehicleControlItem'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['vehicleControlItem'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

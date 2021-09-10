@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity VehicleControls.
+    -->
+    <changeSet id="20210903053746-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="affiliates_id"
+                                 baseTableName="vehicle_controls"
+                                 constraintName="fk_vehicle_controls__affiliates_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="affiliates"/>
+
+        <addForeignKeyConstraint baseColumnNames="customers_id"
+                                 baseTableName="vehicle_controls"
+                                 constraintName="fk_vehicle_controls__customers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customers"/>
+
+        <addForeignKeyConstraint baseColumnNames="customers_groups_id"
+                                 baseTableName="vehicle_controls"
+                                 constraintName="fk_vehicle_controls__customers_groups_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customers_groups"/>
+
+        <addForeignKeyConstraint baseColumnNames="employees_id"
+                                 baseTableName="vehicle_controls"
+                                 constraintName="fk_vehicle_controls__employees_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employees"/>
+
+        <addForeignKeyConstraint baseColumnNames="origin_id"
+                                 baseTableName="vehicle_controls"
+                                 constraintName="fk_vehicle_controls__origin_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cities"/>
+
+        <addForeignKeyConstraint baseColumnNames="destination_id"
+                                 baseTableName="vehicle_controls"
+                                 constraintName="fk_vehicle_controls__destination_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cities"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="vehicle_controls"
+                                 constraintName="fk_vehicle_controls__status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="status"/>
+    </changeSet>
+</databaseChangeLog>

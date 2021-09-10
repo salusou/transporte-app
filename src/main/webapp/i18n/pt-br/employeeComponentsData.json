@@ -1,0 +1,28 @@
+{
+  "transporteApp": {
+    "employeeComponentsData": {
+      "home": {
+        "title": "Employee Components Data",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Employee Components Data",
+        "createOrEditLabel": "Criar ou editar Employee Components Data",
+        "notFound": "Nenhum Employee Components Data encontrado"
+      },
+      "created": "Um novo Employee Components Data foi criado com o identificador {{ param }}",
+      "updated": "Um Employee Components Data foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Employee Components Data foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Employee Components Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Employee Components Data"
+      },
+      "id": "ID",
+      "dataInfo": "Data Info",
+      "employee": "Employee",
+      "help": {
+        "dataInfo": "Grid Information details.\n@type Text"
+      }
+    }
+  }
+}

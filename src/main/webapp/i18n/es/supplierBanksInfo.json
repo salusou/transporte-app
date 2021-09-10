@@ -1,0 +1,40 @@
+{
+  "transporteApp": {
+    "supplierBanksInfo": {
+      "home": {
+        "title": "Supplier Banks Infos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Supplier Banks Info",
+        "createOrEditLabel": "Crear o editar Supplier Banks Info",
+        "notFound": "Ningún Supplier Banks Infos encontrado"
+      },
+      "created": "Un nuevo Supplier Banks Info ha sido creado con el identificador {{ param }}",
+      "updated": "Un Supplier Banks Info ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Supplier Banks Info ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Supplier Banks Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Supplier Banks Info"
+      },
+      "id": "ID",
+      "supplierBankCode": "Supplier Bank Code",
+      "supplierBankName": "Supplier Bank Name",
+      "supplierBankBranchCode": "Supplier Bank Branch Code",
+      "supplierBankAccountNumber": "Supplier Bank Account Number",
+      "supplierBankUserName": "Supplier Bank User Name",
+      "supplierBankPixKey": "Supplier Bank Pix Key",
+      "supplierBankUserNumber": "Supplier Bank User Number",
+      "suppliers": "Suppliers",
+      "help": {
+        "supplierBankCode": "Supplier Bank Code is the number of bank\n@type Integer",
+        "supplierBankName": "Supplier Bank Name is the name of bank\n@type String",
+        "supplierBankBranchCode": "Supplier Bank Branch Code is the number of agency.\n@type String",
+        "supplierBankAccountNumber": "Supplier Bank Account Number.\n@type String",
+        "supplierBankUserName": "Supplier Bank Name.\n@type String",
+        "supplierBankPixKey": "Supplier Bank Pix .\n@type String",
+        "supplierBankUserNumber": "Supplier Bank User Number.\n@type String"
+      }
+    }
+  }
+}

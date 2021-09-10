@@ -1,0 +1,43 @@
+{
+  "name": "CustomersContacts",
+  "fields": [
+    {
+      "fieldName": "contactName",
+      "fieldType": "String",
+      "javadoc": "Contact Name\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contactTelephone",
+      "fieldType": "String",
+      "javadoc": "Contact Telephone\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contactEmail",
+      "fieldType": "String",
+      "javadoc": "contact E-mail\\n@type String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customers",
+      "otherEntityRelationshipName": "customersContacts",
+      "relationshipValidateRules": "required",
+      "relationshipName": "customers",
+      "otherEntityField": "customerName"
+    }
+  ],
+  "javadoc": "Customers Contacts.\\nThis class list all customers.\\n@author Samuel Souza",
+  "entityTableName": "customers_contacts",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053732"
+}

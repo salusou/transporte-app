@@ -1,0 +1,128 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-supplier-contacts-heading"
+        data-cy="SupplierContactsCreateUpdateHeading"
+        jhiTranslate="transporteApp.supplierContacts.home.createOrEditLabel"
+      >
+        Create or edit a Supplier Contacts
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierContacts.supplierContactName"
+            for="field_supplierContactName"
+            [ngbTooltip]="'transporteApp.supplierContacts.help.supplierContactName' | translate"
+            >Supplier Contact Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierContactName"
+            id="field_supplierContactName"
+            data-cy="supplierContactName"
+            formControlName="supplierContactName"
+          />
+          <div
+            *ngIf="
+              editForm.get('supplierContactName')!.invalid &&
+              (editForm.get('supplierContactName')!.dirty || editForm.get('supplierContactName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('supplierContactName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierContacts.supplierContactPhone"
+            for="field_supplierContactPhone"
+            [ngbTooltip]="'transporteApp.supplierContacts.help.supplierContactPhone' | translate"
+            >Supplier Contact Phone</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierContactPhone"
+            id="field_supplierContactPhone"
+            data-cy="supplierContactPhone"
+            formControlName="supplierContactPhone"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierContacts.supplierContactEmail"
+            for="field_supplierContactEmail"
+            [ngbTooltip]="'transporteApp.supplierContacts.help.supplierContactEmail' | translate"
+            >Supplier Contact Email</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierContactEmail"
+            id="field_supplierContactEmail"
+            data-cy="supplierContactEmail"
+            formControlName="supplierContactEmail"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.supplierContacts.suppliers" for="field_suppliers">Suppliers</label>
+          <select class="form-control" id="field_suppliers" data-cy="suppliers" name="suppliers" formControlName="suppliers">
+            <option *ngIf="!editForm.get('suppliers')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="suppliersOption.id === editForm.get('suppliers')!.value?.id ? editForm.get('suppliers')!.value : suppliersOption"
+              *ngFor="let suppliersOption of suppliersSharedCollection; trackBy: trackSuppliersById"
+            >
+              {{ suppliersOption.supplierName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['suppliers'])!.invalid && (editForm.get(['suppliers'])!.dirty || editForm.get(['suppliers'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['suppliers'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

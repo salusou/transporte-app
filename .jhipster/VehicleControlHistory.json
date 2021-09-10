@@ -1,0 +1,43 @@
+{
+  "name": "VehicleControlHistory",
+  "fields": [
+    {
+      "fieldName": "vehicleControlHistoryDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleControlHistoryDescription",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "500"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "vehicleControlHistory",
+      "relationshipValidateRules": "required",
+      "relationshipName": "vehicleControls"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employees",
+      "otherEntityRelationshipName": "vehicleControlHistory",
+      "relationshipValidateRules": "required",
+      "relationshipName": "employees",
+      "otherEntityField": "employeeFullName"
+    }
+  ],
+  "entityTableName": "vehicle_control_history",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053748"
+}

@@ -1,0 +1,365 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vehicle-control-billing-heading"
+        data-cy="VehicleControlBillingCreateUpdateHeading"
+        jhiTranslate="transporteApp.vehicleControlBilling.home.createOrEditLabel"
+      >
+        Create or edit a Vehicle Control Billing
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingDate"
+            for="field_vehicleControlBillingDate"
+            >Vehicle Control Billing Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_vehicleControlBillingDate"
+              data-cy="vehicleControlBillingDate"
+              type="text"
+              class="form-control"
+              name="vehicleControlBillingDate"
+              ngbDatepicker
+              #vehicleControlBillingDateDp="ngbDatepicker"
+              formControlName="vehicleControlBillingDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="vehicleControlBillingDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('vehicleControlBillingDate')!.invalid &&
+              (editForm.get('vehicleControlBillingDate')!.dirty || editForm.get('vehicleControlBillingDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleControlBillingDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingExpirationDate"
+            for="field_vehicleControlBillingExpirationDate"
+            >Vehicle Control Billing Expiration Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_vehicleControlBillingExpirationDate"
+              data-cy="vehicleControlBillingExpirationDate"
+              type="text"
+              class="form-control"
+              name="vehicleControlBillingExpirationDate"
+              ngbDatepicker
+              #vehicleControlBillingExpirationDateDp="ngbDatepicker"
+              formControlName="vehicleControlBillingExpirationDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="vehicleControlBillingExpirationDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingPaymentDate"
+            for="field_vehicleControlBillingPaymentDate"
+            >Vehicle Control Billing Payment Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_vehicleControlBillingPaymentDate"
+              data-cy="vehicleControlBillingPaymentDate"
+              type="text"
+              class="form-control"
+              name="vehicleControlBillingPaymentDate"
+              ngbDatepicker
+              #vehicleControlBillingPaymentDateDp="ngbDatepicker"
+              formControlName="vehicleControlBillingPaymentDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="vehicleControlBillingPaymentDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingSellerCommission"
+            for="field_vehicleControlBillingSellerCommission"
+            >Vehicle Control Billing Seller Commission</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleControlBillingSellerCommission"
+            id="field_vehicleControlBillingSellerCommission"
+            data-cy="vehicleControlBillingSellerCommission"
+            formControlName="vehicleControlBillingSellerCommission"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingDriverCommission"
+            for="field_vehicleControlBillingDriverCommission"
+            >Vehicle Control Billing Driver Commission</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleControlBillingDriverCommission"
+            id="field_vehicleControlBillingDriverCommission"
+            data-cy="vehicleControlBillingDriverCommission"
+            formControlName="vehicleControlBillingDriverCommission"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingAmount"
+            for="field_vehicleControlBillingAmount"
+            >Vehicle Control Billing Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vehicleControlBillingAmount"
+            id="field_vehicleControlBillingAmount"
+            data-cy="vehicleControlBillingAmount"
+            formControlName="vehicleControlBillingAmount"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleControlBillingAmount')!.invalid &&
+              (editForm.get('vehicleControlBillingAmount')!.dirty || editForm.get('vehicleControlBillingAmount')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleControlBillingAmount')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('vehicleControlBillingAmount')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingTotalValue"
+            for="field_vehicleControlBillingTotalValue"
+            >Vehicle Control Billing Total Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vehicleControlBillingTotalValue"
+            id="field_vehicleControlBillingTotalValue"
+            data-cy="vehicleControlBillingTotalValue"
+            formControlName="vehicleControlBillingTotalValue"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleControlBillingTotalValue')!.invalid &&
+              (editForm.get('vehicleControlBillingTotalValue')!.dirty || editForm.get('vehicleControlBillingTotalValue')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleControlBillingTotalValue')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('vehicleControlBillingTotalValue')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingInsuranceDiscount"
+            for="field_vehicleControlBillingInsuranceDiscount"
+            >Vehicle Control Billing Insurance Discount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vehicleControlBillingInsuranceDiscount"
+            id="field_vehicleControlBillingInsuranceDiscount"
+            data-cy="vehicleControlBillingInsuranceDiscount"
+            formControlName="vehicleControlBillingInsuranceDiscount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingCustomerBank"
+            for="field_vehicleControlBillingCustomerBank"
+            >Vehicle Control Billing Customer Bank</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleControlBillingCustomerBank"
+            id="field_vehicleControlBillingCustomerBank"
+            data-cy="vehicleControlBillingCustomerBank"
+            formControlName="vehicleControlBillingCustomerBank"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingAnticipate"
+            for="field_vehicleControlBillingAnticipate"
+            >Vehicle Control Billing Anticipate</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleControlBillingAnticipate"
+            id="field_vehicleControlBillingAnticipate"
+            data-cy="vehicleControlBillingAnticipate"
+            formControlName="vehicleControlBillingAnticipate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingManifest"
+            for="field_vehicleControlBillingManifest"
+            >Vehicle Control Billing Manifest</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleControlBillingManifest"
+            id="field_vehicleControlBillingManifest"
+            data-cy="vehicleControlBillingManifest"
+            formControlName="vehicleControlBillingManifest"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControlBilling.vehicleControls" for="field_vehicleControls"
+            >Vehicle Controls</label
+          >
+          <select
+            class="form-control"
+            id="field_vehicleControls"
+            data-cy="vehicleControls"
+            name="vehicleControls"
+            formControlName="vehicleControls"
+          >
+            <option *ngIf="!editForm.get('vehicleControls')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                vehicleControlsOption.id === editForm.get('vehicleControls')!.value?.id
+                  ? editForm.get('vehicleControls')!.value
+                  : vehicleControlsOption
+              "
+              *ngFor="let vehicleControlsOption of vehicleControlsSharedCollection; trackBy: trackVehicleControlsById"
+            >
+              {{ vehicleControlsOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['vehicleControls'])!.invalid &&
+            (editForm.get(['vehicleControls'])!.dirty || editForm.get(['vehicleControls'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['vehicleControls'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControlBilling.fees" for="field_fees">Fees</label>
+          <select class="form-control" id="field_fees" data-cy="fees" name="fees" formControlName="fees">
+            <option *ngIf="!editForm.get('fees')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="feesOption.id === editForm.get('fees')!.value?.id ? editForm.get('fees')!.value : feesOption"
+              *ngFor="let feesOption of feesSharedCollection; trackBy: trackFeesById"
+            >
+              {{ feesOption.id }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['fees'])!.invalid && (editForm.get(['fees'])!.dirty || editForm.get(['fees'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['fees'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

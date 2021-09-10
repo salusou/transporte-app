@@ -1,0 +1,316 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-parking-heading" data-cy="ParkingCreateUpdateHeading" jhiTranslate="transporteApp.parking.home.createOrEditLabel">
+        Create or edit a Parking
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.active"
+            for="field_active"
+            [ngbTooltip]="'transporteApp.parking.help.active' | translate"
+            >Active</label
+          >
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+          <div *ngIf="editForm.get('active')!.invalid && (editForm.get('active')!.dirty || editForm.get('active')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('active')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingName"
+            for="field_parkingName"
+            [ngbTooltip]="'transporteApp.parking.help.parkingName' | translate"
+            >Parking Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingName"
+            id="field_parkingName"
+            data-cy="parkingName"
+            formControlName="parkingName"
+          />
+          <div *ngIf="editForm.get('parkingName')!.invalid && (editForm.get('parkingName')!.dirty || editForm.get('parkingName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('parkingName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingTradeName"
+            for="field_parkingTradeName"
+            [ngbTooltip]="'transporteApp.parking.help.parkingTradeName' | translate"
+            >Parking Trade Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingTradeName"
+            id="field_parkingTradeName"
+            data-cy="parkingTradeName"
+            formControlName="parkingTradeName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingNumber"
+            for="field_parkingNumber"
+            [ngbTooltip]="'transporteApp.parking.help.parkingNumber' | translate"
+            >Parking Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingNumber"
+            id="field_parkingNumber"
+            data-cy="parkingNumber"
+            formControlName="parkingNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingPostalCode"
+            for="field_parkingPostalCode"
+            [ngbTooltip]="'transporteApp.parking.help.parkingPostalCode' | translate"
+            >Parking Postal Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingPostalCode"
+            id="field_parkingPostalCode"
+            data-cy="parkingPostalCode"
+            formControlName="parkingPostalCode"
+          />
+          <div
+            *ngIf="
+              editForm.get('parkingPostalCode')!.invalid &&
+              (editForm.get('parkingPostalCode')!.dirty || editForm.get('parkingPostalCode')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('parkingPostalCode')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 9 }"
+            >
+              This field cannot be longer than 9 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingAddress"
+            for="field_parkingAddress"
+            [ngbTooltip]="'transporteApp.parking.help.parkingAddress' | translate"
+            >Parking Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingAddress"
+            id="field_parkingAddress"
+            data-cy="parkingAddress"
+            formControlName="parkingAddress"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingAddressComplement"
+            for="field_parkingAddressComplement"
+            [ngbTooltip]="'transporteApp.parking.help.parkingAddressComplement' | translate"
+            >Parking Address Complement</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingAddressComplement"
+            id="field_parkingAddressComplement"
+            data-cy="parkingAddressComplement"
+            formControlName="parkingAddressComplement"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingAddressNumber"
+            for="field_parkingAddressNumber"
+            [ngbTooltip]="'transporteApp.parking.help.parkingAddressNumber' | translate"
+            >Parking Address Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="parkingAddressNumber"
+            id="field_parkingAddressNumber"
+            data-cy="parkingAddressNumber"
+            formControlName="parkingAddressNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingAddressNeighborhood"
+            for="field_parkingAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.parking.help.parkingAddressNeighborhood' | translate"
+            >Parking Address Neighborhood</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingAddressNeighborhood"
+            id="field_parkingAddressNeighborhood"
+            data-cy="parkingAddressNeighborhood"
+            formControlName="parkingAddressNeighborhood"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingTelephone"
+            for="field_parkingTelephone"
+            [ngbTooltip]="'transporteApp.parking.help.parkingTelephone' | translate"
+            >Parking Telephone</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingTelephone"
+            id="field_parkingTelephone"
+            data-cy="parkingTelephone"
+            formControlName="parkingTelephone"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingEmail"
+            for="field_parkingEmail"
+            [ngbTooltip]="'transporteApp.parking.help.parkingEmail' | translate"
+            >Parking Email</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingEmail"
+            id="field_parkingEmail"
+            data-cy="parkingEmail"
+            formControlName="parkingEmail"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parking.parkingContactName"
+            for="field_parkingContactName"
+            [ngbTooltip]="'transporteApp.parking.help.parkingContactName' | translate"
+            >Parking Contact Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="parkingContactName"
+            id="field_parkingContactName"
+            data-cy="parkingContactName"
+            formControlName="parkingContactName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.parking.affiliates" for="field_affiliates">Affiliates</label>
+          <select class="form-control" id="field_affiliates" data-cy="affiliates" name="affiliates" formControlName="affiliates">
+            <option *ngIf="!editForm.get('affiliates')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                affiliatesOption.id === editForm.get('affiliates')!.value?.id ? editForm.get('affiliates')!.value : affiliatesOption
+              "
+              *ngFor="let affiliatesOption of affiliatesSharedCollection; trackBy: trackAffiliatesById"
+            >
+              {{ affiliatesOption.branchName }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['affiliates'])!.invalid && (editForm.get(['affiliates'])!.dirty || editForm.get(['affiliates'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['affiliates'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.parking.cities" for="field_cities">Cities</label>
+          <select class="form-control" id="field_cities" data-cy="cities" name="cities" formControlName="cities">
+            <option *ngIf="!editForm.get('cities')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="citiesOption.id === editForm.get('cities')!.value?.id ? editForm.get('cities')!.value : citiesOption"
+              *ngFor="let citiesOption of citiesSharedCollection; trackBy: trackCitiesById"
+            >
+              {{ citiesOption.cityName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['cities'])!.invalid && (editForm.get(['cities'])!.dirty || editForm.get(['cities'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['cities'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{
+  "transporteApp": {
+    "parkingSectorSpace": {
+      "home": {
+        "title": "Parking Sector Spaces",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Parking Sector Space",
+        "createOrEditLabel": "Criar ou editar Parking Sector Space",
+        "notFound": "Nenhum Parking Sector Space encontrado"
+      },
+      "created": "Um novo Parking Sector Space foi criado com o identificador {{ param }}",
+      "updated": "Um Parking Sector Space foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Parking Sector Space foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Parking Sector Space {{ id }}?"
+      },
+      "detail": {
+        "title": "Parking Sector Space"
+      },
+      "id": "ID",
+      "parkingNumber": "Parking Number",
+      "parkingStatus": "Parking Status",
+      "parkingEntryDate": "Parking Entry Date",
+      "parkingDepartureDate": "Parking Departure Date",
+      "parkingHousingItemId": "Parking Housing Item Id",
+      "housingVehicleItem": "Housing Vehicle Item",
+      "parkingSector": "Parking Sector",
+      "help": {
+        "parkingNumber": "Number of the vacancy occupied. This number must be in the range established in the related sector\n@type Integer"
+      }
+    }
+  }
+}

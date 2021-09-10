@@ -1,0 +1,36 @@
+{
+  "transporteApp": {
+    "vehicleControlBilling": {
+      "home": {
+        "title": "Vehicle Control Billings",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Vehicle Control Billing",
+        "createOrEditLabel": "Criar ou editar Vehicle Control Billing",
+        "notFound": "Nenhum Vehicle Control Billing encontrado"
+      },
+      "created": "Um novo Vehicle Control Billing foi criado com o identificador {{ param }}",
+      "updated": "Um Vehicle Control Billing foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Vehicle Control Billing foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Vehicle Control Billing {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Control Billing"
+      },
+      "id": "ID",
+      "vehicleControlBillingDate": "Vehicle Control Billing Date",
+      "vehicleControlBillingExpirationDate": "Vehicle Control Billing Expiration Date",
+      "vehicleControlBillingPaymentDate": "Vehicle Control Billing Payment Date",
+      "vehicleControlBillingSellerCommission": "Vehicle Control Billing Seller Commission",
+      "vehicleControlBillingDriverCommission": "Vehicle Control Billing Driver Commission",
+      "vehicleControlBillingAmount": "Vehicle Control Billing Amount",
+      "vehicleControlBillingTotalValue": "Vehicle Control Billing Total Value",
+      "vehicleControlBillingInsuranceDiscount": "Vehicle Control Billing Insurance Discount",
+      "vehicleControlBillingCustomerBank": "Vehicle Control Billing Customer Bank",
+      "vehicleControlBillingAnticipate": "Vehicle Control Billing Anticipate",
+      "vehicleControlBillingManifest": "Vehicle Control Billing Manifest",
+      "vehicleControls": "Vehicle Controls",
+      "fees": "Fees"
+    }
+  }
+}

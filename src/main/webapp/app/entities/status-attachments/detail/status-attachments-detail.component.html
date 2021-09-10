@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="statusAttachments">
+      <h2 data-cy="statusAttachmentsDetailsHeading">
+        <span jhiTranslate="transporteApp.statusAttachments.detail.title">Status Attachments</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ statusAttachments.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.statusAttachments.statusName">Status Name</span></dt>
+        <dd>
+          <span>{{ statusAttachments.statusName }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.statusAttachments.statusDescriptions">Status Descriptions</span></dt>
+        <dd>
+          <span>{{ statusAttachments.statusDescriptions }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.statusAttachments.statusObs">Status Obs</span></dt>
+        <dd>
+          <span>{{ statusAttachments.statusObs }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.statusAttachments.attachmentType">Attachment Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.AttachmentType.' + statusAttachments.attachmentType }}">{{
+            statusAttachments.attachmentType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.statusAttachments.affiliates">Affiliates</span></dt>
+        <dd>
+          <div *ngIf="statusAttachments.affiliates">
+            <a [routerLink]="['/affiliates', statusAttachments.affiliates?.id, 'view']">{{ statusAttachments.affiliates?.branchName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/status-attachments', statusAttachments.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

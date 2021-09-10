@@ -1,0 +1,25 @@
+{
+  "transporteApp": {
+    "serviceProvided": {
+      "home": {
+        "title": "Service Provideds",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Service Provided",
+        "createOrEditLabel": "Crear o editar Service Provided",
+        "notFound": "Ningún Service Provideds encontrado"
+      },
+      "created": "Un nuevo Service Provided ha sido creado con el identificador {{ param }}",
+      "updated": "Un Service Provided ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Service Provided ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Service Provided {{ id }}?"
+      },
+      "detail": {
+        "title": "Service Provided"
+      },
+      "id": "ID",
+      "serviceName": "Service Name",
+      "suppliers": "Suppliers"
+    }
+  }
+}

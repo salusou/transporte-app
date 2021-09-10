@@ -1,0 +1,37 @@
+{
+  "name": "CostCenter",
+  "fields": [
+    {
+      "fieldName": "costCenterName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housing",
+      "otherEntityRelationshipName": "costCenter",
+      "relationshipName": "housing"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "costCenter",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    }
+  ],
+  "javadoc": "Cost Center\\nThis class is to separate the cost center.\\n@author Samuel Souza",
+  "entityTableName": "cost_center",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053727"
+}

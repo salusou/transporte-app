@@ -1,0 +1,42 @@
+{
+  "transporteApp": {
+    "cities": {
+      "home": {
+        "title": "Cities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Cities",
+        "createOrEditLabel": "Create or edit a Cities",
+        "notFound": "No Cities found"
+      },
+      "created": "A new Cities is created with identifier {{ param }}",
+      "updated": "A Cities is updated with identifier {{ param }}",
+      "deleted": "A Cities is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cities {{ id }}?"
+      },
+      "detail": {
+        "title": "Cities"
+      },
+      "id": "ID",
+      "cityName": "City Name",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "companies": "Companies",
+      "affiliates": "Affiliates",
+      "customers": "Customers",
+      "parking": "Parking",
+      "suppliers": "Suppliers",
+      "employees": "Employees",
+      "originVehicleControls": "Origin Vehicle Controls",
+      "destinationVehicleControls": "Destination Vehicle Controls",
+      "vehicleLocationStatus": "Vehicle Location Status",
+      "originVehicleControlExpenses": "Origin Vehicle Control Expenses",
+      "destinationVehicleControlExpenses": "Destination Vehicle Control Expenses",
+      "housing": "Housing",
+      "stateProvinces": "State Provinces",
+      "help": {
+        "cityName": "City Name. Example: São Paulo\n@type String"
+      }
+    }
+  }
+}

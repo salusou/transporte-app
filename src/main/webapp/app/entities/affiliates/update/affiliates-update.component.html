@@ -1,0 +1,344 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-affiliates-heading"
+        data-cy="AffiliatesCreateUpdateHeading"
+        jhiTranslate="transporteApp.affiliates.home.createOrEditLabel"
+      >
+        Create or edit a Affiliates
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.affiliates.branchName" for="field_branchName">Branch Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="branchName"
+            id="field_branchName"
+            data-cy="branchName"
+            formControlName="branchName"
+          />
+          <div *ngIf="editForm.get('branchName')!.invalid && (editForm.get('branchName')!.dirty || editForm.get('branchName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('branchName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.branchNumber"
+            for="field_branchNumber"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchNumber' | translate"
+            >Branch Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="branchNumber"
+            id="field_branchNumber"
+            data-cy="branchNumber"
+            formControlName="branchNumber"
+          />
+          <div
+            *ngIf="editForm.get('branchNumber')!.invalid && (editForm.get('branchNumber')!.dirty || editForm.get('branchNumber')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('branchNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.useSameCompanyAddress"
+            for="field_useSameCompanyAddress"
+            [ngbTooltip]="'transporteApp.affiliates.help.useSameCompanyAddress' | translate"
+            >Use Same Company Address</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="useSameCompanyAddress"
+            id="field_useSameCompanyAddress"
+            data-cy="useSameCompanyAddress"
+            formControlName="useSameCompanyAddress"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.branchPostalCode"
+            for="field_branchPostalCode"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchPostalCode' | translate"
+            >Branch Postal Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="branchPostalCode"
+            id="field_branchPostalCode"
+            data-cy="branchPostalCode"
+            formControlName="branchPostalCode"
+          />
+          <div
+            *ngIf="
+              editForm.get('branchPostalCode')!.invalid &&
+              (editForm.get('branchPostalCode')!.dirty || editForm.get('branchPostalCode')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('branchPostalCode')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 9 }"
+            >
+              This field cannot be longer than 9 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.branchAddress"
+            for="field_branchAddress"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchAddress' | translate"
+            >Branch Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="branchAddress"
+            id="field_branchAddress"
+            data-cy="branchAddress"
+            formControlName="branchAddress"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.branchAddressComplement"
+            for="field_branchAddressComplement"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchAddressComplement' | translate"
+            >Branch Address Complement</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="branchAddressComplement"
+            id="field_branchAddressComplement"
+            data-cy="branchAddressComplement"
+            formControlName="branchAddressComplement"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.branchAddressNumber"
+            for="field_branchAddressNumber"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchAddressNumber' | translate"
+            >Branch Address Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="branchAddressNumber"
+            id="field_branchAddressNumber"
+            data-cy="branchAddressNumber"
+            formControlName="branchAddressNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.branchAddressNeighborhood"
+            for="field_branchAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchAddressNeighborhood' | translate"
+            >Branch Address Neighborhood</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="branchAddressNeighborhood"
+            id="field_branchAddressNeighborhood"
+            data-cy="branchAddressNeighborhood"
+            formControlName="branchAddressNeighborhood"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.branchTelephone"
+            for="field_branchTelephone"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchTelephone' | translate"
+            >Branch Telephone</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="branchTelephone"
+            id="field_branchTelephone"
+            data-cy="branchTelephone"
+            formControlName="branchTelephone"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.branchEmail"
+            for="field_branchEmail"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchEmail' | translate"
+            >Branch Email</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="branchEmail"
+            id="field_branchEmail"
+            data-cy="branchEmail"
+            formControlName="branchEmail"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.affiliates.responsibleContact"
+            for="field_responsibleContact"
+            [ngbTooltip]="'transporteApp.affiliates.help.responsibleContact' | translate"
+            >Responsible Contact</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="responsibleContact"
+            id="field_responsibleContact"
+            data-cy="responsibleContact"
+            formControlName="responsibleContact"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.affiliates.stateProvinces" for="field_stateProvinces"
+            >State Provinces</label
+          >
+          <select
+            class="form-control"
+            id="field_stateProvinces"
+            data-cy="stateProvinces"
+            name="stateProvinces"
+            formControlName="stateProvinces"
+          >
+            <option *ngIf="!editForm.get('stateProvinces')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                stateProvincesOption.id === editForm.get('stateProvinces')!.value?.id
+                  ? editForm.get('stateProvinces')!.value
+                  : stateProvincesOption
+              "
+              *ngFor="let stateProvincesOption of stateProvincesSharedCollection; trackBy: trackStateProvincesById"
+            >
+              {{ stateProvincesOption.stateName }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['stateProvinces'])!.invalid &&
+            (editForm.get(['stateProvinces'])!.dirty || editForm.get(['stateProvinces'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['stateProvinces'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.affiliates.cities" for="field_cities">Cities</label>
+          <select class="form-control" id="field_cities" data-cy="cities" name="cities" formControlName="cities">
+            <option *ngIf="!editForm.get('cities')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="citiesOption.id === editForm.get('cities')!.value?.id ? editForm.get('cities')!.value : citiesOption"
+              *ngFor="let citiesOption of citiesSharedCollection; trackBy: trackCitiesById"
+            >
+              {{ citiesOption.cityName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['cities'])!.invalid && (editForm.get(['cities'])!.dirty || editForm.get(['cities'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['cities'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.affiliates.companies" for="field_companies">Companies</label>
+          <select class="form-control" id="field_companies" data-cy="companies" name="companies" formControlName="companies">
+            <option *ngIf="!editForm.get('companies')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="companiesOption.id === editForm.get('companies')!.value?.id ? editForm.get('companies')!.value : companiesOption"
+              *ngFor="let companiesOption of companiesSharedCollection; trackBy: trackCompaniesById"
+            >
+              {{ companiesOption.companyName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['companies'])!.invalid && (editForm.get(['companies'])!.dirty || editForm.get(['companies'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['companies'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

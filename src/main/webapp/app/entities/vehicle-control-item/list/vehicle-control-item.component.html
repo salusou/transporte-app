@@ -1,0 +1,182 @@
+<div>
+  <h2 id="page-heading" data-cy="VehicleControlItemHeading">
+    <span jhiTranslate="transporteApp.vehicleControlItem.home.title">Vehicle Control Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleControlItem.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vehicle-control-item"
+        [routerLink]="['/vehicle-control-item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleControlItem.home.createLabel"> Create a new Vehicle Control Item </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="vehicleControlItems?.length === 0">
+    <span jhiTranslate="transporteApp.vehicleControlItem.home.notFound">No vehicleControlItems found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="vehicleControlItems && vehicleControlItems.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="vehicleControlStatus">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlStatus">Vehicle Control Status</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemPlate">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemPlate">Vehicle Control Item Plate</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemType">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemType">Vehicle Control Item Type</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemFipeCode">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemFipeCode">Vehicle Control Item Fipe Code</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemYear">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemYear">Vehicle Control Item Year</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemFuel">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemFuel">Vehicle Control Item Fuel</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemBranch">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemBranch">Vehicle Control Item Branch</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemModel">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemModel">Vehicle Control Item Model</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemFuelAbbreviation">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemFuelAbbreviation"
+              >Vehicle Control Item Fuel Abbreviation</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemReferenceMonth">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemReferenceMonth"
+              >Vehicle Control Item Reference Month</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemValue">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemValue">Vehicle Control Item Value</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemShippingValue">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemShippingValue">Vehicle Control Item Shipping Value</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemCTE">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemCTE">Vehicle Control Item CTE</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlItemCTEDate">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemCTEDate">Vehicle Control Item CTE Date</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControls.id">
+            <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControls">Vehicle Controls</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicleControlItem of vehicleControlItems; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/vehicle-control-item', vehicleControlItem.id, 'view']">{{ vehicleControlItem.id }}</a>
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.StatusType.' + vehicleControlItem.vehicleControlStatus }}">
+            {{ vehicleControlItem.vehicleControlStatus }}
+          </td>
+          <td>{{ vehicleControlItem.vehicleControlItemPlate }}</td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleType.' + vehicleControlItem.vehicleControlItemType }}">
+            {{ vehicleControlItem.vehicleControlItemType }}
+          </td>
+          <td>{{ vehicleControlItem.vehicleControlItemFipeCode }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemYear }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemFuel }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemBranch }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemModel }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemFuelAbbreviation }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemReferenceMonth }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemValue }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemShippingValue }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemCTE }}</td>
+          <td>{{ vehicleControlItem.vehicleControlItemCTEDate | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="vehicleControlItem.vehicleControls">
+              <a [routerLink]="['/vehicle-controls', vehicleControlItem.vehicleControls?.id, 'view']">{{
+                vehicleControlItem.vehicleControls?.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-control-item', vehicleControlItem.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-control-item', vehicleControlItem.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(vehicleControlItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="vehicleControlItems && vehicleControlItems.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

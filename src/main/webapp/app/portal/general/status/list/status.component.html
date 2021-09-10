@@ -1,0 +1,104 @@
+<div>
+  <h2 id="page-heading" data-cy="StatusHeading">
+    <span jhiTranslate="transporteApp.status.home.title">Statuses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.status.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-status"
+        [routerLink]="['/status/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.status.home.createLabel"> Create a new Status </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="statuses?.length === 0">
+    <span jhiTranslate="transporteApp.status.home.notFound">No statuses found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="statuses && statuses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="statusName">
+            <span jhiTranslate="transporteApp.status.statusName">Status Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="screenType">
+            <span jhiTranslate="transporteApp.status.screenType">Screen Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="statusDescriptions">
+            <span jhiTranslate="transporteApp.status.statusDescriptions">Status Descriptions</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affiliates.branchName">
+            <span jhiTranslate="transporteApp.status.affiliates">Affiliates</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let status of statuses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/status', status.id, 'view']">{{ status.id }}</a>
+          </td>
+          <td>{{ status.statusName }}</td>
+          <td jhiTranslate="{{ 'transporteApp.ScreenType.' + status.screenType }}">{{ status.screenType }}</td>
+          <td>{{ status.statusDescriptions }}</td>
+          <td>
+            <div *ngIf="status.affiliates">
+              <a [routerLink]="['/affiliates', status.affiliates?.id, 'view']">{{ status.affiliates?.branchName }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/status', status.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/status', status.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(status)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="statuses && statuses.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

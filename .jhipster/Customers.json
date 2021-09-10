@@ -1,0 +1,121 @@
+{
+  "name": "Customers",
+  "fields": [
+    {
+      "fieldName": "customerName",
+      "fieldType": "String",
+      "javadoc": "CLIENT NAME\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "javadoc": "active customers account.\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "customerNumber",
+      "fieldType": "String",
+      "javadoc": "Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "customerPostalCode",
+      "fieldType": "String",
+      "javadoc": "Postal code of address the matrix company.\\n@type String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "9"
+    },
+    {
+      "fieldName": "customerAddress",
+      "fieldType": "String",
+      "javadoc": "Branch Address.\\n@type String"
+    },
+    {
+      "fieldName": "customerAddressComplement",
+      "fieldType": "String",
+      "javadoc": "Branch Address Complement.\\n@type String"
+    },
+    {
+      "fieldName": "customerAddressNumber",
+      "fieldType": "Integer",
+      "javadoc": "Number of address.\\n@type Integer"
+    },
+    {
+      "fieldName": "customerAddressNeighborhood",
+      "fieldType": "String",
+      "javadoc": "Neighborhood, District.\\n@type String"
+    },
+    {
+      "fieldName": "customerTelephone",
+      "fieldType": "String",
+      "javadoc": "Contact Telephone\\n@type String"
+    },
+    {
+      "fieldName": "paymentTerm",
+      "fieldType": "Integer",
+      "javadoc": "Payment Terms\\n@type Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "customersContacts",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "customersContacts"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "customerAttachments",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "customerAttachments"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "vehicleControls"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housing",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "housing"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "customers",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "customers",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cities",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customersGroups",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "customersGroups",
+      "otherEntityField": "groupName"
+    }
+  ],
+  "javadoc": "Customers.\\nThis class are the customers group.\\n@author Samuel Souza",
+  "entityTableName": "customers",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053731"
+}

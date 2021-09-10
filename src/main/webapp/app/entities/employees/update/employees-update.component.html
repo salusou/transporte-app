@@ -1,0 +1,358 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-employees-heading" data-cy="EmployeesCreateUpdateHeading" jhiTranslate="transporteApp.employees.home.createOrEditLabel">
+        Create or edit a Employees
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.active"
+            for="field_active"
+            [ngbTooltip]="'transporteApp.employees.help.active' | translate"
+            >Active</label
+          >
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+          <div *ngIf="editForm.get('active')!.invalid && (editForm.get('active')!.dirty || editForm.get('active')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('active')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeFullName"
+            for="field_employeeFullName"
+            [ngbTooltip]="'transporteApp.employees.help.employeeFullName' | translate"
+            >Employee Full Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="employeeFullName"
+            id="field_employeeFullName"
+            data-cy="employeeFullName"
+            formControlName="employeeFullName"
+          />
+          <div
+            *ngIf="
+              editForm.get('employeeFullName')!.invalid &&
+              (editForm.get('employeeFullName')!.dirty || editForm.get('employeeFullName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('employeeFullName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeEmail"
+            for="field_employeeEmail"
+            [ngbTooltip]="'transporteApp.employees.help.employeeEmail' | translate"
+            >Employee Email</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="employeeEmail"
+            id="field_employeeEmail"
+            data-cy="employeeEmail"
+            formControlName="employeeEmail"
+          />
+          <div
+            *ngIf="
+              editForm.get('employeeEmail')!.invalid && (editForm.get('employeeEmail')!.dirty || editForm.get('employeeEmail')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('employeeEmail')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeIdentificationNumber"
+            for="field_employeeIdentificationNumber"
+            [ngbTooltip]="'transporteApp.employees.help.employeeIdentificationNumber' | translate"
+            >Employee Identification Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="employeeIdentificationNumber"
+            id="field_employeeIdentificationNumber"
+            data-cy="employeeIdentificationNumber"
+            formControlName="employeeIdentificationNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeNumber"
+            for="field_employeeNumber"
+            [ngbTooltip]="'transporteApp.employees.help.employeeNumber' | translate"
+            >Employee Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="employeeNumber"
+            id="field_employeeNumber"
+            data-cy="employeeNumber"
+            formControlName="employeeNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeePostalCode"
+            for="field_employeePostalCode"
+            [ngbTooltip]="'transporteApp.employees.help.employeePostalCode' | translate"
+            >Employee Postal Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="employeePostalCode"
+            id="field_employeePostalCode"
+            data-cy="employeePostalCode"
+            formControlName="employeePostalCode"
+          />
+          <div
+            *ngIf="
+              editForm.get('employeePostalCode')!.invalid &&
+              (editForm.get('employeePostalCode')!.dirty || editForm.get('employeePostalCode')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('employeePostalCode')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 9 }"
+            >
+              This field cannot be longer than 9 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeAddress"
+            for="field_employeeAddress"
+            [ngbTooltip]="'transporteApp.employees.help.employeeAddress' | translate"
+            >Employee Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="employeeAddress"
+            id="field_employeeAddress"
+            data-cy="employeeAddress"
+            formControlName="employeeAddress"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeAddressComplement"
+            for="field_employeeAddressComplement"
+            [ngbTooltip]="'transporteApp.employees.help.employeeAddressComplement' | translate"
+            >Employee Address Complement</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="employeeAddressComplement"
+            id="field_employeeAddressComplement"
+            data-cy="employeeAddressComplement"
+            formControlName="employeeAddressComplement"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeAddressNumber"
+            for="field_employeeAddressNumber"
+            [ngbTooltip]="'transporteApp.employees.help.employeeAddressNumber' | translate"
+            >Employee Address Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="employeeAddressNumber"
+            id="field_employeeAddressNumber"
+            data-cy="employeeAddressNumber"
+            formControlName="employeeAddressNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeAddressNeighborhood"
+            for="field_employeeAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.employees.help.employeeAddressNeighborhood' | translate"
+            >Employee Address Neighborhood</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="employeeAddressNeighborhood"
+            id="field_employeeAddressNeighborhood"
+            data-cy="employeeAddressNeighborhood"
+            formControlName="employeeAddressNeighborhood"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.employees.employeeBirthday"
+            for="field_employeeBirthday"
+            [ngbTooltip]="'transporteApp.employees.help.employeeBirthday' | translate"
+            >Employee Birthday</label
+          >
+          <div class="input-group">
+            <input
+              id="field_employeeBirthday"
+              data-cy="employeeBirthday"
+              type="text"
+              class="form-control"
+              name="employeeBirthday"
+              ngbDatepicker
+              #employeeBirthdayDp="ngbDatepicker"
+              formControlName="employeeBirthday"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="employeeBirthdayDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.employees.companies" for="field_companies">Companies</label>
+          <select class="form-control" id="field_companies" data-cy="companies" name="companies" formControlName="companies">
+            <option *ngIf="!editForm.get('companies')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="companiesOption.id === editForm.get('companies')!.value?.id ? editForm.get('companies')!.value : companiesOption"
+              *ngFor="let companiesOption of companiesSharedCollection; trackBy: trackCompaniesById"
+            >
+              {{ companiesOption.companyName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['companies'])!.invalid && (editForm.get(['companies'])!.dirty || editForm.get(['companies'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['companies'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.employees.affiliates" for="field_affiliates">Affiliates</label>
+          <select class="form-control" id="field_affiliates" data-cy="affiliates" name="affiliates" formControlName="affiliates">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                affiliatesOption.id === editForm.get('affiliates')!.value?.id ? editForm.get('affiliates')!.value : affiliatesOption
+              "
+              *ngFor="let affiliatesOption of affiliatesSharedCollection; trackBy: trackAffiliatesById"
+            >
+              {{ affiliatesOption.branchName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.employees.cities" for="field_cities">Cities</label>
+          <select class="form-control" id="field_cities" data-cy="cities" name="cities" formControlName="cities">
+            <option *ngIf="!editForm.get('cities')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="citiesOption.id === editForm.get('cities')!.value?.id ? editForm.get('cities')!.value : citiesOption"
+              *ngFor="let citiesOption of citiesSharedCollection; trackBy: trackCitiesById"
+            >
+              {{ citiesOption.cityName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['cities'])!.invalid && (editForm.get(['cities'])!.dirty || editForm.get(['cities'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['cities'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.employees.positions" for="field_positions">Positions</label>
+          <select class="form-control" id="field_positions" data-cy="positions" name="positions" formControlName="positions">
+            <option *ngIf="!editForm.get('positions')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="positionsOption.id === editForm.get('positions')!.value?.id ? editForm.get('positions')!.value : positionsOption"
+              *ngFor="let positionsOption of positionsSharedCollection; trackBy: trackPositionsById"
+            >
+              {{ positionsOption.positionName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['positions'])!.invalid && (editForm.get(['positions'])!.dirty || editForm.get(['positions'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['positions'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

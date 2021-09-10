@@ -1,0 +1,56 @@
+{
+  "name": "ParkingSectorSpace",
+  "fields": [
+    {
+      "fieldName": "parkingNumber",
+      "fieldType": "Integer",
+      "javadoc": "Number of the vacancy occupied. This number must be in the range established in the related sector\\n@type Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "parkingStatus",
+      "fieldType": "ParkingSpaceStatus",
+      "fieldValues": "Free,Occupied,Disabled,Maintenance",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "parkingEntryDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "parkingDepartureDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "parkingHousingItemId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housingVehicleItem",
+      "otherEntityRelationshipName": "parkingSectorSpace",
+      "relationshipName": "housingVehicleItem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "parkingSector",
+      "otherEntityRelationshipName": "parkingSectorSpace",
+      "relationshipValidateRules": "required",
+      "relationshipName": "parkingSector",
+      "otherEntityField": "sectorName"
+    }
+  ],
+  "javadoc": "Parking Sector Space\\nThis class is the table Parking Sector Space shows the vacancies occupied.\\n@author Samuel Souza",
+  "entityTableName": "parking_sector_space",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053739"
+}

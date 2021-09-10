@@ -1,0 +1,193 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-fees-heading" data-cy="FeesCreateUpdateHeading" jhiTranslate="transporteApp.fees.home.createOrEditLabel">
+        Create or edit a Fees
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.fees.feeDate" for="field_feeDate">Fee Date</label>
+          <div class="input-group">
+            <input
+              id="field_feeDate"
+              data-cy="feeDate"
+              type="text"
+              class="form-control"
+              name="feeDate"
+              ngbDatepicker
+              #feeDateDp="ngbDatepicker"
+              formControlName="feeDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="feeDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+          <div *ngIf="editForm.get('feeDate')!.invalid && (editForm.get('feeDate')!.dirty || editForm.get('feeDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('feeDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.fees.feeDriverCommission" for="field_feeDriverCommission"
+            >Fee Driver Commission</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="feeDriverCommission"
+            id="field_feeDriverCommission"
+            data-cy="feeDriverCommission"
+            formControlName="feeDriverCommission"
+          />
+          <div
+            *ngIf="
+              editForm.get('feeDriverCommission')!.invalid &&
+              (editForm.get('feeDriverCommission')!.dirty || editForm.get('feeDriverCommission')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('feeDriverCommission')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('feeDriverCommission')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.fees.feeFinancialCost" for="field_feeFinancialCost"
+            >Fee Financial Cost</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="feeFinancialCost"
+            id="field_feeFinancialCost"
+            data-cy="feeFinancialCost"
+            formControlName="feeFinancialCost"
+          />
+          <div
+            *ngIf="
+              editForm.get('feeFinancialCost')!.invalid &&
+              (editForm.get('feeFinancialCost')!.dirty || editForm.get('feeFinancialCost')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('feeFinancialCost')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('feeFinancialCost')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.fees.feeTaxes" for="field_feeTaxes">Fee Taxes</label>
+          <input type="number" class="form-control" name="feeTaxes" id="field_feeTaxes" data-cy="feeTaxes" formControlName="feeTaxes" />
+          <div *ngIf="editForm.get('feeTaxes')!.invalid && (editForm.get('feeTaxes')!.dirty || editForm.get('feeTaxes')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('feeTaxes')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('feeTaxes')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.fees.feeDescriptions" for="field_feeDescriptions"
+            >Fee Descriptions</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="feeDescriptions"
+            id="field_feeDescriptions"
+            data-cy="feeDescriptions"
+            formControlName="feeDescriptions"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.fees.affiliates" for="field_affiliates">Affiliates</label>
+          <select class="form-control" id="field_affiliates" data-cy="affiliates" name="affiliates" formControlName="affiliates">
+            <option *ngIf="!editForm.get('affiliates')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                affiliatesOption.id === editForm.get('affiliates')!.value?.id ? editForm.get('affiliates')!.value : affiliatesOption
+              "
+              *ngFor="let affiliatesOption of affiliatesSharedCollection; trackBy: trackAffiliatesById"
+            >
+              {{ affiliatesOption.branchName }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['affiliates'])!.invalid && (editForm.get(['affiliates'])!.dirty || editForm.get(['affiliates'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['affiliates'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

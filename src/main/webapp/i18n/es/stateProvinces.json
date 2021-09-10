@@ -1,0 +1,35 @@
+{
+  "transporteApp": {
+    "stateProvinces": {
+      "home": {
+        "title": "State Provinces",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo State Provinces",
+        "createOrEditLabel": "Crear o editar State Provinces",
+        "notFound": "Ningún State Provinces encontrado"
+      },
+      "created": "Un nuevo State Provinces ha sido creado con el identificador {{ param }}",
+      "updated": "Un State Provinces ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un State Provinces ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar State Provinces {{ id }}?"
+      },
+      "detail": {
+        "title": "State Provinces"
+      },
+      "id": "ID",
+      "stateName": "State Name",
+      "abbreviation": "Abbreviation",
+      "cities": "Cities",
+      "companies": "Companies",
+      "affiliates": "Affiliates",
+      "toInsurances": "To Insurances",
+      "forInsurances": "For Insurances",
+      "countries": "Countries",
+      "help": {
+        "stateName": "Name of the State Example: California\n@type String",
+        "abbreviation": "Abbreviation of state example: CA\n@type String"
+      }
+    }
+  }
+}

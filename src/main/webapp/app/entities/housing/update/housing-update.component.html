@@ -1,0 +1,351 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-housing-heading" data-cy="HousingCreateUpdateHeading" jhiTranslate="transporteApp.housing.home.createOrEditLabel">
+        Create or edit a Housing
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.housingDate" for="field_housingDate">Housing Date</label>
+          <div class="input-group">
+            <input
+              id="field_housingDate"
+              data-cy="housingDate"
+              type="text"
+              class="form-control"
+              name="housingDate"
+              ngbDatepicker
+              #housingDateDp="ngbDatepicker"
+              formControlName="housingDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="housingDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+          <div *ngIf="editForm.get('housingDate')!.invalid && (editForm.get('housingDate')!.dirty || editForm.get('housingDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.housingEntranceDate" for="field_housingEntranceDate"
+            >Housing Entrance Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_housingEntranceDate"
+              data-cy="housingEntranceDate"
+              type="datetime-local"
+              class="form-control"
+              name="housingEntranceDate"
+              formControlName="housingEntranceDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('housingEntranceDate')!.invalid &&
+              (editForm.get('housingEntranceDate')!.dirty || editForm.get('housingEntranceDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingEntranceDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('housingEntranceDate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.housingExit" for="field_housingExit">Housing Exit</label>
+          <div class="d-flex">
+            <input
+              id="field_housingExit"
+              data-cy="housingExit"
+              type="datetime-local"
+              class="form-control"
+              name="housingExit"
+              formControlName="housingExit"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.housingReceiptNumber" for="field_housingReceiptNumber"
+            >Housing Receipt Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="housingReceiptNumber"
+            id="field_housingReceiptNumber"
+            data-cy="housingReceiptNumber"
+            formControlName="housingReceiptNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.housingDailyPrice" for="field_housingDailyPrice"
+            >Housing Daily Price</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="housingDailyPrice"
+            id="field_housingDailyPrice"
+            data-cy="housingDailyPrice"
+            formControlName="housingDailyPrice"
+          />
+          <div
+            *ngIf="
+              editForm.get('housingDailyPrice')!.invalid &&
+              (editForm.get('housingDailyPrice')!.dirty || editForm.get('housingDailyPrice')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingDailyPrice')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('housingDailyPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.housingDescription" for="field_housingDescription"
+            >Housing Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingDescription"
+            id="field_housingDescription"
+            data-cy="housingDescription"
+            formControlName="housingDescription"
+          />
+          <div
+            *ngIf="
+              editForm.get('housingDescription')!.invalid &&
+              (editForm.get('housingDescription')!.dirty || editForm.get('housingDescription')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingDescription')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 500 }"
+            >
+              This field cannot be longer than 500 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.affiliates" for="field_affiliates">Affiliates</label>
+          <select class="form-control" id="field_affiliates" data-cy="affiliates" name="affiliates" formControlName="affiliates">
+            <option *ngIf="!editForm.get('affiliates')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                affiliatesOption.id === editForm.get('affiliates')!.value?.id ? editForm.get('affiliates')!.value : affiliatesOption
+              "
+              *ngFor="let affiliatesOption of affiliatesSharedCollection; trackBy: trackAffiliatesById"
+            >
+              {{ affiliatesOption.branchName }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['affiliates'])!.invalid && (editForm.get(['affiliates'])!.dirty || editForm.get(['affiliates'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['affiliates'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.status" for="field_status">Status</label>
+          <select class="form-control" id="field_status" data-cy="status" name="status" formControlName="status">
+            <option *ngIf="!editForm.get('status')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="statusOption.id === editForm.get('status')!.value?.id ? editForm.get('status')!.value : statusOption"
+              *ngFor="let statusOption of statusesSharedCollection; trackBy: trackStatusById"
+            >
+              {{ statusOption.statusName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['status'])!.invalid && (editForm.get(['status'])!.dirty || editForm.get(['status'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['status'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.customers" for="field_customers">Customers</label>
+          <select class="form-control" id="field_customers" data-cy="customers" name="customers" formControlName="customers">
+            <option *ngIf="!editForm.get('customers')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="customersOption.id === editForm.get('customers')!.value?.id ? editForm.get('customers')!.value : customersOption"
+              *ngFor="let customersOption of customersSharedCollection; trackBy: trackCustomersById"
+            >
+              {{ customersOption.customerName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['customers'])!.invalid && (editForm.get(['customers'])!.dirty || editForm.get(['customers'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['customers'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.employees" for="field_employees">Employees</label>
+          <select class="form-control" id="field_employees" data-cy="employees" name="employees" formControlName="employees">
+            <option *ngIf="!editForm.get('employees')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="employeesOption.id === editForm.get('employees')!.value?.id ? editForm.get('employees')!.value : employeesOption"
+              *ngFor="let employeesOption of employeesSharedCollection; trackBy: trackEmployeesById"
+            >
+              {{ employeesOption.employeeFullName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['employees'])!.invalid && (editForm.get(['employees'])!.dirty || editForm.get(['employees'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['employees'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.parking" for="field_parking">Parking</label>
+          <select class="form-control" id="field_parking" data-cy="parking" name="parking" formControlName="parking">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="parkingOption.id === editForm.get('parking')!.value?.id ? editForm.get('parking')!.value : parkingOption"
+              *ngFor="let parkingOption of parkingsSharedCollection; trackBy: trackParkingById"
+            >
+              {{ parkingOption.parkingName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.costCenter" for="field_costCenter">Cost Center</label>
+          <select class="form-control" id="field_costCenter" data-cy="costCenter" name="costCenter" formControlName="costCenter">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                costCenterOption.id === editForm.get('costCenter')!.value?.id ? editForm.get('costCenter')!.value : costCenterOption
+              "
+              *ngFor="let costCenterOption of costCentersSharedCollection; trackBy: trackCostCenterById"
+            >
+              {{ costCenterOption.costCenterName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.suppliers" for="field_suppliers">Suppliers</label>
+          <select class="form-control" id="field_suppliers" data-cy="suppliers" name="suppliers" formControlName="suppliers">
+            <option *ngIf="!editForm.get('suppliers')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="suppliersOption.id === editForm.get('suppliers')!.value?.id ? editForm.get('suppliers')!.value : suppliersOption"
+              *ngFor="let suppliersOption of suppliersSharedCollection; trackBy: trackSuppliersById"
+            >
+              {{ suppliersOption.supplierName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['suppliers'])!.invalid && (editForm.get(['suppliers'])!.dirty || editForm.get(['suppliers'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['suppliers'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housing.cities" for="field_cities">Cities</label>
+          <select class="form-control" id="field_cities" data-cy="cities" name="cities" formControlName="cities">
+            <option *ngIf="!editForm.get('cities')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="citiesOption.id === editForm.get('cities')!.value?.id ? editForm.get('cities')!.value : citiesOption"
+              *ngFor="let citiesOption of citiesSharedCollection; trackBy: trackCitiesById"
+            >
+              {{ citiesOption.cityName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['cities'])!.invalid && (editForm.get(['cities'])!.dirty || editForm.get(['cities'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['cities'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

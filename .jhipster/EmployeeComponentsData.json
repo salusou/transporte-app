@@ -1,0 +1,31 @@
+{
+  "name": "EmployeeComponentsData",
+  "fields": [
+    {
+      "fieldName": "dataInfo",
+      "fieldType": "String",
+      "javadoc": "Grid Information details.\\n@type Text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employees",
+      "otherEntityRelationshipName": "employeeComponentsData",
+      "relationshipValidateRules": "required",
+      "relationshipName": "employee",
+      "otherEntityField": "employeeFullName"
+    }
+  ],
+  "javadoc": "Employee Components Data.\\nThis class is to save grid template per user.\\n@author Samuel Souza",
+  "entityTableName": "employee_components_data",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053745"
+}

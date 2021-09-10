@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Housing.
+    -->
+    <changeSet id="20210903053755-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="affiliates_id"
+                                 baseTableName="housing"
+                                 constraintName="fk_housing__affiliates_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="affiliates"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="housing"
+                                 constraintName="fk_housing__status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="status"/>
+
+        <addForeignKeyConstraint baseColumnNames="customers_id"
+                                 baseTableName="housing"
+                                 constraintName="fk_housing__customers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customers"/>
+
+        <addForeignKeyConstraint baseColumnNames="employees_id"
+                                 baseTableName="housing"
+                                 constraintName="fk_housing__employees_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employees"/>
+
+        <addForeignKeyConstraint baseColumnNames="parking_id"
+                                 baseTableName="housing"
+                                 constraintName="fk_housing__parking_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parking"/>
+
+        <addForeignKeyConstraint baseColumnNames="cost_center_id"
+                                 baseTableName="housing"
+                                 constraintName="fk_housing__cost_center_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cost_center"/>
+
+        <addForeignKeyConstraint baseColumnNames="suppliers_id"
+                                 baseTableName="housing"
+                                 constraintName="fk_housing__suppliers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="suppliers"/>
+
+        <addForeignKeyConstraint baseColumnNames="cities_id"
+                                 baseTableName="housing"
+                                 constraintName="fk_housing__cities_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cities"/>
+    </changeSet>
+</databaseChangeLog>

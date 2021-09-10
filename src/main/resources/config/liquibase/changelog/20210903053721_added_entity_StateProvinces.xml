@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity StateProvinces.
+    -->
+    <changeSet id="20210903053721-1" author="jhipster">
+        <createTable tableName="state_provinces" remarks="State Providence\nThis class is used to filter the providence of city.\n@author Samuel Souza">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="state_name" type="varchar(255)" remarks="Name of the State Example: California\n@type String">
+                <constraints nullable="false" />
+            </column>
+            <column name="abbreviation" type="varchar(255)" remarks="Abbreviation of state example: CA\n@type String">
+                <constraints nullable="false" />
+            </column>
+            <column name="countries_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210903053721-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/state_provinces.csv"
+                  separator=";"
+                  tableName="state_provinces">
+            <column name="id" type="numeric"/>
+            <column name="state_name" type="string"/>
+            <column name="abbreviation" type="string"/>
+            <column name="countries_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

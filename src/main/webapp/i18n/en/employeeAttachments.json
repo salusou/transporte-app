@@ -1,0 +1,34 @@
+{
+  "transporteApp": {
+    "employeeAttachments": {
+      "home": {
+        "title": "Employee Attachments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Employee Attachments",
+        "createOrEditLabel": "Create or edit a Employee Attachments",
+        "notFound": "No Employee Attachments found"
+      },
+      "created": "A new Employee Attachments is created with identifier {{ param }}",
+      "updated": "A Employee Attachments is updated with identifier {{ param }}",
+      "deleted": "A Employee Attachments is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Employee Attachments {{ id }}?"
+      },
+      "detail": {
+        "title": "Employee Attachments"
+      },
+      "id": "ID",
+      "attachImage": "Attach Image",
+      "attachUrl": "Attach Url",
+      "attachDescription": "Attach Description",
+      "attachedDate": "Attached Date",
+      "employees": "Employees",
+      "help": {
+        "attachImage": "Attach Image will only receive the file.\n@type ImageBlob",
+        "attachUrl": "Id generate in cloudinary.\n@type String",
+        "attachDescription": "description about the file attached.\n@type String",
+        "attachedDate": "created date.\n@type String"
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employees">
+      <h2 data-cy="employeesDetailsHeading"><span jhiTranslate="transporteApp.employees.detail.title">Employees</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employees.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.employees.active" [ngbTooltip]="'transporteApp.employees.help.active' | translate">Active</span>
+        </dt>
+        <dd>
+          <span>{{ employees.active }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeeFullName"
+            [ngbTooltip]="'transporteApp.employees.help.employeeFullName' | translate"
+            >Employee Full Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeFullName }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.employees.employeeEmail" [ngbTooltip]="'transporteApp.employees.help.employeeEmail' | translate"
+            >Employee Email</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeEmail }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeeIdentificationNumber"
+            [ngbTooltip]="'transporteApp.employees.help.employeeIdentificationNumber' | translate"
+            >Employee Identification Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeIdentificationNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeeNumber"
+            [ngbTooltip]="'transporteApp.employees.help.employeeNumber' | translate"
+            >Employee Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeePostalCode"
+            [ngbTooltip]="'transporteApp.employees.help.employeePostalCode' | translate"
+            >Employee Postal Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeePostalCode }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeeAddress"
+            [ngbTooltip]="'transporteApp.employees.help.employeeAddress' | translate"
+            >Employee Address</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeAddress }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeeAddressComplement"
+            [ngbTooltip]="'transporteApp.employees.help.employeeAddressComplement' | translate"
+            >Employee Address Complement</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeAddressComplement }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeeAddressNumber"
+            [ngbTooltip]="'transporteApp.employees.help.employeeAddressNumber' | translate"
+            >Employee Address Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeAddressNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeeAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.employees.help.employeeAddressNeighborhood' | translate"
+            >Employee Address Neighborhood</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeAddressNeighborhood }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employees.employeeBirthday"
+            [ngbTooltip]="'transporteApp.employees.help.employeeBirthday' | translate"
+            >Employee Birthday</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employees.employeeBirthday | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.employees.companies">Companies</span></dt>
+        <dd>
+          <div *ngIf="employees.companies">
+            <a [routerLink]="['/companies', employees.companies?.id, 'view']">{{ employees.companies?.companyName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.employees.affiliates">Affiliates</span></dt>
+        <dd>
+          <div *ngIf="employees.affiliates">
+            <a [routerLink]="['/affiliates', employees.affiliates?.id, 'view']">{{ employees.affiliates?.branchName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.employees.cities">Cities</span></dt>
+        <dd>
+          <div *ngIf="employees.cities">
+            <a [routerLink]="['/cities', employees.cities?.id, 'view']">{{ employees.cities?.cityName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.employees.positions">Positions</span></dt>
+        <dd>
+          <div *ngIf="employees.positions">
+            <a [routerLink]="['/positions', employees.positions?.id, 'view']">{{ employees.positions?.positionName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employees', employees.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

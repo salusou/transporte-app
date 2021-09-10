@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="housing">
+      <h2 data-cy="housingDetailsHeading"><span jhiTranslate="transporteApp.housing.detail.title">Housing</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ housing.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.housingDate">Housing Date</span></dt>
+        <dd>
+          <span>{{ housing.housingDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.housingEntranceDate">Housing Entrance Date</span></dt>
+        <dd>
+          <span>{{ housing.housingEntranceDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.housingExit">Housing Exit</span></dt>
+        <dd>
+          <span>{{ housing.housingExit | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.housingReceiptNumber">Housing Receipt Number</span></dt>
+        <dd>
+          <span>{{ housing.housingReceiptNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.housingDailyPrice">Housing Daily Price</span></dt>
+        <dd>
+          <span>{{ housing.housingDailyPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.housingDescription">Housing Description</span></dt>
+        <dd>
+          <span>{{ housing.housingDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.affiliates">Affiliates</span></dt>
+        <dd>
+          <div *ngIf="housing.affiliates">
+            <a [routerLink]="['/affiliates', housing.affiliates?.id, 'view']">{{ housing.affiliates?.branchName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.status">Status</span></dt>
+        <dd>
+          <div *ngIf="housing.status">
+            <a [routerLink]="['/status', housing.status?.id, 'view']">{{ housing.status?.statusName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.customers">Customers</span></dt>
+        <dd>
+          <div *ngIf="housing.customers">
+            <a [routerLink]="['/customers', housing.customers?.id, 'view']">{{ housing.customers?.customerName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.employees">Employees</span></dt>
+        <dd>
+          <div *ngIf="housing.employees">
+            <a [routerLink]="['/employees', housing.employees?.id, 'view']">{{ housing.employees?.employeeFullName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.parking">Parking</span></dt>
+        <dd>
+          <div *ngIf="housing.parking">
+            <a [routerLink]="['/parking', housing.parking?.id, 'view']">{{ housing.parking?.parkingName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.costCenter">Cost Center</span></dt>
+        <dd>
+          <div *ngIf="housing.costCenter">
+            <a [routerLink]="['/cost-center', housing.costCenter?.id, 'view']">{{ housing.costCenter?.costCenterName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.suppliers">Suppliers</span></dt>
+        <dd>
+          <div *ngIf="housing.suppliers">
+            <a [routerLink]="['/suppliers', housing.suppliers?.id, 'view']">{{ housing.suppliers?.supplierName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housing.cities">Cities</span></dt>
+        <dd>
+          <div *ngIf="housing.cities">
+            <a [routerLink]="['/cities', housing.cities?.id, 'view']">{{ housing.cities?.cityName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/housing', housing.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employeeAttachments">
+      <h2 data-cy="employeeAttachmentsDetailsHeading">
+        <span jhiTranslate="transporteApp.employeeAttachments.detail.title">Employee Attachments</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employeeAttachments.id }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employeeAttachments.attachImage"
+            [ngbTooltip]="'transporteApp.employeeAttachments.help.attachImage' | translate"
+            >Attach Image</span
+          >
+        </dt>
+        <dd>
+          <div *ngIf="employeeAttachments.attachImage">
+            <a (click)="openFile(employeeAttachments.attachImage, employeeAttachments.attachImageContentType)">
+              <img
+                [src]="'data:' + employeeAttachments.attachImageContentType + ';base64,' + employeeAttachments.attachImage"
+                style="max-width: 100%"
+                alt="employeeAttachments image"
+              />
+            </a>
+            {{ employeeAttachments.attachImageContentType }}, {{ byteSize(employeeAttachments.attachImage) }}
+          </div>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employeeAttachments.attachUrl"
+            [ngbTooltip]="'transporteApp.employeeAttachments.help.attachUrl' | translate"
+            >Attach Url</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employeeAttachments.attachUrl }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employeeAttachments.attachDescription"
+            [ngbTooltip]="'transporteApp.employeeAttachments.help.attachDescription' | translate"
+            >Attach Description</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employeeAttachments.attachDescription }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.employeeAttachments.attachedDate"
+            [ngbTooltip]="'transporteApp.employeeAttachments.help.attachedDate' | translate"
+            >Attached Date</span
+          >
+        </dt>
+        <dd>
+          <span>{{ employeeAttachments.attachedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.employeeAttachments.employees">Employees</span></dt>
+        <dd>
+          <div *ngIf="employeeAttachments.employees">
+            <a [routerLink]="['/employees', employeeAttachments.employees?.id, 'view']">{{
+              employeeAttachments.employees?.employeeFullName
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employee-attachments', employeeAttachments.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

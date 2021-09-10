@@ -1,0 +1,109 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-state-provinces-heading"
+        data-cy="StateProvincesCreateUpdateHeading"
+        jhiTranslate="transporteApp.stateProvinces.home.createOrEditLabel"
+      >
+        Create or edit a State Provinces
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.stateProvinces.stateName"
+            for="field_stateName"
+            [ngbTooltip]="'transporteApp.stateProvinces.help.stateName' | translate"
+            >State Name</label
+          >
+          <input type="text" class="form-control" name="stateName" id="field_stateName" data-cy="stateName" formControlName="stateName" />
+          <div *ngIf="editForm.get('stateName')!.invalid && (editForm.get('stateName')!.dirty || editForm.get('stateName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('stateName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.stateProvinces.abbreviation"
+            for="field_abbreviation"
+            [ngbTooltip]="'transporteApp.stateProvinces.help.abbreviation' | translate"
+            >Abbreviation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="abbreviation"
+            id="field_abbreviation"
+            data-cy="abbreviation"
+            formControlName="abbreviation"
+          />
+          <div
+            *ngIf="editForm.get('abbreviation')!.invalid && (editForm.get('abbreviation')!.dirty || editForm.get('abbreviation')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('abbreviation')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.stateProvinces.countries" for="field_countries">Countries</label>
+          <select class="form-control" id="field_countries" data-cy="countries" name="countries" formControlName="countries">
+            <option *ngIf="!editForm.get('countries')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="countriesOption.id === editForm.get('countries')!.value?.id ? editForm.get('countries')!.value : countriesOption"
+              *ngFor="let countriesOption of countriesSharedCollection; trackBy: trackCountriesById"
+            >
+              {{ countriesOption.countryName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['countries'])!.invalid && (editForm.get(['countries'])!.dirty || editForm.get(['countries'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['countries'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

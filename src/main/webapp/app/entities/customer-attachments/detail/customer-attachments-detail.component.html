@@ -1,0 +1,95 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customerAttachments">
+      <h2 data-cy="customerAttachmentsDetailsHeading">
+        <span jhiTranslate="transporteApp.customerAttachments.detail.title">Customer Attachments</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customerAttachments.id }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customerAttachments.attachImage"
+            [ngbTooltip]="'transporteApp.customerAttachments.help.attachImage' | translate"
+            >Attach Image</span
+          >
+        </dt>
+        <dd>
+          <div *ngIf="customerAttachments.attachImage">
+            <a (click)="openFile(customerAttachments.attachImage, customerAttachments.attachImageContentType)">
+              <img
+                [src]="'data:' + customerAttachments.attachImageContentType + ';base64,' + customerAttachments.attachImage"
+                style="max-width: 100%"
+                alt="customerAttachments image"
+              />
+            </a>
+            {{ customerAttachments.attachImageContentType }}, {{ byteSize(customerAttachments.attachImage) }}
+          </div>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customerAttachments.attachUrl"
+            [ngbTooltip]="'transporteApp.customerAttachments.help.attachUrl' | translate"
+            >Attach Url</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customerAttachments.attachUrl }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customerAttachments.attachDescription"
+            [ngbTooltip]="'transporteApp.customerAttachments.help.attachDescription' | translate"
+            >Attach Description</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customerAttachments.attachDescription }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customerAttachments.attachedDate"
+            [ngbTooltip]="'transporteApp.customerAttachments.help.attachedDate' | translate"
+            >Attached Date</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customerAttachments.attachedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.customerAttachments.customers">Customers</span></dt>
+        <dd>
+          <div *ngIf="customerAttachments.customers">
+            <a [routerLink]="['/customers', customerAttachments.customers?.id, 'view']">{{
+              customerAttachments.customers?.customerName
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.customerAttachments.statusAttachments">Status Attachments</span></dt>
+        <dd>
+          <div *ngIf="customerAttachments.statusAttachments">
+            <a [routerLink]="['/status-attachments', customerAttachments.statusAttachments?.id, 'view']">{{
+              customerAttachments.statusAttachments?.statusName
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customer-attachments', customerAttachments.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

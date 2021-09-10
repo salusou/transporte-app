@@ -1,0 +1,27 @@
+{
+  "transporteApp": {
+    "vehicleControlHistory": {
+      "home": {
+        "title": "Vehicle Control Histories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicle Control History",
+        "createOrEditLabel": "Create or edit a Vehicle Control History",
+        "notFound": "No Vehicle Control Histories found"
+      },
+      "created": "A new Vehicle Control History is created with identifier {{ param }}",
+      "updated": "A Vehicle Control History is updated with identifier {{ param }}",
+      "deleted": "A Vehicle Control History is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vehicle Control History {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Control History"
+      },
+      "id": "ID",
+      "vehicleControlHistoryDate": "Vehicle Control History Date",
+      "vehicleControlHistoryDescription": "Vehicle Control History Description",
+      "vehicleControls": "Vehicle Controls",
+      "employees": "Employees"
+    }
+  }
+}

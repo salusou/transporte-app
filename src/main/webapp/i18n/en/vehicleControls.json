@@ -1,0 +1,49 @@
+{
+  "transporteApp": {
+    "vehicleControls": {
+      "home": {
+        "title": "Vehicle Controls",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicle Controls",
+        "createOrEditLabel": "Create or edit a Vehicle Controls",
+        "notFound": "No Vehicle Controls found"
+      },
+      "created": "A new Vehicle Controls is created with identifier {{ param }}",
+      "updated": "A Vehicle Controls is updated with identifier {{ param }}",
+      "deleted": "A Vehicle Controls is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vehicle Controls {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Controls"
+      },
+      "id": "ID",
+      "vehicleControlAuthorizedOrder": "Vehicle Control Authorized Order",
+      "vehicleControlRequest": "Vehicle Control Request",
+      "vehicleControlSinister": "Vehicle Control Sinister",
+      "vehicleControlDate": "Vehicle Control Date",
+      "vehicleControlKm": "Vehicle Control Km",
+      "vehicleControlPlate": "Vehicle Control Plate",
+      "vehicleControlAmount": "Vehicle Control Amount",
+      "vehicleControlPrice": "Vehicle Control Price",
+      "vehicleControlMaximumDeliveryDate": "Vehicle Control Maximum Delivery Date",
+      "vehicleControlCollectionForecast": "Vehicle Control Collection Forecast",
+      "vehicleControlCollectionDeliveryForecast": "Vehicle Control Collection Delivery Forecast",
+      "vehicleControlDateCollected": "Vehicle Control Date Collected",
+      "vehicleControlDeliveryDate": "Vehicle Control Delivery Date",
+      "vehicleLocationStatus": "Vehicle Location Status",
+      "vehicleControlHistory": "Vehicle Control History",
+      "vehicleControlBilling": "Vehicle Control Billing",
+      "vehicleControlItem": "Vehicle Control Item",
+      "vehicleControlAttachments": "Vehicle Control Attachments",
+      "vehicleControlExpenses": "Vehicle Control Expenses",
+      "affiliates": "Affiliates",
+      "customers": "Customers",
+      "customersGroups": "Customers Groups",
+      "employees": "Employees",
+      "origin": "Origin",
+      "destination": "Destination",
+      "status": "Status"
+    }
+  }
+}

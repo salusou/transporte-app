@@ -1,0 +1,221 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-supplier-banks-info-heading"
+        data-cy="SupplierBanksInfoCreateUpdateHeading"
+        jhiTranslate="transporteApp.supplierBanksInfo.home.createOrEditLabel"
+      >
+        Create or edit a Supplier Banks Info
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankCode"
+            for="field_supplierBankCode"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankCode' | translate"
+            >Supplier Bank Code</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="supplierBankCode"
+            id="field_supplierBankCode"
+            data-cy="supplierBankCode"
+            formControlName="supplierBankCode"
+          />
+          <div
+            *ngIf="
+              editForm.get('supplierBankCode')!.invalid &&
+              (editForm.get('supplierBankCode')!.dirty || editForm.get('supplierBankCode')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('supplierBankCode')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('supplierBankCode')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankName"
+            for="field_supplierBankName"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankName' | translate"
+            >Supplier Bank Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierBankName"
+            id="field_supplierBankName"
+            data-cy="supplierBankName"
+            formControlName="supplierBankName"
+          />
+          <div
+            *ngIf="
+              editForm.get('supplierBankName')!.invalid &&
+              (editForm.get('supplierBankName')!.dirty || editForm.get('supplierBankName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('supplierBankName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankBranchCode"
+            for="field_supplierBankBranchCode"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankBranchCode' | translate"
+            >Supplier Bank Branch Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierBankBranchCode"
+            id="field_supplierBankBranchCode"
+            data-cy="supplierBankBranchCode"
+            formControlName="supplierBankBranchCode"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankAccountNumber"
+            for="field_supplierBankAccountNumber"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankAccountNumber' | translate"
+            >Supplier Bank Account Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierBankAccountNumber"
+            id="field_supplierBankAccountNumber"
+            data-cy="supplierBankAccountNumber"
+            formControlName="supplierBankAccountNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankUserName"
+            for="field_supplierBankUserName"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankUserName' | translate"
+            >Supplier Bank User Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierBankUserName"
+            id="field_supplierBankUserName"
+            data-cy="supplierBankUserName"
+            formControlName="supplierBankUserName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankPixKey"
+            for="field_supplierBankPixKey"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankPixKey' | translate"
+            >Supplier Bank Pix Key</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierBankPixKey"
+            id="field_supplierBankPixKey"
+            data-cy="supplierBankPixKey"
+            formControlName="supplierBankPixKey"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankUserNumber"
+            for="field_supplierBankUserNumber"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankUserNumber' | translate"
+            >Supplier Bank User Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="supplierBankUserNumber"
+            id="field_supplierBankUserNumber"
+            data-cy="supplierBankUserNumber"
+            formControlName="supplierBankUserNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.supplierBanksInfo.suppliers" for="field_suppliers">Suppliers</label>
+          <select class="form-control" id="field_suppliers" data-cy="suppliers" name="suppliers" formControlName="suppliers">
+            <option *ngIf="!editForm.get('suppliers')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="suppliersOption.id === editForm.get('suppliers')!.value?.id ? editForm.get('suppliers')!.value : suppliersOption"
+              *ngFor="let suppliersOption of suppliersSharedCollection; trackBy: trackSuppliersById"
+            >
+              {{ suppliersOption.supplierName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['suppliers'])!.invalid && (editForm.get(['suppliers'])!.dirty || editForm.get(['suppliers'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['suppliers'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

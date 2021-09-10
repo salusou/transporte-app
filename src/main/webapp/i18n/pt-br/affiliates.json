@@ -1,0 +1,63 @@
+{
+  "transporteApp": {
+    "affiliates": {
+      "home": {
+        "title": "Affiliates",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Affiliates",
+        "createOrEditLabel": "Criar ou editar Affiliates",
+        "notFound": "Nenhum Affiliates encontrado"
+      },
+      "created": "Um novo Affiliates foi criado com o identificador {{ param }}",
+      "updated": "Um Affiliates foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Affiliates foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Affiliates {{ id }}?"
+      },
+      "detail": {
+        "title": "Affiliates"
+      },
+      "id": "ID",
+      "branchName": "Branch Name",
+      "branchNumber": "Branch Number",
+      "useSameCompanyAddress": "Use Same Company Address",
+      "branchPostalCode": "Branch Postal Code",
+      "branchAddress": "Branch Address",
+      "branchAddressComplement": "Branch Address Complement",
+      "branchAddressNumber": "Branch Address Number",
+      "branchAddressNeighborhood": "Branch Address Neighborhood",
+      "branchTelephone": "Branch Telephone",
+      "branchEmail": "Branch Email",
+      "responsibleContact": "Responsible Contact",
+      "insurances": "Insurances",
+      "positions": "Positions",
+      "costCenter": "Cost Center",
+      "administrativeFeesRanges": "Administrative Fees Ranges",
+      "customersGroups": "Customers Groups",
+      "fees": "Fees",
+      "customers": "Customers",
+      "statusAttachments": "Status Attachments",
+      "status": "Status",
+      "parking": "Parking",
+      "suppliers": "Suppliers",
+      "employees": "Employees",
+      "vehicleControls": "Vehicle Controls",
+      "housing": "Housing",
+      "stateProvinces": "State Provinces",
+      "cities": "Cities",
+      "companies": "Companies",
+      "help": {
+        "branchNumber": "Company Number is like a CNPJ, EIN\n@type String",
+        "useSameCompanyAddress": "If true get all information of company.\n@type Boolean",
+        "branchPostalCode": "Postal code of address the matrix company.\n@type String",
+        "branchAddress": "Branch Address.\n@type String",
+        "branchAddressComplement": "Branch Address Complement.\n@type String",
+        "branchAddressNumber": "Number of address.\n@type Integer",
+        "branchAddressNeighborhood": "Neighborhood, District.\n@type String",
+        "branchTelephone": "Phone of branch\n@type String",
+        "branchEmail": "E-mail of the branch\n@type String",
+        "responsibleContact": "Responsible Contact to call or send e-mail\n@type String"
+      }
+    }
+  }
+}

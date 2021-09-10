@@ -1,0 +1,175 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-parking-sector-heading"
+        data-cy="ParkingSectorCreateUpdateHeading"
+        jhiTranslate="transporteApp.parkingSector.home.createOrEditLabel"
+      >
+        Create or edit a Parking Sector
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parkingSector.active"
+            for="field_active"
+            [ngbTooltip]="'transporteApp.parkingSector.help.active' | translate"
+            >Active</label
+          >
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+          <div *ngIf="editForm.get('active')!.invalid && (editForm.get('active')!.dirty || editForm.get('active')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('active')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parkingSector.sectorName"
+            for="field_sectorName"
+            [ngbTooltip]="'transporteApp.parkingSector.help.sectorName' | translate"
+            >Sector Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="sectorName"
+            id="field_sectorName"
+            data-cy="sectorName"
+            formControlName="sectorName"
+          />
+          <div *ngIf="editForm.get('sectorName')!.invalid && (editForm.get('sectorName')!.dirty || editForm.get('sectorName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('sectorName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parkingSector.parkingSpace"
+            for="field_parkingSpace"
+            [ngbTooltip]="'transporteApp.parkingSector.help.parkingSpace' | translate"
+            >Parking Space</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="parkingSpace"
+            id="field_parkingSpace"
+            data-cy="parkingSpace"
+            formControlName="parkingSpace"
+          />
+          <div
+            *ngIf="editForm.get('parkingSpace')!.invalid && (editForm.get('parkingSpace')!.dirty || editForm.get('parkingSpace')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('parkingSpace')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('parkingSpace')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parkingSector.parkingNumbersBegin"
+            for="field_parkingNumbersBegin"
+            [ngbTooltip]="'transporteApp.parkingSector.help.parkingNumbersBegin' | translate"
+            >Parking Numbers Begin</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="parkingNumbersBegin"
+            id="field_parkingNumbersBegin"
+            data-cy="parkingNumbersBegin"
+            formControlName="parkingNumbersBegin"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.parkingSector.parkingNumbersFinal"
+            for="field_parkingNumbersFinal"
+            [ngbTooltip]="'transporteApp.parkingSector.help.parkingNumbersFinal' | translate"
+            >Parking Numbers Final</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="parkingNumbersFinal"
+            id="field_parkingNumbersFinal"
+            data-cy="parkingNumbersFinal"
+            formControlName="parkingNumbersFinal"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.parkingSector.parking" for="field_parking">Parking</label>
+          <select class="form-control" id="field_parking" data-cy="parking" name="parking" formControlName="parking">
+            <option *ngIf="!editForm.get('parking')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="parkingOption.id === editForm.get('parking')!.value?.id ? editForm.get('parking')!.value : parkingOption"
+              *ngFor="let parkingOption of parkingsSharedCollection; trackBy: trackParkingById"
+            >
+              {{ parkingOption.parkingName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['parking'])!.invalid && (editForm.get(['parking'])!.dirty || editForm.get(['parking'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['parking'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

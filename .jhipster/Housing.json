@@ -1,0 +1,114 @@
+{
+  "name": "Housing",
+  "fields": [
+    {
+      "fieldName": "housingDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "housingEntranceDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "housingExit",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "housingReceiptNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "housingDailyPrice",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "housingDescription",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "500"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housingVehicleItem",
+      "otherEntityRelationshipName": "housing",
+      "relationshipName": "housingVehicleItem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "housing",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "status",
+      "otherEntityRelationshipName": "housing",
+      "relationshipValidateRules": "required",
+      "relationshipName": "status",
+      "otherEntityField": "statusName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customers",
+      "otherEntityRelationshipName": "housing",
+      "relationshipValidateRules": "required",
+      "relationshipName": "customers",
+      "otherEntityField": "customerName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employees",
+      "otherEntityRelationshipName": "housing",
+      "relationshipValidateRules": "required",
+      "relationshipName": "employees",
+      "otherEntityField": "employeeFullName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "parking",
+      "otherEntityRelationshipName": "housing",
+      "relationshipName": "parking",
+      "otherEntityField": "parkingName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "costCenter",
+      "otherEntityRelationshipName": "housing",
+      "relationshipName": "costCenter",
+      "otherEntityField": "costCenterName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "suppliers",
+      "otherEntityRelationshipName": "housing",
+      "relationshipValidateRules": "required",
+      "relationshipName": "suppliers",
+      "otherEntityField": "supplierName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "housing",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cities",
+      "otherEntityField": "cityName"
+    }
+  ],
+  "entityTableName": "housing",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053755"
+}

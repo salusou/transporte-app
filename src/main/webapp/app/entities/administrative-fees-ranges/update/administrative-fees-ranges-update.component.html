@@ -1,0 +1,135 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-administrative-fees-ranges-heading"
+        data-cy="AdministrativeFeesRangesCreateUpdateHeading"
+        jhiTranslate="transporteApp.administrativeFeesRanges.home.createOrEditLabel"
+      >
+        Create or edit a Administrative Fees Ranges
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.administrativeFeesRanges.minRange" for="field_minRange"
+            >Min Range</label
+          >
+          <input type="number" class="form-control" name="minRange" id="field_minRange" data-cy="minRange" formControlName="minRange" />
+          <div *ngIf="editForm.get('minRange')!.invalid && (editForm.get('minRange')!.dirty || editForm.get('minRange')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('minRange')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('minRange')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.administrativeFeesRanges.maxRange" for="field_maxRange"
+            >Max Range</label
+          >
+          <input type="number" class="form-control" name="maxRange" id="field_maxRange" data-cy="maxRange" formControlName="maxRange" />
+          <div *ngIf="editForm.get('maxRange')!.invalid && (editForm.get('maxRange')!.dirty || editForm.get('maxRange')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('maxRange')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('maxRange')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.administrativeFeesRanges.aliquot" for="field_aliquot"
+            >Aliquot</label
+          >
+          <input type="number" class="form-control" name="aliquot" id="field_aliquot" data-cy="aliquot" formControlName="aliquot" />
+          <div *ngIf="editForm.get('aliquot')!.invalid && (editForm.get('aliquot')!.dirty || editForm.get('aliquot')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('aliquot')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('aliquot')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.administrativeFeesRanges.affiliates" for="field_affiliates"
+            >Affiliates</label
+          >
+          <select class="form-control" id="field_affiliates" data-cy="affiliates" name="affiliates" formControlName="affiliates">
+            <option *ngIf="!editForm.get('affiliates')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                affiliatesOption.id === editForm.get('affiliates')!.value?.id ? editForm.get('affiliates')!.value : affiliatesOption
+              "
+              *ngFor="let affiliatesOption of affiliatesSharedCollection; trackBy: trackAffiliatesById"
+            >
+              {{ affiliatesOption.branchName }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['affiliates'])!.invalid && (editForm.get(['affiliates'])!.dirty || editForm.get(['affiliates'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['affiliates'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

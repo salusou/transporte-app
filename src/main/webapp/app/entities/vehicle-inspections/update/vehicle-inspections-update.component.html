@@ -1,0 +1,1309 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vehicle-inspections-heading"
+        data-cy="VehicleInspectionsCreateUpdateHeading"
+        jhiTranslate="transporteApp.vehicleInspections.home.createOrEditLabel"
+      >
+        Create or edit a Vehicle Inspections
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionDate"
+            for="field_vehicleInspectionDate"
+            >Vehicle Inspection Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_vehicleInspectionDate"
+              data-cy="vehicleInspectionDate"
+              type="datetime-local"
+              class="form-control"
+              name="vehicleInspectionDate"
+              formControlName="vehicleInspectionDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionDate')!.invalid &&
+              (editForm.get('vehicleInspectionDate')!.dirty || editForm.get('vehicleInspectionDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('vehicleInspectionDate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionStatus"
+            for="field_vehicleInspectionStatus"
+            >Vehicle Inspection Status</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionStatus"
+            formControlName="vehicleInspectionStatus"
+            id="field_vehicleInspectionStatus"
+            data-cy="vehicleInspectionStatus"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.InspectionStatus.null' | translate }}</option>
+            <option value="ARRIVAL">{{ 'transporteApp.InspectionStatus.ARRIVAL' | translate }}</option>
+            <option value="DEPARTURE">{{ 'transporteApp.InspectionStatus.DEPARTURE' | translate }}</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionStatus')!.invalid &&
+              (editForm.get('vehicleInspectionStatus')!.dirty || editForm.get('vehicleInspectionStatus')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionStatus')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionModel"
+            for="field_vehicleInspectionModel"
+            >Vehicle Inspection Model</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleInspectionModel"
+            id="field_vehicleInspectionModel"
+            data-cy="vehicleInspectionModel"
+            formControlName="vehicleInspectionModel"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionModel')!.invalid &&
+              (editForm.get('vehicleInspectionModel')!.dirty || editForm.get('vehicleInspectionModel')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionModel')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLicensePlate"
+            for="field_vehicleInspectionLicensePlate"
+            >Vehicle Inspection License Plate</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleInspectionLicensePlate"
+            id="field_vehicleInspectionLicensePlate"
+            data-cy="vehicleInspectionLicensePlate"
+            formControlName="vehicleInspectionLicensePlate"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionLicensePlate')!.invalid &&
+              (editForm.get('vehicleInspectionLicensePlate')!.dirty || editForm.get('vehicleInspectionLicensePlate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionLicensePlate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionKm"
+            for="field_vehicleInspectionKm"
+            >Vehicle Inspection Km</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vehicleInspectionKm"
+            id="field_vehicleInspectionKm"
+            data-cy="vehicleInspectionKm"
+            formControlName="vehicleInspectionKm"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLicenseYear"
+            for="field_vehicleInspectionLicenseYear"
+            >Vehicle Inspection License Year</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vehicleInspectionLicenseYear"
+            id="field_vehicleInspectionLicenseYear"
+            data-cy="vehicleInspectionLicenseYear"
+            formControlName="vehicleInspectionLicenseYear"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasManual"
+            for="field_vehicleInspectionHasManual"
+            >Vehicle Inspection Has Manual</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleInspectionHasManual"
+            id="field_vehicleInspectionHasManual"
+            data-cy="vehicleInspectionHasManual"
+            formControlName="vehicleInspectionHasManual"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasExtraKey"
+            for="field_vehicleInspectionHasExtraKey"
+            >Vehicle Inspection Has Extra Key</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleInspectionHasExtraKey"
+            id="field_vehicleInspectionHasExtraKey"
+            data-cy="vehicleInspectionHasExtraKey"
+            formControlName="vehicleInspectionHasExtraKey"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasStickers"
+            for="field_vehicleInspectionHasStickers"
+            >Vehicle Inspection Has Stickers</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleInspectionHasStickers"
+            id="field_vehicleInspectionHasStickers"
+            data-cy="vehicleInspectionHasStickers"
+            formControlName="vehicleInspectionHasStickers"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionGas"
+            for="field_vehicleInspectionGas"
+            >Vehicle Inspection Gas</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionGas"
+            formControlName="vehicleInspectionGas"
+            id="field_vehicleInspectionGas"
+            data-cy="vehicleInspectionGas"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.FuelLevel.null' | translate }}</option>
+            <option value="RESERVE">{{ 'transporteApp.FuelLevel.RESERVE' | translate }}</option>
+            <option value="LITTLE">{{ 'transporteApp.FuelLevel.LITTLE' | translate }}</option>
+            <option value="MEDIUM">{{ 'transporteApp.FuelLevel.MEDIUM' | translate }}</option>
+            <option value="ABOVE_AVERAGE">{{ 'transporteApp.FuelLevel.ABOVE_AVERAGE' | translate }}</option>
+            <option value="COMPLETE">{{ 'transporteApp.FuelLevel.COMPLETE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionRearView"
+            for="field_vehicleInspectionRearView"
+            >Vehicle Inspection Rear View</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleInspectionRearView"
+            id="field_vehicleInspectionRearView"
+            data-cy="vehicleInspectionRearView"
+            formControlName="vehicleInspectionRearView"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHorn"
+            for="field_vehicleInspectionHorn"
+            >Vehicle Inspection Horn</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleInspectionHorn"
+            id="field_vehicleInspectionHorn"
+            data-cy="vehicleInspectionHorn"
+            formControlName="vehicleInspectionHorn"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionWindshieldWiper"
+            for="field_vehicleInspectionWindshieldWiper"
+            >Vehicle Inspection Windshield Wiper</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleInspectionWindshieldWiper"
+            id="field_vehicleInspectionWindshieldWiper"
+            data-cy="vehicleInspectionWindshieldWiper"
+            formControlName="vehicleInspectionWindshieldWiper"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSquirt"
+            for="field_vehicleInspectionSquirt"
+            >Vehicle Inspection Squirt</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="vehicleInspectionSquirt"
+            id="field_vehicleInspectionSquirt"
+            data-cy="vehicleInspectionSquirt"
+            formControlName="vehicleInspectionSquirt"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionInternalLight"
+            for="field_vehicleInspectionInternalLight"
+            >Vehicle Inspection Internal Light</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionInternalLight"
+            formControlName="vehicleInspectionInternalLight"
+            id="field_vehicleInspectionInternalLight"
+            data-cy="vehicleInspectionInternalLight"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionPanelLight"
+            for="field_vehicleInspectionPanelLight"
+            >Vehicle Inspection Panel Light</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionPanelLight"
+            formControlName="vehicleInspectionPanelLight"
+            id="field_vehicleInspectionPanelLight"
+            data-cy="vehicleInspectionPanelLight"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHighLight"
+            for="field_vehicleInspectionHighLight"
+            >Vehicle Inspection High Light</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionHighLight"
+            formControlName="vehicleInspectionHighLight"
+            id="field_vehicleInspectionHighLight"
+            data-cy="vehicleInspectionHighLight"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLowLight"
+            for="field_vehicleInspectionLowLight"
+            >Vehicle Inspection Low Light</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionLowLight"
+            formControlName="vehicleInspectionLowLight"
+            id="field_vehicleInspectionLowLight"
+            data-cy="vehicleInspectionLowLight"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTaillight"
+            for="field_vehicleInspectionTaillight"
+            >Vehicle Inspection Taillight</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionTaillight"
+            formControlName="vehicleInspectionTaillight"
+            id="field_vehicleInspectionTaillight"
+            data-cy="vehicleInspectionTaillight"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionIndicator"
+            for="field_vehicleInspectionIndicator"
+            >Vehicle Inspection Indicator</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionIndicator"
+            formControlName="vehicleInspectionIndicator"
+            id="field_vehicleInspectionIndicator"
+            data-cy="vehicleInspectionIndicator"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionBeacons"
+            for="field_vehicleInspectionBeacons"
+            >Vehicle Inspection Beacons</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionBeacons"
+            formControlName="vehicleInspectionBeacons"
+            id="field_vehicleInspectionBeacons"
+            data-cy="vehicleInspectionBeacons"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionBreakLight"
+            for="field_vehicleInspectionBreakLight"
+            >Vehicle Inspection Break Light</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionBreakLight"
+            formControlName="vehicleInspectionBreakLight"
+            id="field_vehicleInspectionBreakLight"
+            data-cy="vehicleInspectionBreakLight"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionPlateLight"
+            for="field_vehicleInspectionPlateLight"
+            >Vehicle Inspection Plate Light</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionPlateLight"
+            formControlName="vehicleInspectionPlateLight"
+            id="field_vehicleInspectionPlateLight"
+            data-cy="vehicleInspectionPlateLight"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSpeedometer"
+            for="field_vehicleInspectionSpeedometer"
+            >Vehicle Inspection Speedometer</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionSpeedometer"
+            formControlName="vehicleInspectionSpeedometer"
+            id="field_vehicleInspectionSpeedometer"
+            data-cy="vehicleInspectionSpeedometer"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTemperature"
+            for="field_vehicleInspectionTemperature"
+            >Vehicle Inspection Temperature</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionTemperature"
+            formControlName="vehicleInspectionTemperature"
+            id="field_vehicleInspectionTemperature"
+            data-cy="vehicleInspectionTemperature"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTires"
+            for="field_vehicleInspectionTires"
+            >Vehicle Inspection Tires</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionTires"
+            formControlName="vehicleInspectionTires"
+            id="field_vehicleInspectionTires"
+            data-cy="vehicleInspectionTires"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionStep"
+            for="field_vehicleInspectionStep"
+            >Vehicle Inspection Step</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionStep"
+            formControlName="vehicleInspectionStep"
+            id="field_vehicleInspectionStep"
+            data-cy="vehicleInspectionStep"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionFireExtinguisher"
+            for="field_vehicleInspectionFireExtinguisher"
+            >Vehicle Inspection Fire Extinguisher</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionFireExtinguisher"
+            formControlName="vehicleInspectionFireExtinguisher"
+            id="field_vehicleInspectionFireExtinguisher"
+            data-cy="vehicleInspectionFireExtinguisher"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSeatBelts"
+            for="field_vehicleInspectionSeatBelts"
+            >Vehicle Inspection Seat Belts</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionSeatBelts"
+            formControlName="vehicleInspectionSeatBelts"
+            id="field_vehicleInspectionSeatBelts"
+            data-cy="vehicleInspectionSeatBelts"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionMonkey"
+            for="field_vehicleInspectionMonkey"
+            >Vehicle Inspection Monkey</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionMonkey"
+            formControlName="vehicleInspectionMonkey"
+            id="field_vehicleInspectionMonkey"
+            data-cy="vehicleInspectionMonkey"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTireIron"
+            for="field_vehicleInspectionTireIron"
+            >Vehicle Inspection Tire Iron</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionTireIron"
+            formControlName="vehicleInspectionTireIron"
+            id="field_vehicleInspectionTireIron"
+            data-cy="vehicleInspectionTireIron"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionRadiatorCap"
+            for="field_vehicleInspectionRadiatorCap"
+            >Vehicle Inspection Radiator Cap</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionRadiatorCap"
+            formControlName="vehicleInspectionRadiatorCap"
+            id="field_vehicleInspectionRadiatorCap"
+            data-cy="vehicleInspectionRadiatorCap"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTriangle"
+            for="field_vehicleInspectionTriangle"
+            >Vehicle Inspection Triangle</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionTriangle"
+            formControlName="vehicleInspectionTriangle"
+            id="field_vehicleInspectionTriangle"
+            data-cy="vehicleInspectionTriangle"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionServiceBrake"
+            for="field_vehicleInspectionServiceBrake"
+            >Vehicle Inspection Service Brake</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionServiceBrake"
+            formControlName="vehicleInspectionServiceBrake"
+            id="field_vehicleInspectionServiceBrake"
+            data-cy="vehicleInspectionServiceBrake"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionParkingBrake"
+            for="field_vehicleInspectionParkingBrake"
+            >Vehicle Inspection Parking Brake</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionParkingBrake"
+            formControlName="vehicleInspectionParkingBrake"
+            id="field_vehicleInspectionParkingBrake"
+            data-cy="vehicleInspectionParkingBrake"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionOilLeaks"
+            for="field_vehicleInspectionOilLeaks"
+            >Vehicle Inspection Oil Leaks</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionOilLeaks"
+            formControlName="vehicleInspectionOilLeaks"
+            id="field_vehicleInspectionOilLeaks"
+            data-cy="vehicleInspectionOilLeaks"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionGlassActuator"
+            for="field_vehicleInspectionGlassActuator"
+            >Vehicle Inspection Glass Actuator</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionGlassActuator"
+            formControlName="vehicleInspectionGlassActuator"
+            id="field_vehicleInspectionGlassActuator"
+            data-cy="vehicleInspectionGlassActuator"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionVehicleCleaning"
+            for="field_vehicleInspectionVehicleCleaning"
+            >Vehicle Inspection Vehicle Cleaning</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionVehicleCleaning"
+            formControlName="vehicleInspectionVehicleCleaning"
+            id="field_vehicleInspectionVehicleCleaning"
+            data-cy="vehicleInspectionVehicleCleaning"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSeatState"
+            for="field_vehicleInspectionSeatState"
+            >Vehicle Inspection Seat State</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionSeatState"
+            formControlName="vehicleInspectionSeatState"
+            id="field_vehicleInspectionSeatState"
+            data-cy="vehicleInspectionSeatState"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionExhausts"
+            for="field_vehicleInspectionExhausts"
+            >Vehicle Inspection Exhausts</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionExhausts"
+            formControlName="vehicleInspectionExhausts"
+            id="field_vehicleInspectionExhausts"
+            data-cy="vehicleInspectionExhausts"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionsObs"
+            for="field_vehicleInspectionsObs"
+            >Vehicle Inspections Obs</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleInspectionsObs"
+            id="field_vehicleInspectionsObs"
+            data-cy="vehicleInspectionsObs"
+            formControlName="vehicleInspectionsObs"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionsObs')!.invalid &&
+              (editForm.get('vehicleInspectionsObs')!.dirty || editForm.get('vehicleInspectionsObs')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionsObs')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 500 }"
+            >
+              This field cannot be longer than 500 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionsSignedUrl"
+            for="field_vehicleInspectionsSignedUrl"
+            >Vehicle Inspections Signed Url</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleInspectionsSignedUrl"
+            id="field_vehicleInspectionsSignedUrl"
+            data-cy="vehicleInspectionsSignedUrl"
+            formControlName="vehicleInspectionsSignedUrl"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleInspections.vehicleControls" for="field_vehicleControls"
+            >Vehicle Controls</label
+          >
+          <select
+            class="form-control"
+            id="field_vehicleControls"
+            data-cy="vehicleControls"
+            name="vehicleControls"
+            formControlName="vehicleControls"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                vehicleControlItemOption.id === editForm.get('vehicleControls')!.value?.id
+                  ? editForm.get('vehicleControls')!.value
+                  : vehicleControlItemOption
+              "
+              *ngFor="let vehicleControlItemOption of vehicleControlItemsSharedCollection; trackBy: trackVehicleControlItemById"
+            >
+              {{ vehicleControlItemOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

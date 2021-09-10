@@ -1,0 +1,56 @@
+{
+  "name": "Fees",
+  "fields": [
+    {
+      "fieldName": "feeDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "feeDriverCommission",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "feeFinancialCost",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "feeTaxes",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "feeDescriptions",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlBilling",
+      "otherEntityRelationshipName": "fees",
+      "relationshipName": "vehicleControlBilling"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "fees",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    }
+  ],
+  "javadoc": "Fees for all systems\\nThis class are the customers group.\\n@author Samuel Souza",
+  "entityTableName": "fees",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053730"
+}

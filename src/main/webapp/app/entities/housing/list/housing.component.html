@@ -1,0 +1,182 @@
+<div>
+  <h2 id="page-heading" data-cy="HousingHeading">
+    <span jhiTranslate="transporteApp.housing.home.title">Housings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.housing.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-housing"
+        [routerLink]="['/housing/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.housing.home.createLabel"> Create a new Housing </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="housings?.length === 0">
+    <span jhiTranslate="transporteApp.housing.home.notFound">No housings found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="housings && housings.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="housingDate">
+            <span jhiTranslate="transporteApp.housing.housingDate">Housing Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingEntranceDate">
+            <span jhiTranslate="transporteApp.housing.housingEntranceDate">Housing Entrance Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingExit">
+            <span jhiTranslate="transporteApp.housing.housingExit">Housing Exit</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingReceiptNumber">
+            <span jhiTranslate="transporteApp.housing.housingReceiptNumber">Housing Receipt Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingDailyPrice">
+            <span jhiTranslate="transporteApp.housing.housingDailyPrice">Housing Daily Price</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingDescription">
+            <span jhiTranslate="transporteApp.housing.housingDescription">Housing Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affiliates.branchName">
+            <span jhiTranslate="transporteApp.housing.affiliates">Affiliates</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="status.statusName">
+            <span jhiTranslate="transporteApp.housing.status">Status</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customers.customerName">
+            <span jhiTranslate="transporteApp.housing.customers">Customers</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="employees.employeeFullName">
+            <span jhiTranslate="transporteApp.housing.employees">Employees</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parking.parkingName">
+            <span jhiTranslate="transporteApp.housing.parking">Parking</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="costCenter.costCenterName">
+            <span jhiTranslate="transporteApp.housing.costCenter">Cost Center</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="suppliers.supplierName">
+            <span jhiTranslate="transporteApp.housing.suppliers">Suppliers</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cities.cityName">
+            <span jhiTranslate="transporteApp.housing.cities">Cities</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let housing of housings; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/housing', housing.id, 'view']">{{ housing.id }}</a>
+          </td>
+          <td>{{ housing.housingDate | formatMediumDate }}</td>
+          <td>{{ housing.housingEntranceDate | formatMediumDatetime }}</td>
+          <td>{{ housing.housingExit | formatMediumDatetime }}</td>
+          <td>{{ housing.housingReceiptNumber }}</td>
+          <td>{{ housing.housingDailyPrice }}</td>
+          <td>{{ housing.housingDescription }}</td>
+          <td>
+            <div *ngIf="housing.affiliates">
+              <a [routerLink]="['/affiliates', housing.affiliates?.id, 'view']">{{ housing.affiliates?.branchName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housing.status">
+              <a [routerLink]="['/status', housing.status?.id, 'view']">{{ housing.status?.statusName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housing.customers">
+              <a [routerLink]="['/customers', housing.customers?.id, 'view']">{{ housing.customers?.customerName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housing.employees">
+              <a [routerLink]="['/employees', housing.employees?.id, 'view']">{{ housing.employees?.employeeFullName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housing.parking">
+              <a [routerLink]="['/parking', housing.parking?.id, 'view']">{{ housing.parking?.parkingName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housing.costCenter">
+              <a [routerLink]="['/cost-center', housing.costCenter?.id, 'view']">{{ housing.costCenter?.costCenterName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housing.suppliers">
+              <a [routerLink]="['/suppliers', housing.suppliers?.id, 'view']">{{ housing.suppliers?.supplierName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housing.cities">
+              <a [routerLink]="['/cities', housing.cities?.id, 'view']">{{ housing.cities?.cityName }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/housing', housing.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/housing', housing.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(housing)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="housings && housings.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

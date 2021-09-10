@@ -1,0 +1,30 @@
+{
+  "transporteApp": {
+    "vehicleInspectionsImagens": {
+      "home": {
+        "title": "Vehicle Inspections Imagens",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicle Inspections Imagens",
+        "createOrEditLabel": "Create or edit a Vehicle Inspections Imagens",
+        "notFound": "No Vehicle Inspections Imagens found"
+      },
+      "created": "A new Vehicle Inspections Imagens is created with identifier {{ param }}",
+      "updated": "A Vehicle Inspections Imagens is updated with identifier {{ param }}",
+      "deleted": "A Vehicle Inspections Imagens is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vehicle Inspections Imagens {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Inspections Imagens"
+      },
+      "id": "ID",
+      "vehicleInspectionsImagensPositions": "Vehicle Inspections Imagens Positions",
+      "vehicleInspectionsImagensStatus": "Vehicle Inspections Imagens Status",
+      "vehicleInspectionsImagensObs": "Vehicle Inspections Imagens Obs",
+      "vehicleInspectionsImagensPhoto": "Vehicle Inspections Imagens Photo",
+      "vehicleInspectionsImagensPositionsX": "Vehicle Inspections Imagens Positions X",
+      "vehicleInspectionsImagensPositionsY": "Vehicle Inspections Imagens Positions Y",
+      "vehicleInspections": "Vehicle Inspections"
+    }
+  }
+}

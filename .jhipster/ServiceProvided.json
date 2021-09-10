@@ -1,0 +1,29 @@
+{
+  "name": "ServiceProvided",
+  "fields": [
+    {
+      "fieldName": "serviceName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "suppliers",
+      "otherEntityRelationshipName": "serviceProvided",
+      "relationshipName": "suppliers"
+    }
+  ],
+  "javadoc": "Service Provided.\\nThis class list all services provided to suppliers.\\n@author Samuel Souza",
+  "entityTableName": "service_provided",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053734"
+}

@@ -1,0 +1,148 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parking">
+      <h2 data-cy="parkingDetailsHeading"><span jhiTranslate="transporteApp.parking.detail.title">Parking</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ parking.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.parking.active" [ngbTooltip]="'transporteApp.parking.help.active' | translate">Active</span>
+        </dt>
+        <dd>
+          <span>{{ parking.active }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.parking.parkingName" [ngbTooltip]="'transporteApp.parking.help.parkingName' | translate"
+            >Parking Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingName }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parking.parkingTradeName"
+            [ngbTooltip]="'transporteApp.parking.help.parkingTradeName' | translate"
+            >Parking Trade Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingTradeName }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.parking.parkingNumber" [ngbTooltip]="'transporteApp.parking.help.parkingNumber' | translate"
+            >Parking Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parking.parkingPostalCode"
+            [ngbTooltip]="'transporteApp.parking.help.parkingPostalCode' | translate"
+            >Parking Postal Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingPostalCode }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.parking.parkingAddress" [ngbTooltip]="'transporteApp.parking.help.parkingAddress' | translate"
+            >Parking Address</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingAddress }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parking.parkingAddressComplement"
+            [ngbTooltip]="'transporteApp.parking.help.parkingAddressComplement' | translate"
+            >Parking Address Complement</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingAddressComplement }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parking.parkingAddressNumber"
+            [ngbTooltip]="'transporteApp.parking.help.parkingAddressNumber' | translate"
+            >Parking Address Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingAddressNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parking.parkingAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.parking.help.parkingAddressNeighborhood' | translate"
+            >Parking Address Neighborhood</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingAddressNeighborhood }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parking.parkingTelephone"
+            [ngbTooltip]="'transporteApp.parking.help.parkingTelephone' | translate"
+            >Parking Telephone</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingTelephone }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.parking.parkingEmail" [ngbTooltip]="'transporteApp.parking.help.parkingEmail' | translate"
+            >Parking Email</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingEmail }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parking.parkingContactName"
+            [ngbTooltip]="'transporteApp.parking.help.parkingContactName' | translate"
+            >Parking Contact Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parking.parkingContactName }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.parking.affiliates">Affiliates</span></dt>
+        <dd>
+          <div *ngIf="parking.affiliates">
+            <a [routerLink]="['/affiliates', parking.affiliates?.id, 'view']">{{ parking.affiliates?.branchName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.parking.cities">Cities</span></dt>
+        <dd>
+          <div *ngIf="parking.cities">
+            <a [routerLink]="['/cities', parking.cities?.id, 'view']">{{ parking.cities?.cityName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parking', parking.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

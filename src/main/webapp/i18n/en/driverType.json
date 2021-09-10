@@ -1,0 +1,9 @@
+{
+  "transporteApp": {
+    "DriverType": {
+      "null": "",
+      "EXTERNAL": "EXTERNAL",
+      "INTERNAL": "INTERNAL"
+    }
+  }
+}

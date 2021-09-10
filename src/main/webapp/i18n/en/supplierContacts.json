@@ -1,0 +1,32 @@
+{
+  "transporteApp": {
+    "supplierContacts": {
+      "home": {
+        "title": "Supplier Contacts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Supplier Contacts",
+        "createOrEditLabel": "Create or edit a Supplier Contacts",
+        "notFound": "No Supplier Contacts found"
+      },
+      "created": "A new Supplier Contacts is created with identifier {{ param }}",
+      "updated": "A Supplier Contacts is updated with identifier {{ param }}",
+      "deleted": "A Supplier Contacts is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Supplier Contacts {{ id }}?"
+      },
+      "detail": {
+        "title": "Supplier Contacts"
+      },
+      "id": "ID",
+      "supplierContactName": "Supplier Contact Name",
+      "supplierContactPhone": "Supplier Contact Phone",
+      "supplierContactEmail": "Supplier Contact Email",
+      "suppliers": "Suppliers",
+      "help": {
+        "supplierContactName": "Supplier Contact Name.\n@type String",
+        "supplierContactPhone": "Supplier Contact Phone.\n@type String",
+        "supplierContactEmail": "Supplier Contact E-mail.\n@type String"
+      }
+    }
+  }
+}

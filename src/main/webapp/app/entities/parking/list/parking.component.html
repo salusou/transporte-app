@@ -1,0 +1,160 @@
+<div>
+  <h2 id="page-heading" data-cy="ParkingHeading">
+    <span jhiTranslate="transporteApp.parking.home.title">Parkings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.parking.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-parking"
+        [routerLink]="['/parking/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.parking.home.createLabel"> Create a new Parking </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="parkings?.length === 0">
+    <span jhiTranslate="transporteApp.parking.home.notFound">No parkings found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="parkings && parkings.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="active">
+            <span jhiTranslate="transporteApp.parking.active">Active</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingName">
+            <span jhiTranslate="transporteApp.parking.parkingName">Parking Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingTradeName">
+            <span jhiTranslate="transporteApp.parking.parkingTradeName">Parking Trade Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingNumber">
+            <span jhiTranslate="transporteApp.parking.parkingNumber">Parking Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingPostalCode">
+            <span jhiTranslate="transporteApp.parking.parkingPostalCode">Parking Postal Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingAddress">
+            <span jhiTranslate="transporteApp.parking.parkingAddress">Parking Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingAddressComplement">
+            <span jhiTranslate="transporteApp.parking.parkingAddressComplement">Parking Address Complement</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingAddressNumber">
+            <span jhiTranslate="transporteApp.parking.parkingAddressNumber">Parking Address Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingAddressNeighborhood">
+            <span jhiTranslate="transporteApp.parking.parkingAddressNeighborhood">Parking Address Neighborhood</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingTelephone">
+            <span jhiTranslate="transporteApp.parking.parkingTelephone">Parking Telephone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingEmail">
+            <span jhiTranslate="transporteApp.parking.parkingEmail">Parking Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingContactName">
+            <span jhiTranslate="transporteApp.parking.parkingContactName">Parking Contact Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affiliates.branchName">
+            <span jhiTranslate="transporteApp.parking.affiliates">Affiliates</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cities.cityName">
+            <span jhiTranslate="transporteApp.parking.cities">Cities</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let parking of parkings; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/parking', parking.id, 'view']">{{ parking.id }}</a>
+          </td>
+          <td>{{ parking.active }}</td>
+          <td>{{ parking.parkingName }}</td>
+          <td>{{ parking.parkingTradeName }}</td>
+          <td>{{ parking.parkingNumber }}</td>
+          <td>{{ parking.parkingPostalCode }}</td>
+          <td>{{ parking.parkingAddress }}</td>
+          <td>{{ parking.parkingAddressComplement }}</td>
+          <td>{{ parking.parkingAddressNumber }}</td>
+          <td>{{ parking.parkingAddressNeighborhood }}</td>
+          <td>{{ parking.parkingTelephone }}</td>
+          <td>{{ parking.parkingEmail }}</td>
+          <td>{{ parking.parkingContactName }}</td>
+          <td>
+            <div *ngIf="parking.affiliates">
+              <a [routerLink]="['/affiliates', parking.affiliates?.id, 'view']">{{ parking.affiliates?.branchName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="parking.cities">
+              <a [routerLink]="['/cities', parking.cities?.id, 'view']">{{ parking.cities?.cityName }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/parking', parking.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/parking', parking.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(parking)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="parkings && parkings.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

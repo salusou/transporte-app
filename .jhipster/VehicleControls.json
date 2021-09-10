@@ -1,0 +1,164 @@
+{
+  "name": "VehicleControls",
+  "fields": [
+    {
+      "fieldName": "vehicleControlAuthorizedOrder",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlRequest",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlSinister",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleControlKm",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "vehicleControlPlate",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "vehicleControlAmount",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "vehicleControlPrice",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "vehicleControlMaximumDeliveryDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "vehicleControlCollectionForecast",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "vehicleControlCollectionDeliveryForecast",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "vehicleControlDateCollected",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "vehicleControlDeliveryDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleLocationStatus",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipName": "vehicleLocationStatus"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlHistory",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipName": "vehicleControlHistory"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlBilling",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipName": "vehicleControlBilling"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlItem",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipName": "vehicleControlItem"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlAttachments",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipName": "vehicleControlAttachments"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlExpenses",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipName": "vehicleControlExpenses"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customers",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipValidateRules": "required",
+      "relationshipName": "customers",
+      "otherEntityField": "customerName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customersGroups",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipValidateRules": "required",
+      "relationshipName": "customersGroups",
+      "otherEntityField": "groupName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employees",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipValidateRules": "required",
+      "relationshipName": "employees",
+      "otherEntityField": "employeeFullName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "originVehicleControls",
+      "relationshipValidateRules": "required",
+      "relationshipName": "origin",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "destinationVehicleControls",
+      "relationshipValidateRules": "required",
+      "relationshipName": "destination",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "status",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipValidateRules": "required",
+      "relationshipName": "status",
+      "otherEntityField": "statusName"
+    }
+  ],
+  "entityTableName": "vehicle_controls",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053746"
+}

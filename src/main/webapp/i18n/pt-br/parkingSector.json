@@ -1,0 +1,38 @@
+{
+  "transporteApp": {
+    "parkingSector": {
+      "home": {
+        "title": "Parking Sectors",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Parking Sector",
+        "createOrEditLabel": "Criar ou editar Parking Sector",
+        "notFound": "Nenhum Parking Sector encontrado"
+      },
+      "created": "Um novo Parking Sector foi criado com o identificador {{ param }}",
+      "updated": "Um Parking Sector foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Parking Sector foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Parking Sector {{ id }}?"
+      },
+      "detail": {
+        "title": "Parking Sector"
+      },
+      "id": "ID",
+      "active": "Active",
+      "sectorName": "Sector Name",
+      "parkingSpace": "Parking Space",
+      "parkingNumbersBegin": "Parking Numbers Begin",
+      "parkingNumbersFinal": "Parking Numbers Final",
+      "parkingSectorSpace": "Parking Sector Space",
+      "housingVehicleItem": "Housing Vehicle Item",
+      "parking": "Parking",
+      "help": {
+        "active": "Active the sector to run\n@type Boolean",
+        "sectorName": "Sector Name\n@type String",
+        "parkingSpace": "Parking Space the amount vacation available.\n@type Integer",
+        "parkingNumbersBegin": "Number to range initial of the vacancies\n@type Integer",
+        "parkingNumbersFinal": "Number to range end of the vacancies\n@type Integer"
+      }
+    }
+  }
+}

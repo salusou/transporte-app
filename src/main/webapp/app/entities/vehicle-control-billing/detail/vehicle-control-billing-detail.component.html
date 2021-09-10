@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleControlBilling">
+      <h2 data-cy="vehicleControlBillingDetailsHeading">
+        <span jhiTranslate="transporteApp.vehicleControlBilling.detail.title">Vehicle Control Billing</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleControlBilling.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingDate">Vehicle Control Billing Date</span></dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingDate | formatMediumDate }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingExpirationDate"
+            >Vehicle Control Billing Expiration Date</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingExpirationDate | formatMediumDate }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingPaymentDate"
+            >Vehicle Control Billing Payment Date</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingPaymentDate | formatMediumDate }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingSellerCommission"
+            >Vehicle Control Billing Seller Commission</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingSellerCommission }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingDriverCommission"
+            >Vehicle Control Billing Driver Commission</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingDriverCommission }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingAmount">Vehicle Control Billing Amount</span></dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingAmount }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingTotalValue"
+            >Vehicle Control Billing Total Value</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingTotalValue }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingInsuranceDiscount"
+            >Vehicle Control Billing Insurance Discount</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingInsuranceDiscount }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingCustomerBank"
+            >Vehicle Control Billing Customer Bank</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingCustomerBank }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingAnticipate">Vehicle Control Billing Anticipate</span>
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingAnticipate }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingManifest">Vehicle Control Billing Manifest</span>
+        </dt>
+        <dd>
+          <span>{{ vehicleControlBilling.vehicleControlBillingManifest }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControls">Vehicle Controls</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlBilling.vehicleControls">
+            <a [routerLink]="['/vehicle-controls', vehicleControlBilling.vehicleControls?.id, 'view']">{{
+              vehicleControlBilling.vehicleControls?.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlBilling.fees">Fees</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlBilling.fees">
+            <a [routerLink]="['/fees', vehicleControlBilling.fees?.id, 'view']">{{ vehicleControlBilling.fees?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-control-billing', vehicleControlBilling.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

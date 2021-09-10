@@ -1,0 +1,119 @@
+{
+  "name": "Suppliers",
+  "fields": [
+    {
+      "fieldName": "supplierName",
+      "fieldType": "String",
+      "javadoc": "Supplier Name\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "supplierNumber",
+      "fieldType": "String",
+      "javadoc": "Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED\\n@type String"
+    },
+    {
+      "fieldName": "supplierPostalCode",
+      "fieldType": "String",
+      "javadoc": "Postal code of address the matrix company.\\n@type String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "9"
+    },
+    {
+      "fieldName": "supplierAddress",
+      "fieldType": "String",
+      "javadoc": "Branch Address.\\n@type String"
+    },
+    {
+      "fieldName": "supplierAddressComplement",
+      "fieldType": "String",
+      "javadoc": "Parking Address Complement.\\n@type String"
+    },
+    {
+      "fieldName": "supplierAddressNumber",
+      "fieldType": "Integer",
+      "javadoc": "Number of address.\\n@type Integer"
+    },
+    {
+      "fieldName": "supplierAddressNeighborhood",
+      "fieldType": "String",
+      "javadoc": "Neighborhood, District.\\n@type String"
+    },
+    {
+      "fieldName": "supplierTelephone",
+      "fieldType": "String",
+      "javadoc": "Parking Contact Telephone\\n@type String"
+    },
+    {
+      "fieldName": "supplierEmail",
+      "fieldType": "String",
+      "javadoc": "Parking Contact Email\\n@type String"
+    },
+    {
+      "fieldName": "supplierContactName",
+      "fieldType": "String",
+      "javadoc": "Parking Contact Name\\n@type String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "supplierBanksInfo",
+      "otherEntityRelationshipName": "suppliers",
+      "relationshipName": "supplierBanksInfo"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "supplierContacts",
+      "otherEntityRelationshipName": "suppliers",
+      "relationshipName": "supplierContacts"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlExpenses",
+      "otherEntityRelationshipName": "suppliers",
+      "relationshipName": "vehicleControlExpenses"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housing",
+      "otherEntityRelationshipName": "suppliers",
+      "relationshipName": "housing"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "suppliers",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "suppliers",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cities",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "serviceProvided",
+      "otherEntityRelationshipName": "suppliers",
+      "relationshipValidateRules": "required",
+      "relationshipName": "serviceProvided",
+      "otherEntityField": "serviceName"
+    }
+  ],
+  "javadoc": "List of suppliers\\nThis class is the list of suppliers.\\n@author Samuel Souza",
+  "entityTableName": "suppliers",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053740"
+}

@@ -1,0 +1,35 @@
+{
+  "transporteApp": {
+    "customerAttachments": {
+      "home": {
+        "title": "Customer Attachments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Customer Attachments",
+        "createOrEditLabel": "Create or edit a Customer Attachments",
+        "notFound": "No Customer Attachments found"
+      },
+      "created": "A new Customer Attachments is created with identifier {{ param }}",
+      "updated": "A Customer Attachments is updated with identifier {{ param }}",
+      "deleted": "A Customer Attachments is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Customer Attachments {{ id }}?"
+      },
+      "detail": {
+        "title": "Customer Attachments"
+      },
+      "id": "ID",
+      "attachImage": "Attach Image",
+      "attachUrl": "Attach Url",
+      "attachDescription": "Attach Description",
+      "attachedDate": "Attached Date",
+      "customers": "Customers",
+      "statusAttachments": "Status Attachments",
+      "help": {
+        "attachImage": "Attach Image will only receive the file.\n@type ImageBlob",
+        "attachUrl": "Id generate in cloudinary.\n@type String",
+        "attachDescription": "description about the file attached.\n@type String",
+        "attachedDate": "created date.\n@type String"
+      }
+    }
+  }
+}

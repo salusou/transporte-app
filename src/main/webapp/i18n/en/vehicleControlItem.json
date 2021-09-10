@@ -1,0 +1,40 @@
+{
+  "transporteApp": {
+    "vehicleControlItem": {
+      "home": {
+        "title": "Vehicle Control Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicle Control Item",
+        "createOrEditLabel": "Create or edit a Vehicle Control Item",
+        "notFound": "No Vehicle Control Items found"
+      },
+      "created": "A new Vehicle Control Item is created with identifier {{ param }}",
+      "updated": "A Vehicle Control Item is updated with identifier {{ param }}",
+      "deleted": "A Vehicle Control Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vehicle Control Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Control Item"
+      },
+      "id": "ID",
+      "vehicleControlStatus": "Vehicle Control Status",
+      "vehicleControlItemPlate": "Vehicle Control Item Plate",
+      "vehicleControlItemType": "Vehicle Control Item Type",
+      "vehicleControlItemFipeCode": "Vehicle Control Item Fipe Code",
+      "vehicleControlItemYear": "Vehicle Control Item Year",
+      "vehicleControlItemFuel": "Vehicle Control Item Fuel",
+      "vehicleControlItemBranch": "Vehicle Control Item Branch",
+      "vehicleControlItemModel": "Vehicle Control Item Model",
+      "vehicleControlItemFuelAbbreviation": "Vehicle Control Item Fuel Abbreviation",
+      "vehicleControlItemReferenceMonth": "Vehicle Control Item Reference Month",
+      "vehicleControlItemValue": "Vehicle Control Item Value",
+      "vehicleControlItemShippingValue": "Vehicle Control Item Shipping Value",
+      "vehicleControlItemCTE": "Vehicle Control Item CTE",
+      "vehicleControlItemCTEDate": "Vehicle Control Item CTE Date",
+      "vehicleInspections": "Vehicle Inspections",
+      "vehicleControlExpenses": "Vehicle Control Expenses",
+      "vehicleControls": "Vehicle Controls"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Countries",
+  "fields": [
+    {
+      "fieldName": "countryName",
+      "fieldType": "String",
+      "javadoc": "Country Name example Brazil\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "iso2",
+      "fieldType": "String",
+      "javadoc": "This is a abbrev about country. Example: br\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeArea",
+      "fieldType": "Integer",
+      "javadoc": "To phone call. Example of Brazil: 55\\n@type Integer"
+    },
+    {
+      "fieldName": "language",
+      "fieldType": "String",
+      "javadoc": "Language of this Country: Example: pt_br\\n@type String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "6"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "stateProvinces",
+      "otherEntityRelationshipName": "countries",
+      "relationshipName": "stateProvinces"
+    }
+  ],
+  "javadoc": "This table is the list of all countries of World.\\nThis class is used to filter country of the company.\\n@author Samuel Souza",
+  "entityTableName": "countries",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053720"
+}

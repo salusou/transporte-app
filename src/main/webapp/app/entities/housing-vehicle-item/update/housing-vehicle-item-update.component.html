@@ -1,0 +1,411 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-housing-vehicle-item-heading"
+        data-cy="HousingVehicleItemCreateUpdateHeading"
+        jhiTranslate="transporteApp.housingVehicleItem.home.createOrEditLabel"
+      >
+        Create or edit a Housing Vehicle Item
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemStatus"
+            for="field_housingVehicleItemStatus"
+            >Housing Vehicle Item Status</label
+          >
+          <select
+            class="form-control"
+            name="housingVehicleItemStatus"
+            formControlName="housingVehicleItemStatus"
+            id="field_housingVehicleItemStatus"
+            data-cy="housingVehicleItemStatus"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.StatusType.null' | translate }}</option>
+            <option value="APPROVED">{{ 'transporteApp.StatusType.APPROVED' | translate }}</option>
+            <option value="PENDENT">{{ 'transporteApp.StatusType.PENDENT' | translate }}</option>
+            <option value="DISAPPROVED">{{ 'transporteApp.StatusType.DISAPPROVED' | translate }}</option>
+            <option value="CANCELLED">{{ 'transporteApp.StatusType.CANCELLED' | translate }}</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('housingVehicleItemStatus')!.invalid &&
+              (editForm.get('housingVehicleItemStatus')!.dirty || editForm.get('housingVehicleItemStatus')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingVehicleItemStatus')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemPlate"
+            for="field_housingVehicleItemPlate"
+            >Housing Vehicle Item Plate</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingVehicleItemPlate"
+            id="field_housingVehicleItemPlate"
+            data-cy="housingVehicleItemPlate"
+            formControlName="housingVehicleItemPlate"
+          />
+          <div
+            *ngIf="
+              editForm.get('housingVehicleItemPlate')!.invalid &&
+              (editForm.get('housingVehicleItemPlate')!.dirty || editForm.get('housingVehicleItemPlate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingVehicleItemPlate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemType"
+            for="field_housingVehicleItemType"
+            >Housing Vehicle Item Type</label
+          >
+          <select
+            class="form-control"
+            name="housingVehicleItemType"
+            formControlName="housingVehicleItemType"
+            id="field_housingVehicleItemType"
+            data-cy="housingVehicleItemType"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleType.null' | translate }}</option>
+            <option value="MOTORBIKE">{{ 'transporteApp.VehicleType.MOTORBIKE' | translate }}</option>
+            <option value="CAR">{{ 'transporteApp.VehicleType.CAR' | translate }}</option>
+            <option value="TRUCK">{{ 'transporteApp.VehicleType.TRUCK' | translate }}</option>
+            <option value="OTHER">{{ 'transporteApp.VehicleType.OTHER' | translate }}</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('housingVehicleItemType')!.invalid &&
+              (editForm.get('housingVehicleItemType')!.dirty || editForm.get('housingVehicleItemType')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingVehicleItemType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFipeCode"
+            for="field_housingVehicleItemFipeCode"
+            >Housing Vehicle Item Fipe Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingVehicleItemFipeCode"
+            id="field_housingVehicleItemFipeCode"
+            data-cy="housingVehicleItemFipeCode"
+            formControlName="housingVehicleItemFipeCode"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemYear"
+            for="field_housingVehicleItemYear"
+            >Housing Vehicle Item Year</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingVehicleItemYear"
+            id="field_housingVehicleItemYear"
+            data-cy="housingVehicleItemYear"
+            formControlName="housingVehicleItemYear"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFuel"
+            for="field_housingVehicleItemFuel"
+            >Housing Vehicle Item Fuel</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingVehicleItemFuel"
+            id="field_housingVehicleItemFuel"
+            data-cy="housingVehicleItemFuel"
+            formControlName="housingVehicleItemFuel"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemBranch"
+            for="field_housingVehicleItemBranch"
+            >Housing Vehicle Item Branch</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingVehicleItemBranch"
+            id="field_housingVehicleItemBranch"
+            data-cy="housingVehicleItemBranch"
+            formControlName="housingVehicleItemBranch"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemModel"
+            for="field_housingVehicleItemModel"
+            >Housing Vehicle Item Model</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingVehicleItemModel"
+            id="field_housingVehicleItemModel"
+            data-cy="housingVehicleItemModel"
+            formControlName="housingVehicleItemModel"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFuelAbbreviation"
+            for="field_housingVehicleItemFuelAbbreviation"
+            >Housing Vehicle Item Fuel Abbreviation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingVehicleItemFuelAbbreviation"
+            id="field_housingVehicleItemFuelAbbreviation"
+            data-cy="housingVehicleItemFuelAbbreviation"
+            formControlName="housingVehicleItemFuelAbbreviation"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemReferenceMonth"
+            for="field_housingVehicleItemReferenceMonth"
+            >Housing Vehicle Item Reference Month</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="housingVehicleItemReferenceMonth"
+            id="field_housingVehicleItemReferenceMonth"
+            data-cy="housingVehicleItemReferenceMonth"
+            formControlName="housingVehicleItemReferenceMonth"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemValue"
+            for="field_housingVehicleItemValue"
+            >Housing Vehicle Item Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="housingVehicleItemValue"
+            id="field_housingVehicleItemValue"
+            data-cy="housingVehicleItemValue"
+            formControlName="housingVehicleItemValue"
+          />
+          <div
+            *ngIf="
+              editForm.get('housingVehicleItemValue')!.invalid &&
+              (editForm.get('housingVehicleItemValue')!.dirty || editForm.get('housingVehicleItemValue')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingVehicleItemValue')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('housingVehicleItemValue')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemShippingValue"
+            for="field_housingVehicleItemShippingValue"
+            >Housing Vehicle Item Shipping Value</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="housingVehicleItemShippingValue"
+            id="field_housingVehicleItemShippingValue"
+            data-cy="housingVehicleItemShippingValue"
+            formControlName="housingVehicleItemShippingValue"
+          />
+          <div
+            *ngIf="
+              editForm.get('housingVehicleItemShippingValue')!.invalid &&
+              (editForm.get('housingVehicleItemShippingValue')!.dirty || editForm.get('housingVehicleItemShippingValue')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('housingVehicleItemShippingValue')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('housingVehicleItemShippingValue')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housingVehicleItem.housing" for="field_housing">Housing</label>
+          <select class="form-control" id="field_housing" data-cy="housing" name="housing" formControlName="housing">
+            <option *ngIf="!editForm.get('housing')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="housingOption.id === editForm.get('housing')!.value?.id ? editForm.get('housing')!.value : housingOption"
+              *ngFor="let housingOption of housingsSharedCollection; trackBy: trackHousingById"
+            >
+              {{ housingOption.housingReceiptNumber }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['housing'])!.invalid && (editForm.get(['housing'])!.dirty || editForm.get(['housing'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['housing'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.housingVehicleItem.parkingSector" for="field_parkingSector"
+            >Parking Sector</label
+          >
+          <select
+            class="form-control"
+            id="field_parkingSector"
+            data-cy="parkingSector"
+            name="parkingSector"
+            formControlName="parkingSector"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                parkingSectorOption.id === editForm.get('parkingSector')!.value?.id
+                  ? editForm.get('parkingSector')!.value
+                  : parkingSectorOption
+              "
+              *ngFor="let parkingSectorOption of parkingSectorsSharedCollection; trackBy: trackParkingSectorById"
+            >
+              {{ parkingSectorOption.sectorName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.housingVehicleItem.parkingSectorSpace"
+            for="field_parkingSectorSpace"
+            >Parking Sector Space</label
+          >
+          <select
+            class="form-control"
+            id="field_parkingSectorSpace"
+            data-cy="parkingSectorSpace"
+            name="parkingSectorSpace"
+            formControlName="parkingSectorSpace"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                parkingSectorSpaceOption.id === editForm.get('parkingSectorSpace')!.value?.id
+                  ? editForm.get('parkingSectorSpace')!.value
+                  : parkingSectorSpaceOption
+              "
+              *ngFor="let parkingSectorSpaceOption of parkingSectorSpacesSharedCollection; trackBy: trackParkingSectorSpaceById"
+            >
+              {{ parkingSectorSpaceOption.parkingNumber }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

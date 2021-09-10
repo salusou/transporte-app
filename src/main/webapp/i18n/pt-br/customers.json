@@ -1,0 +1,52 @@
+{
+  "transporteApp": {
+    "customers": {
+      "home": {
+        "title": "Customers",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Customers",
+        "createOrEditLabel": "Criar ou editar Customers",
+        "notFound": "Nenhum Customers encontrado"
+      },
+      "created": "Um novo Customers foi criado com o identificador {{ param }}",
+      "updated": "Um Customers foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Customers foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Customers {{ id }}?"
+      },
+      "detail": {
+        "title": "Customers"
+      },
+      "id": "ID",
+      "customerName": "Customer Name",
+      "active": "Active",
+      "customerNumber": "Customer Number",
+      "customerPostalCode": "Customer Postal Code",
+      "customerAddress": "Customer Address",
+      "customerAddressComplement": "Customer Address Complement",
+      "customerAddressNumber": "Customer Address Number",
+      "customerAddressNeighborhood": "Customer Address Neighborhood",
+      "customerTelephone": "Customer Telephone",
+      "paymentTerm": "Payment Term",
+      "customersContacts": "Customers Contacts",
+      "customerAttachments": "Customer Attachments",
+      "vehicleControls": "Vehicle Controls",
+      "housing": "Housing",
+      "affiliates": "Affiliates",
+      "cities": "Cities",
+      "customersGroups": "Customers Groups",
+      "help": {
+        "customerName": "CLIENT NAME\n@type String",
+        "active": "active customers account.\n@type String",
+        "customerNumber": "Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED\n@type String",
+        "customerPostalCode": "Postal code of address the matrix company.\n@type String",
+        "customerAddress": "Branch Address.\n@type String",
+        "customerAddressComplement": "Branch Address Complement.\n@type String",
+        "customerAddressNumber": "Number of address.\n@type Integer",
+        "customerAddressNeighborhood": "Neighborhood, District.\n@type String",
+        "customerTelephone": "Contact Telephone\n@type String",
+        "paymentTerm": "Payment Terms\n@type Integer"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "transporteApp": {
+    "customersGroups": {
+      "home": {
+        "title": "Customers Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Customers Groups",
+        "createOrEditLabel": "Create or edit a Customers Groups",
+        "notFound": "No Customers Groups found"
+      },
+      "created": "A new Customers Groups is created with identifier {{ param }}",
+      "updated": "A Customers Groups is updated with identifier {{ param }}",
+      "deleted": "A Customers Groups is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Customers Groups {{ id }}?"
+      },
+      "detail": {
+        "title": "Customers Groups"
+      },
+      "id": "ID",
+      "groupName": "Group Name",
+      "customers": "Customers",
+      "vehicleControls": "Vehicle Controls",
+      "affiliates": "Affiliates"
+    }
+  }
+}

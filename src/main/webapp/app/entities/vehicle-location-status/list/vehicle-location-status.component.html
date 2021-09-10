@@ -1,0 +1,124 @@
+<div>
+  <h2 id="page-heading" data-cy="VehicleLocationStatusHeading">
+    <span jhiTranslate="transporteApp.vehicleLocationStatus.home.title">Vehicle Location Statuses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleLocationStatus.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vehicle-location-status"
+        [routerLink]="['/vehicle-location-status/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleLocationStatus.home.createLabel"> Create a new Vehicle Location Status </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="vehicleLocationStatuses?.length === 0">
+    <span jhiTranslate="transporteApp.vehicleLocationStatus.home.notFound">No vehicleLocationStatuses found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="vehicleLocationStatuses && vehicleLocationStatuses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="vehicleLocationStatusDate">
+            <span jhiTranslate="transporteApp.vehicleLocationStatus.vehicleLocationStatusDate">Vehicle Location Status Date</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleLocationStatusDescription">
+            <span jhiTranslate="transporteApp.vehicleLocationStatus.vehicleLocationStatusDescription"
+              >Vehicle Location Status Description</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControls.id">
+            <span jhiTranslate="transporteApp.vehicleLocationStatus.vehicleControls">Vehicle Controls</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cities.cityName">
+            <span jhiTranslate="transporteApp.vehicleLocationStatus.cities">Cities</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicleLocationStatus of vehicleLocationStatuses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/vehicle-location-status', vehicleLocationStatus.id, 'view']">{{ vehicleLocationStatus.id }}</a>
+          </td>
+          <td>{{ vehicleLocationStatus.vehicleLocationStatusDate | formatMediumDatetime }}</td>
+          <td>{{ vehicleLocationStatus.vehicleLocationStatusDescription }}</td>
+          <td>
+            <div *ngIf="vehicleLocationStatus.vehicleControls">
+              <a [routerLink]="['/vehicle-controls', vehicleLocationStatus.vehicleControls?.id, 'view']">{{
+                vehicleLocationStatus.vehicleControls?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="vehicleLocationStatus.cities">
+              <a [routerLink]="['/cities', vehicleLocationStatus.cities?.id, 'view']">{{ vehicleLocationStatus.cities?.cityName }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-location-status', vehicleLocationStatus.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-location-status', vehicleLocationStatus.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(vehicleLocationStatus)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="vehicleLocationStatuses && vehicleLocationStatuses.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

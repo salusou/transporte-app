@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity ParkingSector.
+    -->
+    <changeSet id="20210903053738-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="parking_id"
+                                 baseTableName="parking_sector"
+                                 constraintName="fk_parking_sector__parking_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parking"/>
+    </changeSet>
+</databaseChangeLog>

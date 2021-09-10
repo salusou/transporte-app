@@ -1,0 +1,26 @@
+{
+  "transporteApp": {
+    "positions": {
+      "home": {
+        "title": "Positions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Positions",
+        "createOrEditLabel": "Crear o editar Positions",
+        "notFound": "Ningún Positions encontrado"
+      },
+      "created": "Un nuevo Positions ha sido creado con el identificador {{ param }}",
+      "updated": "Un Positions ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Positions ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Positions {{ id }}?"
+      },
+      "detail": {
+        "title": "Positions"
+      },
+      "id": "ID",
+      "positionName": "Position Name",
+      "employees": "Employees",
+      "affiliates": "Affiliates"
+    }
+  }
+}

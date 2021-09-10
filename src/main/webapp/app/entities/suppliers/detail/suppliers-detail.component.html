@@ -1,0 +1,142 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="suppliers">
+      <h2 data-cy="suppliersDetailsHeading"><span jhiTranslate="transporteApp.suppliers.detail.title">Suppliers</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ suppliers.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.suppliers.supplierName" [ngbTooltip]="'transporteApp.suppliers.help.supplierName' | translate"
+            >Supplier Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierName }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.suppliers.supplierNumber"
+            [ngbTooltip]="'transporteApp.suppliers.help.supplierNumber' | translate"
+            >Supplier Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.suppliers.supplierPostalCode"
+            [ngbTooltip]="'transporteApp.suppliers.help.supplierPostalCode' | translate"
+            >Supplier Postal Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierPostalCode }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.suppliers.supplierAddress"
+            [ngbTooltip]="'transporteApp.suppliers.help.supplierAddress' | translate"
+            >Supplier Address</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierAddress }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.suppliers.supplierAddressComplement"
+            [ngbTooltip]="'transporteApp.suppliers.help.supplierAddressComplement' | translate"
+            >Supplier Address Complement</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierAddressComplement }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.suppliers.supplierAddressNumber"
+            [ngbTooltip]="'transporteApp.suppliers.help.supplierAddressNumber' | translate"
+            >Supplier Address Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierAddressNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.suppliers.supplierAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.suppliers.help.supplierAddressNeighborhood' | translate"
+            >Supplier Address Neighborhood</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierAddressNeighborhood }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.suppliers.supplierTelephone"
+            [ngbTooltip]="'transporteApp.suppliers.help.supplierTelephone' | translate"
+            >Supplier Telephone</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierTelephone }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.suppliers.supplierEmail" [ngbTooltip]="'transporteApp.suppliers.help.supplierEmail' | translate"
+            >Supplier Email</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierEmail }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.suppliers.supplierContactName"
+            [ngbTooltip]="'transporteApp.suppliers.help.supplierContactName' | translate"
+            >Supplier Contact Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ suppliers.supplierContactName }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.suppliers.affiliates">Affiliates</span></dt>
+        <dd>
+          <div *ngIf="suppliers.affiliates">
+            <a [routerLink]="['/affiliates', suppliers.affiliates?.id, 'view']">{{ suppliers.affiliates?.branchName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.suppliers.cities">Cities</span></dt>
+        <dd>
+          <div *ngIf="suppliers.cities">
+            <a [routerLink]="['/cities', suppliers.cities?.id, 'view']">{{ suppliers.cities?.cityName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.suppliers.serviceProvided">Service Provided</span></dt>
+        <dd>
+          <div *ngIf="suppliers.serviceProvided">
+            <a [routerLink]="['/service-provided', suppliers.serviceProvided?.id, 'view']">{{ suppliers.serviceProvided?.serviceName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/suppliers', suppliers.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

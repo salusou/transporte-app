@@ -1,0 +1,161 @@
+<div>
+  <h2 id="page-heading" data-cy="CustomersHeading">
+    <span jhiTranslate="transporteApp.customers.home.title">Customers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.customers.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-customers"
+        [routerLink]="['/customers/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.customers.home.createLabel"> Create a new Customers </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="customers?.length === 0">
+    <span jhiTranslate="transporteApp.customers.home.notFound">No customers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="customers && customers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="customerName">
+            <span jhiTranslate="transporteApp.customers.customerName">Customer Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="active">
+            <span jhiTranslate="transporteApp.customers.active">Active</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customerNumber">
+            <span jhiTranslate="transporteApp.customers.customerNumber">Customer Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customerPostalCode">
+            <span jhiTranslate="transporteApp.customers.customerPostalCode">Customer Postal Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customerAddress">
+            <span jhiTranslate="transporteApp.customers.customerAddress">Customer Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customerAddressComplement">
+            <span jhiTranslate="transporteApp.customers.customerAddressComplement">Customer Address Complement</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customerAddressNumber">
+            <span jhiTranslate="transporteApp.customers.customerAddressNumber">Customer Address Number</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customerAddressNeighborhood">
+            <span jhiTranslate="transporteApp.customers.customerAddressNeighborhood">Customer Address Neighborhood</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customerTelephone">
+            <span jhiTranslate="transporteApp.customers.customerTelephone">Customer Telephone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="paymentTerm">
+            <span jhiTranslate="transporteApp.customers.paymentTerm">Payment Term</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affiliates.branchName">
+            <span jhiTranslate="transporteApp.customers.affiliates">Affiliates</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cities.cityName">
+            <span jhiTranslate="transporteApp.customers.cities">Cities</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customersGroups.groupName">
+            <span jhiTranslate="transporteApp.customers.customersGroups">Customers Groups</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customers of customers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/customers', customers.id, 'view']">{{ customers.id }}</a>
+          </td>
+          <td>{{ customers.customerName }}</td>
+          <td>{{ customers.active }}</td>
+          <td>{{ customers.customerNumber }}</td>
+          <td>{{ customers.customerPostalCode }}</td>
+          <td>{{ customers.customerAddress }}</td>
+          <td>{{ customers.customerAddressComplement }}</td>
+          <td>{{ customers.customerAddressNumber }}</td>
+          <td>{{ customers.customerAddressNeighborhood }}</td>
+          <td>{{ customers.customerTelephone }}</td>
+          <td>{{ customers.paymentTerm }}</td>
+          <td>
+            <div *ngIf="customers.affiliates">
+              <a [routerLink]="['/affiliates', customers.affiliates?.id, 'view']">{{ customers.affiliates?.branchName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="customers.cities">
+              <a [routerLink]="['/cities', customers.cities?.id, 'view']">{{ customers.cities?.cityName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="customers.customersGroups">
+              <a [routerLink]="['/customers-groups', customers.customersGroups?.id, 'view']">{{ customers.customersGroups?.groupName }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/customers', customers.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/customers', customers.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(customers)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="customers && customers.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

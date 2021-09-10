@@ -1,0 +1,43 @@
+{
+  "name": "VehicleLocationStatus",
+  "fields": [
+    {
+      "fieldName": "vehicleLocationStatusDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleLocationStatusDescription",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "500"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "vehicleLocationStatus",
+      "relationshipValidateRules": "required",
+      "relationshipName": "vehicleControls"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "vehicleLocationStatus",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cities",
+      "otherEntityField": "cityName"
+    }
+  ],
+  "entityTableName": "vehicle_location_status",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053747"
+}

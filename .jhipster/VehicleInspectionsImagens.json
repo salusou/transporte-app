@@ -1,0 +1,58 @@
+{
+  "name": "VehicleInspectionsImagens",
+  "fields": [
+    {
+      "fieldName": "vehicleInspectionsImagensPositions",
+      "fieldType": "InspectionPositions",
+      "fieldValues": "FRONT,REAR,LEFT_DOOR_FRONT,LEFT_DOOR_REAR,RIGHT_DOOR_FRONT,RIGHT_DOOR_REAR,LEFT_SIDE,RIGHT_SIDE",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleInspectionsImagensStatus",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleInspectionsImagensObs",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "500"
+    },
+    {
+      "fieldName": "vehicleInspectionsImagensPhoto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleInspectionsImagensPositionsX",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleInspectionsImagensPositionsY",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vehicleInspections",
+      "otherEntityRelationshipName": "vehicleInspectionsImagens",
+      "relationshipValidateRules": "required",
+      "relationshipName": "vehicleInspections"
+    }
+  ],
+  "entityTableName": "vehicle_inspections_imagens",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053751"
+}

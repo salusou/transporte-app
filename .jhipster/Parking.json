@@ -1,0 +1,110 @@
+{
+  "name": "Parking",
+  "fields": [
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "javadoc": "Release the parking to run.\\n@type Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "parkingName",
+      "fieldType": "String",
+      "javadoc": "Parking Name\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "parkingTradeName",
+      "fieldType": "String",
+      "javadoc": "Parking Trade Name\\n@type String"
+    },
+    {
+      "fieldName": "parkingNumber",
+      "fieldType": "String",
+      "javadoc": "Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED\\n@type String"
+    },
+    {
+      "fieldName": "parkingPostalCode",
+      "fieldType": "String",
+      "javadoc": "Postal code of address the matrix company.\\n@type String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "9"
+    },
+    {
+      "fieldName": "parkingAddress",
+      "fieldType": "String",
+      "javadoc": "Branch Address.\\n@type String"
+    },
+    {
+      "fieldName": "parkingAddressComplement",
+      "fieldType": "String",
+      "javadoc": "Parking Address Complement.\\n@type String"
+    },
+    {
+      "fieldName": "parkingAddressNumber",
+      "fieldType": "Integer",
+      "javadoc": "Number of address.\\n@type Integer"
+    },
+    {
+      "fieldName": "parkingAddressNeighborhood",
+      "fieldType": "String",
+      "javadoc": "Neighborhood, District.\\n@type String"
+    },
+    {
+      "fieldName": "parkingTelephone",
+      "fieldType": "String",
+      "javadoc": "Parking Contact Telephone\\n@type String"
+    },
+    {
+      "fieldName": "parkingEmail",
+      "fieldType": "String",
+      "javadoc": "Parking Contact Email\\n@type String"
+    },
+    {
+      "fieldName": "parkingContactName",
+      "fieldType": "String",
+      "javadoc": "Parking Contact Name\\n@type String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "parkingSector",
+      "otherEntityRelationshipName": "parking",
+      "relationshipName": "parkingSector"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housing",
+      "otherEntityRelationshipName": "parking",
+      "relationshipName": "housing"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "parking",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "parking",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cities",
+      "otherEntityField": "cityName"
+    }
+  ],
+  "javadoc": "Parking\\nThis class is the table parking.\\n@author Samuel Souza",
+  "entityTableName": "parking",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053737"
+}

@@ -1,0 +1,220 @@
+<div>
+  <h2 id="page-heading" data-cy="VehicleControlsHeading">
+    <span jhiTranslate="transporteApp.vehicleControls.home.title">Vehicle Controls</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleControls.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vehicle-controls"
+        [routerLink]="['/vehicle-controls/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleControls.home.createLabel"> Create a new Vehicle Controls </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="vehicleControls?.length === 0">
+    <span jhiTranslate="transporteApp.vehicleControls.home.notFound">No vehicleControls found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="vehicleControls && vehicleControls.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="vehicleControlAuthorizedOrder">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlAuthorizedOrder">Vehicle Control Authorized Order</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlRequest">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlRequest">Vehicle Control Request</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlSinister">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlSinister">Vehicle Control Sinister</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlDate">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlDate">Vehicle Control Date</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlKm">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlKm">Vehicle Control Km</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlPlate">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlPlate">Vehicle Control Plate</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlAmount">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlAmount">Vehicle Control Amount</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlPrice">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlPrice">Vehicle Control Price</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlMaximumDeliveryDate">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlMaximumDeliveryDate"
+              >Vehicle Control Maximum Delivery Date</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlCollectionForecast">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlCollectionForecast">Vehicle Control Collection Forecast</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlCollectionDeliveryForecast">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlCollectionDeliveryForecast"
+              >Vehicle Control Collection Delivery Forecast</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlDateCollected">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlDateCollected">Vehicle Control Date Collected</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlDeliveryDate">
+            <span jhiTranslate="transporteApp.vehicleControls.vehicleControlDeliveryDate">Vehicle Control Delivery Date</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="affiliates.branchName">
+            <span jhiTranslate="transporteApp.vehicleControls.affiliates">Affiliates</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customers.customerName">
+            <span jhiTranslate="transporteApp.vehicleControls.customers">Customers</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="customersGroups.groupName">
+            <span jhiTranslate="transporteApp.vehicleControls.customersGroups">Customers Groups</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="employees.employeeFullName">
+            <span jhiTranslate="transporteApp.vehicleControls.employees">Employees</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="origin.cityName">
+            <span jhiTranslate="transporteApp.vehicleControls.origin">Origin</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="destination.cityName">
+            <span jhiTranslate="transporteApp.vehicleControls.destination">Destination</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="status.statusName">
+            <span jhiTranslate="transporteApp.vehicleControls.status">Status</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicleControls of vehicleControls; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/vehicle-controls', vehicleControls.id, 'view']">{{ vehicleControls.id }}</a>
+          </td>
+          <td>{{ vehicleControls.vehicleControlAuthorizedOrder }}</td>
+          <td>{{ vehicleControls.vehicleControlRequest }}</td>
+          <td>{{ vehicleControls.vehicleControlSinister }}</td>
+          <td>{{ vehicleControls.vehicleControlDate | formatMediumDate }}</td>
+          <td>{{ vehicleControls.vehicleControlKm }}</td>
+          <td>{{ vehicleControls.vehicleControlPlate }}</td>
+          <td>{{ vehicleControls.vehicleControlAmount }}</td>
+          <td>{{ vehicleControls.vehicleControlPrice }}</td>
+          <td>{{ vehicleControls.vehicleControlMaximumDeliveryDate | formatMediumDate }}</td>
+          <td>{{ vehicleControls.vehicleControlCollectionForecast | formatMediumDate }}</td>
+          <td>{{ vehicleControls.vehicleControlCollectionDeliveryForecast | formatMediumDate }}</td>
+          <td>{{ vehicleControls.vehicleControlDateCollected | formatMediumDate }}</td>
+          <td>{{ vehicleControls.vehicleControlDeliveryDate | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="vehicleControls.affiliates">
+              <a [routerLink]="['/affiliates', vehicleControls.affiliates?.id, 'view']">{{ vehicleControls.affiliates?.branchName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="vehicleControls.customers">
+              <a [routerLink]="['/customers', vehicleControls.customers?.id, 'view']">{{ vehicleControls.customers?.customerName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="vehicleControls.customersGroups">
+              <a [routerLink]="['/customers-groups', vehicleControls.customersGroups?.id, 'view']">{{
+                vehicleControls.customersGroups?.groupName
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="vehicleControls.employees">
+              <a [routerLink]="['/employees', vehicleControls.employees?.id, 'view']">{{ vehicleControls.employees?.employeeFullName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="vehicleControls.origin">
+              <a [routerLink]="['/cities', vehicleControls.origin?.id, 'view']">{{ vehicleControls.origin?.cityName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="vehicleControls.destination">
+              <a [routerLink]="['/cities', vehicleControls.destination?.id, 'view']">{{ vehicleControls.destination?.cityName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="vehicleControls.status">
+              <a [routerLink]="['/status', vehicleControls.status?.id, 'view']">{{ vehicleControls.status?.statusName }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-controls', vehicleControls.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-controls', vehicleControls.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(vehicleControls)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="vehicleControls && vehicleControls.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

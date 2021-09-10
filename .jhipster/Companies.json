@@ -1,0 +1,105 @@
+{
+  "name": "Companies",
+  "fields": [
+    {
+      "fieldName": "companyName",
+      "fieldType": "String",
+      "javadoc": "Matrix Companies Name\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tradeName",
+      "fieldType": "String",
+      "javadoc": "TradName\\n@type String"
+    },
+    {
+      "fieldName": "companyNumber",
+      "fieldType": "String",
+      "javadoc": "Company Number is like a CNPJ, EIN\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String",
+      "javadoc": "Postal code of address the matrix company.\\n@type String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "9"
+    },
+    {
+      "fieldName": "companyAddress",
+      "fieldType": "String",
+      "javadoc": "Company Address\\n@type String"
+    },
+    {
+      "fieldName": "companyAddressComplement",
+      "fieldType": "String",
+      "javadoc": "Company Address Complement.\\n@type String"
+    },
+    {
+      "fieldName": "companyAddressNumber",
+      "fieldType": "Integer",
+      "javadoc": "Number of address.\\n@type Integer"
+    },
+    {
+      "fieldName": "companyAddressNeighborhood",
+      "fieldType": "String",
+      "javadoc": "Neighborhood, District.\\n@type String"
+    },
+    {
+      "fieldName": "companyTelephone",
+      "fieldType": "String",
+      "javadoc": "Phone of company\\n@type String"
+    },
+    {
+      "fieldName": "companyEmail",
+      "fieldType": "String",
+      "javadoc": "E-mail of the company\\n@type String"
+    },
+    {
+      "fieldName": "responsibleContact",
+      "fieldType": "String",
+      "javadoc": "Responsible Contact to call or send e-mail\\n@type String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "companies",
+      "relationshipName": "affiliates"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "employees",
+      "otherEntityRelationshipName": "companies",
+      "relationshipName": "employees"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "companies",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cities",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "stateProvinces",
+      "otherEntityRelationshipName": "companies",
+      "relationshipValidateRules": "required",
+      "relationshipName": "stateProvinces",
+      "otherEntityField": "stateName"
+    }
+  ],
+  "javadoc": "List of Company Hire this software.\\n@author Samuel Souza",
+  "entityTableName": "companies",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053723"
+}

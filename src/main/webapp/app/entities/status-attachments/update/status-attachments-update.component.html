@@ -1,0 +1,131 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-status-attachments-heading"
+        data-cy="StatusAttachmentsCreateUpdateHeading"
+        jhiTranslate="transporteApp.statusAttachments.home.createOrEditLabel"
+      >
+        Create or edit a Status Attachments
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.statusAttachments.statusName" for="field_statusName"
+            >Status Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="statusName"
+            id="field_statusName"
+            data-cy="statusName"
+            formControlName="statusName"
+          />
+          <div *ngIf="editForm.get('statusName')!.invalid && (editForm.get('statusName')!.dirty || editForm.get('statusName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('statusName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.statusAttachments.statusDescriptions" for="field_statusDescriptions"
+            >Status Descriptions</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="statusDescriptions"
+            id="field_statusDescriptions"
+            data-cy="statusDescriptions"
+            formControlName="statusDescriptions"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.statusAttachments.statusObs" for="field_statusObs"
+            >Status Obs</label
+          >
+          <input type="text" class="form-control" name="statusObs" id="field_statusObs" data-cy="statusObs" formControlName="statusObs" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.statusAttachments.attachmentType" for="field_attachmentType"
+            >Attachment Type</label
+          >
+          <select
+            class="form-control"
+            name="attachmentType"
+            formControlName="attachmentType"
+            id="field_attachmentType"
+            data-cy="attachmentType"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.AttachmentType.null' | translate }}</option>
+            <option value="SUPPLIERS">{{ 'transporteApp.AttachmentType.SUPPLIERS' | translate }}</option>
+            <option value="VEHICLE_CONTROL">{{ 'transporteApp.AttachmentType.VEHICLE_CONTROL' | translate }}</option>
+            <option value="CUSTOMERS">{{ 'transporteApp.AttachmentType.CUSTOMERS' | translate }}</option>
+            <option value="HOUSING">{{ 'transporteApp.AttachmentType.HOUSING' | translate }}</option>
+            <option value="QUOTATION">{{ 'transporteApp.AttachmentType.QUOTATION' | translate }}</option>
+            <option value="EMPLOYEE">{{ 'transporteApp.AttachmentType.EMPLOYEE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.statusAttachments.affiliates" for="field_affiliates"
+            >Affiliates</label
+          >
+          <select class="form-control" id="field_affiliates" data-cy="affiliates" name="affiliates" formControlName="affiliates">
+            <option *ngIf="!editForm.get('affiliates')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                affiliatesOption.id === editForm.get('affiliates')!.value?.id ? editForm.get('affiliates')!.value : affiliatesOption
+              "
+              *ngFor="let affiliatesOption of affiliatesSharedCollection; trackBy: trackAffiliatesById"
+            >
+              {{ affiliatesOption.branchName }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['affiliates'])!.invalid && (editForm.get(['affiliates'])!.dirty || editForm.get(['affiliates'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['affiliates'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

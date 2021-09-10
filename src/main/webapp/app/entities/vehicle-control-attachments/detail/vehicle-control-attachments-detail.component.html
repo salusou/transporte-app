@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleControlAttachments">
+      <h2 data-cy="vehicleControlAttachmentsDetailsHeading">
+        <span jhiTranslate="transporteApp.vehicleControlAttachments.detail.title">Vehicle Control Attachments</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleControlAttachments.id }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.vehicleControlAttachments.attachImage"
+            [ngbTooltip]="'transporteApp.vehicleControlAttachments.help.attachImage' | translate"
+            >Attach Image</span
+          >
+        </dt>
+        <dd>
+          <div *ngIf="vehicleControlAttachments.attachImage">
+            <a (click)="openFile(vehicleControlAttachments.attachImage, vehicleControlAttachments.attachImageContentType)">
+              <img
+                [src]="'data:' + vehicleControlAttachments.attachImageContentType + ';base64,' + vehicleControlAttachments.attachImage"
+                style="max-width: 100%"
+                alt="vehicleControlAttachments image"
+              />
+            </a>
+            {{ vehicleControlAttachments.attachImageContentType }}, {{ byteSize(vehicleControlAttachments.attachImage) }}
+          </div>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.vehicleControlAttachments.attachUrl"
+            [ngbTooltip]="'transporteApp.vehicleControlAttachments.help.attachUrl' | translate"
+            >Attach Url</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlAttachments.attachUrl }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.vehicleControlAttachments.attachDescription"
+            [ngbTooltip]="'transporteApp.vehicleControlAttachments.help.attachDescription' | translate"
+            >Attach Description</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlAttachments.attachDescription }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.vehicleControlAttachments.attachedDate"
+            [ngbTooltip]="'transporteApp.vehicleControlAttachments.help.attachedDate' | translate"
+            >Attached Date</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlAttachments.attachedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlAttachments.vehicleControls">Vehicle Controls</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlAttachments.vehicleControls">
+            <a [routerLink]="['/vehicle-controls', vehicleControlAttachments.vehicleControls?.id, 'view']">{{
+              vehicleControlAttachments.vehicleControls?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-control-attachments', vehicleControlAttachments.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

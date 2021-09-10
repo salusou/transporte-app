@@ -1,0 +1,231 @@
+{
+  "name": "VehicleInspections",
+  "fields": [
+    {
+      "fieldName": "vehicleInspectionDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleInspectionStatus",
+      "fieldType": "InspectionStatus",
+      "fieldValues": "ARRIVAL,DEPARTURE",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleInspectionModel",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleInspectionLicensePlate",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleInspectionKm",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "vehicleInspectionLicenseYear",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "vehicleInspectionHasManual",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "vehicleInspectionHasExtraKey",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "vehicleInspectionHasStickers",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "vehicleInspectionGas",
+      "fieldType": "FuelLevel",
+      "fieldValues": "RESERVE,LITTLE,MEDIUM,ABOVE_AVERAGE,COMPLETE"
+    },
+    {
+      "fieldName": "vehicleInspectionRearView",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "vehicleInspectionHorn",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "vehicleInspectionWindshieldWiper",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "vehicleInspectionSquirt",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "vehicleInspectionInternalLight",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionPanelLight",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionHighLight",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionLowLight",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionTaillight",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionIndicator",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionBeacons",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionBreakLight",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionPlateLight",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionSpeedometer",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionTemperature",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionTires",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionStep",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionFireExtinguisher",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionSeatBelts",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionMonkey",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionTireIron",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionRadiatorCap",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionTriangle",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionServiceBrake",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionParkingBrake",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionOilLeaks",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionGlassActuator",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionVehicleCleaning",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionSeatState",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionExhausts",
+      "fieldType": "VehicleStatus",
+      "fieldValues": "DIRTY,CLEAN,SCRATCHED,DAMAGED,MASSAGED,BROKEN,WITH,ODOR,NORMAL,NEW,OLD,BORED,FULL,LEAKING,HAVE,NO_HAVE"
+    },
+    {
+      "fieldName": "vehicleInspectionsObs",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "500"
+    },
+    {
+      "fieldName": "vehicleInspectionsSignedUrl",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleInspectionsImagens",
+      "otherEntityRelationshipName": "vehicleInspections",
+      "relationshipName": "vehicleInspectionsImagens"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vehicleControlItem",
+      "otherEntityRelationshipName": "vehicleInspections",
+      "relationshipName": "vehicleControls"
+    }
+  ],
+  "entityTableName": "vehicle_inspections",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053750"
+}

@@ -1,0 +1,175 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vehicle-location-status-heading"
+        data-cy="VehicleLocationStatusCreateUpdateHeading"
+        jhiTranslate="transporteApp.vehicleLocationStatus.home.createOrEditLabel"
+      >
+        Create or edit a Vehicle Location Status
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleLocationStatus.vehicleLocationStatusDate"
+            for="field_vehicleLocationStatusDate"
+            >Vehicle Location Status Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_vehicleLocationStatusDate"
+              data-cy="vehicleLocationStatusDate"
+              type="datetime-local"
+              class="form-control"
+              name="vehicleLocationStatusDate"
+              formControlName="vehicleLocationStatusDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('vehicleLocationStatusDate')!.invalid &&
+              (editForm.get('vehicleLocationStatusDate')!.dirty || editForm.get('vehicleLocationStatusDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleLocationStatusDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('vehicleLocationStatusDate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleLocationStatus.vehicleLocationStatusDescription"
+            for="field_vehicleLocationStatusDescription"
+            >Vehicle Location Status Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleLocationStatusDescription"
+            id="field_vehicleLocationStatusDescription"
+            data-cy="vehicleLocationStatusDescription"
+            formControlName="vehicleLocationStatusDescription"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleLocationStatusDescription')!.invalid &&
+              (editForm.get('vehicleLocationStatusDescription')!.dirty || editForm.get('vehicleLocationStatusDescription')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleLocationStatusDescription')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleLocationStatusDescription')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 500 }"
+            >
+              This field cannot be longer than 500 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleLocationStatus.vehicleControls" for="field_vehicleControls"
+            >Vehicle Controls</label
+          >
+          <select
+            class="form-control"
+            id="field_vehicleControls"
+            data-cy="vehicleControls"
+            name="vehicleControls"
+            formControlName="vehicleControls"
+          >
+            <option *ngIf="!editForm.get('vehicleControls')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                vehicleControlsOption.id === editForm.get('vehicleControls')!.value?.id
+                  ? editForm.get('vehicleControls')!.value
+                  : vehicleControlsOption
+              "
+              *ngFor="let vehicleControlsOption of vehicleControlsSharedCollection; trackBy: trackVehicleControlsById"
+            >
+              {{ vehicleControlsOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['vehicleControls'])!.invalid &&
+            (editForm.get(['vehicleControls'])!.dirty || editForm.get(['vehicleControls'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['vehicleControls'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleLocationStatus.cities" for="field_cities">Cities</label>
+          <select class="form-control" id="field_cities" data-cy="cities" name="cities" formControlName="cities">
+            <option *ngIf="!editForm.get('cities')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="citiesOption.id === editForm.get('cities')!.value?.id ? editForm.get('cities')!.value : citiesOption"
+              *ngFor="let citiesOption of citiesSharedCollection; trackBy: trackCitiesById"
+            >
+              {{ citiesOption.cityName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['cities'])!.invalid && (editForm.get(['cities'])!.dirty || editForm.get(['cities'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['cities'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

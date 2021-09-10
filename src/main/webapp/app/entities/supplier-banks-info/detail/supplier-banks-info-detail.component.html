@@ -1,0 +1,106 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="supplierBanksInfo">
+      <h2 data-cy="supplierBanksInfoDetailsHeading">
+        <span jhiTranslate="transporteApp.supplierBanksInfo.detail.title">Supplier Banks Info</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ supplierBanksInfo.id }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankCode"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankCode' | translate"
+            >Supplier Bank Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ supplierBanksInfo.supplierBankCode }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankName"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankName' | translate"
+            >Supplier Bank Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ supplierBanksInfo.supplierBankName }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankBranchCode"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankBranchCode' | translate"
+            >Supplier Bank Branch Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ supplierBanksInfo.supplierBankBranchCode }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankAccountNumber"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankAccountNumber' | translate"
+            >Supplier Bank Account Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ supplierBanksInfo.supplierBankAccountNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankUserName"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankUserName' | translate"
+            >Supplier Bank User Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ supplierBanksInfo.supplierBankUserName }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankPixKey"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankPixKey' | translate"
+            >Supplier Bank Pix Key</span
+          >
+        </dt>
+        <dd>
+          <span>{{ supplierBanksInfo.supplierBankPixKey }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.supplierBanksInfo.supplierBankUserNumber"
+            [ngbTooltip]="'transporteApp.supplierBanksInfo.help.supplierBankUserNumber' | translate"
+            >Supplier Bank User Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ supplierBanksInfo.supplierBankUserNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.supplierBanksInfo.suppliers">Suppliers</span></dt>
+        <dd>
+          <div *ngIf="supplierBanksInfo.suppliers">
+            <a [routerLink]="['/suppliers', supplierBanksInfo.suppliers?.id, 'view']">{{ supplierBanksInfo.suppliers?.supplierName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/supplier-banks-info', supplierBanksInfo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

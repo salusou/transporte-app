@@ -1,0 +1,53 @@
+{
+  "transporteApp": {
+    "parking": {
+      "home": {
+        "title": "Parkings",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Parking",
+        "createOrEditLabel": "Criar ou editar Parking",
+        "notFound": "Nenhum Parking encontrado"
+      },
+      "created": "Um novo Parking foi criado com o identificador {{ param }}",
+      "updated": "Um Parking foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Parking foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Parking {{ id }}?"
+      },
+      "detail": {
+        "title": "Parking"
+      },
+      "id": "ID",
+      "active": "Active",
+      "parkingName": "Parking Name",
+      "parkingTradeName": "Parking Trade Name",
+      "parkingNumber": "Parking Number",
+      "parkingPostalCode": "Parking Postal Code",
+      "parkingAddress": "Parking Address",
+      "parkingAddressComplement": "Parking Address Complement",
+      "parkingAddressNumber": "Parking Address Number",
+      "parkingAddressNeighborhood": "Parking Address Neighborhood",
+      "parkingTelephone": "Parking Telephone",
+      "parkingEmail": "Parking Email",
+      "parkingContactName": "Parking Contact Name",
+      "parkingSector": "Parking Sector",
+      "housing": "Housing",
+      "affiliates": "Affiliates",
+      "cities": "Cities",
+      "help": {
+        "active": "Release the parking to run.\n@type Boolean",
+        "parkingName": "Parking Name\n@type String",
+        "parkingTradeName": "Parking Trade Name\n@type String",
+        "parkingNumber": "Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED\n@type String",
+        "parkingPostalCode": "Postal code of address the matrix company.\n@type String",
+        "parkingAddress": "Branch Address.\n@type String",
+        "parkingAddressComplement": "Parking Address Complement.\n@type String",
+        "parkingAddressNumber": "Number of address.\n@type Integer",
+        "parkingAddressNeighborhood": "Neighborhood, District.\n@type String",
+        "parkingTelephone": "Parking Contact Telephone\n@type String",
+        "parkingEmail": "Parking Contact Email\n@type String",
+        "parkingContactName": "Parking Contact Name\n@type String"
+      }
+    }
+  }
+}

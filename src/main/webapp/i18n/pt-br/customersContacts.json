@@ -1,0 +1,32 @@
+{
+  "transporteApp": {
+    "customersContacts": {
+      "home": {
+        "title": "Customers Contacts",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Customers Contacts",
+        "createOrEditLabel": "Criar ou editar Customers Contacts",
+        "notFound": "Nenhum Customers Contacts encontrado"
+      },
+      "created": "Um novo Customers Contacts foi criado com o identificador {{ param }}",
+      "updated": "Um Customers Contacts foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Customers Contacts foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Customers Contacts {{ id }}?"
+      },
+      "detail": {
+        "title": "Customers Contacts"
+      },
+      "id": "ID",
+      "contactName": "Contact Name",
+      "contactTelephone": "Contact Telephone",
+      "contactEmail": "Contact Email",
+      "customers": "Customers",
+      "help": {
+        "contactName": "Contact Name\n@type String",
+        "contactTelephone": "Contact Telephone\n@type String",
+        "contactEmail": "contact E-mail\n@type String"
+      }
+    }
+  }
+}

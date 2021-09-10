@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customersGroups">
+      <h2 data-cy="customersGroupsDetailsHeading">
+        <span jhiTranslate="transporteApp.customersGroups.detail.title">Customers Groups</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customersGroups.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.customersGroups.groupName">Group Name</span></dt>
+        <dd>
+          <span>{{ customersGroups.groupName }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.customersGroups.affiliates">Affiliates</span></dt>
+        <dd>
+          <div *ngIf="customersGroups.affiliates">
+            <a [routerLink]="['/affiliates', customersGroups.affiliates?.id, 'view']">{{ customersGroups.affiliates?.branchName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customers-groups', customersGroups.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

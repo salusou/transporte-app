@@ -1,0 +1,27 @@
+{
+  "transporteApp": {
+    "administrativeFeesRanges": {
+      "home": {
+        "title": "Administrative Fees Ranges",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Administrative Fees Ranges",
+        "createOrEditLabel": "Create or edit a Administrative Fees Ranges",
+        "notFound": "No Administrative Fees Ranges found"
+      },
+      "created": "A new Administrative Fees Ranges is created with identifier {{ param }}",
+      "updated": "A Administrative Fees Ranges is updated with identifier {{ param }}",
+      "deleted": "A Administrative Fees Ranges is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Administrative Fees Ranges {{ id }}?"
+      },
+      "detail": {
+        "title": "Administrative Fees Ranges"
+      },
+      "id": "ID",
+      "minRange": "Min Range",
+      "maxRange": "Max Range",
+      "aliquot": "Aliquot",
+      "affiliates": "Affiliates"
+    }
+  }
+}

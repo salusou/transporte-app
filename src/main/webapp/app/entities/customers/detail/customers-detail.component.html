@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customers">
+      <h2 data-cy="customersDetailsHeading"><span jhiTranslate="transporteApp.customers.detail.title">Customers</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customers.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.customers.customerName" [ngbTooltip]="'transporteApp.customers.help.customerName' | translate"
+            >Customer Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.customerName }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.customers.active" [ngbTooltip]="'transporteApp.customers.help.active' | translate">Active</span>
+        </dt>
+        <dd>
+          <span>{{ customers.active }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customers.customerNumber"
+            [ngbTooltip]="'transporteApp.customers.help.customerNumber' | translate"
+            >Customer Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.customerNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customers.customerPostalCode"
+            [ngbTooltip]="'transporteApp.customers.help.customerPostalCode' | translate"
+            >Customer Postal Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.customerPostalCode }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customers.customerAddress"
+            [ngbTooltip]="'transporteApp.customers.help.customerAddress' | translate"
+            >Customer Address</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.customerAddress }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customers.customerAddressComplement"
+            [ngbTooltip]="'transporteApp.customers.help.customerAddressComplement' | translate"
+            >Customer Address Complement</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.customerAddressComplement }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customers.customerAddressNumber"
+            [ngbTooltip]="'transporteApp.customers.help.customerAddressNumber' | translate"
+            >Customer Address Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.customerAddressNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customers.customerAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.customers.help.customerAddressNeighborhood' | translate"
+            >Customer Address Neighborhood</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.customerAddressNeighborhood }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customers.customerTelephone"
+            [ngbTooltip]="'transporteApp.customers.help.customerTelephone' | translate"
+            >Customer Telephone</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.customerTelephone }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.customers.paymentTerm" [ngbTooltip]="'transporteApp.customers.help.paymentTerm' | translate"
+            >Payment Term</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customers.paymentTerm }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.customers.affiliates">Affiliates</span></dt>
+        <dd>
+          <div *ngIf="customers.affiliates">
+            <a [routerLink]="['/affiliates', customers.affiliates?.id, 'view']">{{ customers.affiliates?.branchName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.customers.cities">Cities</span></dt>
+        <dd>
+          <div *ngIf="customers.cities">
+            <a [routerLink]="['/cities', customers.cities?.id, 'view']">{{ customers.cities?.cityName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.customers.customersGroups">Customers Groups</span></dt>
+        <dd>
+          <div *ngIf="customers.customersGroups">
+            <a [routerLink]="['/customers-groups', customers.customersGroups?.id, 'view']">{{ customers.customersGroups?.groupName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customers', customers.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

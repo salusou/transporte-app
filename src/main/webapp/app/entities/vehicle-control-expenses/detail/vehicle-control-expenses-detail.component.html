@@ -1,0 +1,124 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleControlExpenses">
+      <h2 data-cy="vehicleControlExpensesDetailsHeading">
+        <span jhiTranslate="transporteApp.vehicleControlExpenses.detail.title">Vehicle Control Expenses</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleControlExpenses.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesDescription"
+            >Vehicle Control Expenses Description</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlExpenses.vehicleControlExpensesDescription }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesDriverType"
+            >Vehicle Control Expenses Driver Type</span
+          >
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.DriverType.' + vehicleControlExpenses.vehicleControlExpensesDriverType }}">{{
+            vehicleControlExpenses.vehicleControlExpensesDriverType
+          }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesPurchaseOrder"
+            >Vehicle Control Expenses Purchase Order</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlExpenses.vehicleControlExpensesPurchaseOrder }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesDueDate">Vehicle Control Expenses Due Date</span>
+        </dt>
+        <dd>
+          <span>{{ vehicleControlExpenses.vehicleControlExpensesDueDate | formatMediumDate }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesPaymentDate"
+            >Vehicle Control Expenses Payment Date</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlExpenses.vehicleControlExpensesPaymentDate | formatMediumDate }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesBillingTotalValue"
+            >Vehicle Control Expenses Billing Total Value</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlExpenses.vehicleControlExpensesBillingTotalValue }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlExpensesDriverCommission"
+            >Vehicle Control Expenses Driver Commission</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlExpenses.vehicleControlExpensesDriverCommission }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControls">Vehicle Controls</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlExpenses.vehicleControls">
+            <a [routerLink]="['/vehicle-controls', vehicleControlExpenses.vehicleControls?.id, 'view']">{{
+              vehicleControlExpenses.vehicleControls?.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlExpenses.suppliers">Suppliers</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlExpenses.suppliers">
+            <a [routerLink]="['/suppliers', vehicleControlExpenses.suppliers?.id, 'view']">{{
+              vehicleControlExpenses.suppliers?.supplierName
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlExpenses.origin">Origin</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlExpenses.origin">
+            <a [routerLink]="['/cities', vehicleControlExpenses.origin?.id, 'view']">{{ vehicleControlExpenses.origin?.cityName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlExpenses.destination">Destination</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlExpenses.destination">
+            <a [routerLink]="['/cities', vehicleControlExpenses.destination?.id, 'view']">{{
+              vehicleControlExpenses.destination?.cityName
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlExpenses.vehicleControlItem">Vehicle Control Item</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlExpenses.vehicleControlItem">
+            <a [routerLink]="['/vehicle-control-item', vehicleControlExpenses.vehicleControlItem?.id, 'view']">{{
+              vehicleControlExpenses.vehicleControlItem?.vehicleControlItemPlate
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-control-expenses', vehicleControlExpenses.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

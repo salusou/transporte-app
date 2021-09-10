@@ -1,0 +1,66 @@
+{
+  "name": "ParkingSector",
+  "fields": [
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "javadoc": "Active the sector to run\\n@type Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sectorName",
+      "fieldType": "String",
+      "javadoc": "Sector Name\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "parkingSpace",
+      "fieldType": "Integer",
+      "javadoc": "Parking Space the amount vacation available.\\n@type Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "parkingNumbersBegin",
+      "fieldType": "Integer",
+      "javadoc": "Number to range initial of the vacancies\\n@type Integer"
+    },
+    {
+      "fieldName": "parkingNumbersFinal",
+      "fieldType": "Integer",
+      "javadoc": "Number to range end of the vacancies\\n@type Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "parkingSectorSpace",
+      "otherEntityRelationshipName": "parkingSector",
+      "relationshipName": "parkingSectorSpace"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housingVehicleItem",
+      "otherEntityRelationshipName": "parkingSector",
+      "relationshipName": "housingVehicleItem"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "parking",
+      "otherEntityRelationshipName": "parkingSector",
+      "relationshipValidateRules": "required",
+      "relationshipName": "parking",
+      "otherEntityField": "parkingName"
+    }
+  ],
+  "javadoc": "Parking Sector\\nThis class is the table Parking Sector to show the space in parking.\\n@author Samuel Souza",
+  "entityTableName": "parking_sector",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053738"
+}

@@ -1,0 +1,99 @@
+{
+  "name": "VehicleControlItem",
+  "fields": [
+    {
+      "fieldName": "vehicleControlStatus",
+      "fieldType": "StatusType",
+      "fieldValues": "APPROVED,PENDENT,DISAPPROVED,CANCELLED",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleControlItemPlate",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleControlItemType",
+      "fieldType": "VehicleType",
+      "fieldValues": "MOTORBIKE,CAR,TRUCK,OTHER",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleControlItemFipeCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlItemYear",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlItemFuel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlItemBranch",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlItemModel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlItemFuelAbbreviation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlItemReferenceMonth",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlItemValue",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleControlItemShippingValue",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleControlItemCTE",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlItemCTEDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleInspections",
+      "otherEntityRelationshipName": "vehicleControls",
+      "relationshipName": "vehicleInspections"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlExpenses",
+      "otherEntityRelationshipName": "vehicleControlItem",
+      "relationshipName": "vehicleControlExpenses"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "vehicleControlItem",
+      "relationshipValidateRules": "required",
+      "relationshipName": "vehicleControls"
+    }
+  ],
+  "entityTableName": "vehicle_control_item",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053749"
+}

@@ -1,0 +1,156 @@
+<div>
+  <h2 id="page-heading" data-cy="CompaniesHeading">
+    <span jhiTranslate="transporteApp.companies.home.title">Companies</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.companies.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-companies"
+        [routerLink]="['/companies/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.companies.home.createLabel"> Create a new Companies </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="companies?.length === 0">
+    <span jhiTranslate="transporteApp.companies.home.notFound">No companies found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="companies && companies.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="companyName">
+            <span jhiTranslate="transporteApp.companies.companyName">Company Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tradeName">
+            <span jhiTranslate="transporteApp.companies.tradeName">Trade Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyNumber">
+            <span jhiTranslate="transporteApp.companies.companyNumber">Company Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="postalCode">
+            <span jhiTranslate="transporteApp.companies.postalCode">Postal Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyAddress">
+            <span jhiTranslate="transporteApp.companies.companyAddress">Company Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyAddressComplement">
+            <span jhiTranslate="transporteApp.companies.companyAddressComplement">Company Address Complement</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyAddressNumber">
+            <span jhiTranslate="transporteApp.companies.companyAddressNumber">Company Address Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyAddressNeighborhood">
+            <span jhiTranslate="transporteApp.companies.companyAddressNeighborhood">Company Address Neighborhood</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyTelephone">
+            <span jhiTranslate="transporteApp.companies.companyTelephone">Company Telephone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyEmail">
+            <span jhiTranslate="transporteApp.companies.companyEmail">Company Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="responsibleContact">
+            <span jhiTranslate="transporteApp.companies.responsibleContact">Responsible Contact</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cities.cityName">
+            <span jhiTranslate="transporteApp.companies.cities">Cities</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="stateProvinces.stateName">
+            <span jhiTranslate="transporteApp.companies.stateProvinces">State Provinces</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let companies of companies; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/companies', companies.id, 'view']">{{ companies.id }}</a>
+          </td>
+          <td>{{ companies.companyName }}</td>
+          <td>{{ companies.tradeName }}</td>
+          <td>{{ companies.companyNumber }}</td>
+          <td>{{ companies.postalCode }}</td>
+          <td>{{ companies.companyAddress }}</td>
+          <td>{{ companies.companyAddressComplement }}</td>
+          <td>{{ companies.companyAddressNumber }}</td>
+          <td>{{ companies.companyAddressNeighborhood }}</td>
+          <td>{{ companies.companyTelephone }}</td>
+          <td>{{ companies.companyEmail }}</td>
+          <td>{{ companies.responsibleContact }}</td>
+          <td>
+            <div *ngIf="companies.cities">
+              <a [routerLink]="['/cities', companies.cities?.id, 'view']">{{ companies.cities?.cityName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="companies.stateProvinces">
+              <a [routerLink]="['/state-provinces', companies.stateProvinces?.id, 'view']">{{ companies.stateProvinces?.stateName }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/companies', companies.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/companies', companies.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(companies)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="companies && companies.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

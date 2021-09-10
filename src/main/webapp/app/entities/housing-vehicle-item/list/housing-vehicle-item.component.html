@@ -1,0 +1,193 @@
+<div>
+  <h2 id="page-heading" data-cy="HousingVehicleItemHeading">
+    <span jhiTranslate="transporteApp.housingVehicleItem.home.title">Housing Vehicle Items</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.housingVehicleItem.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-housing-vehicle-item"
+        [routerLink]="['/housing-vehicle-item/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.housingVehicleItem.home.createLabel"> Create a new Housing Vehicle Item </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="housingVehicleItems?.length === 0">
+    <span jhiTranslate="transporteApp.housingVehicleItem.home.notFound">No housingVehicleItems found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="housingVehicleItems && housingVehicleItems.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="housingVehicleItemStatus">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemStatus">Housing Vehicle Item Status</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemPlate">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemPlate">Housing Vehicle Item Plate</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemType">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemType">Housing Vehicle Item Type</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemFipeCode">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFipeCode">Housing Vehicle Item Fipe Code</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemYear">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemYear">Housing Vehicle Item Year</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemFuel">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFuel">Housing Vehicle Item Fuel</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemBranch">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemBranch">Housing Vehicle Item Branch</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemModel">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemModel">Housing Vehicle Item Model</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemFuelAbbreviation">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFuelAbbreviation"
+              >Housing Vehicle Item Fuel Abbreviation</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemReferenceMonth">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemReferenceMonth"
+              >Housing Vehicle Item Reference Month</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemValue">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemValue">Housing Vehicle Item Value</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housingVehicleItemShippingValue">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemShippingValue">Housing Vehicle Item Shipping Value</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="housing.housingReceiptNumber">
+            <span jhiTranslate="transporteApp.housingVehicleItem.housing">Housing</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingSector.sectorName">
+            <span jhiTranslate="transporteApp.housingVehicleItem.parkingSector">Parking Sector</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="parkingSectorSpace.parkingNumber">
+            <span jhiTranslate="transporteApp.housingVehicleItem.parkingSectorSpace">Parking Sector Space</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let housingVehicleItem of housingVehicleItems; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/housing-vehicle-item', housingVehicleItem.id, 'view']">{{ housingVehicleItem.id }}</a>
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.StatusType.' + housingVehicleItem.housingVehicleItemStatus }}">
+            {{ housingVehicleItem.housingVehicleItemStatus }}
+          </td>
+          <td>{{ housingVehicleItem.housingVehicleItemPlate }}</td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleType.' + housingVehicleItem.housingVehicleItemType }}">
+            {{ housingVehicleItem.housingVehicleItemType }}
+          </td>
+          <td>{{ housingVehicleItem.housingVehicleItemFipeCode }}</td>
+          <td>{{ housingVehicleItem.housingVehicleItemYear }}</td>
+          <td>{{ housingVehicleItem.housingVehicleItemFuel }}</td>
+          <td>{{ housingVehicleItem.housingVehicleItemBranch }}</td>
+          <td>{{ housingVehicleItem.housingVehicleItemModel }}</td>
+          <td>{{ housingVehicleItem.housingVehicleItemFuelAbbreviation }}</td>
+          <td>{{ housingVehicleItem.housingVehicleItemReferenceMonth }}</td>
+          <td>{{ housingVehicleItem.housingVehicleItemValue }}</td>
+          <td>{{ housingVehicleItem.housingVehicleItemShippingValue }}</td>
+          <td>
+            <div *ngIf="housingVehicleItem.housing">
+              <a [routerLink]="['/housing', housingVehicleItem.housing?.id, 'view']">{{
+                housingVehicleItem.housing?.housingReceiptNumber
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housingVehicleItem.parkingSector">
+              <a [routerLink]="['/parking-sector', housingVehicleItem.parkingSector?.id, 'view']">{{
+                housingVehicleItem.parkingSector?.sectorName
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="housingVehicleItem.parkingSectorSpace">
+              <a [routerLink]="['/parking-sector-space', housingVehicleItem.parkingSectorSpace?.id, 'view']">{{
+                housingVehicleItem.parkingSectorSpace?.parkingNumber
+              }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/housing-vehicle-item', housingVehicleItem.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/housing-vehicle-item', housingVehicleItem.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(housingVehicleItem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="housingVehicleItems && housingVehicleItems.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "transporteApp": {
+    "fees": {
+      "home": {
+        "title": "Fees",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Fees",
+        "createOrEditLabel": "Criar ou editar Fees",
+        "notFound": "Nenhum Fees encontrado"
+      },
+      "created": "Um novo Fees foi criado com o identificador {{ param }}",
+      "updated": "Um Fees foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Fees foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Fees {{ id }}?"
+      },
+      "detail": {
+        "title": "Fees"
+      },
+      "id": "ID",
+      "feeDate": "Fee Date",
+      "feeDriverCommission": "Fee Driver Commission",
+      "feeFinancialCost": "Fee Financial Cost",
+      "feeTaxes": "Fee Taxes",
+      "feeDescriptions": "Fee Descriptions",
+      "vehicleControlBilling": "Vehicle Control Billing",
+      "affiliates": "Affiliates"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "transporteApp": {
+    "insurances": {
+      "home": {
+        "title": "Insurances",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Insurances",
+        "createOrEditLabel": "Criar ou editar Insurances",
+        "notFound": "Nenhum Insurances encontrado"
+      },
+      "created": "Um novo Insurances foi criado com o identificador {{ param }}",
+      "updated": "Um Insurances foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Insurances foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Insurances {{ id }}?"
+      },
+      "detail": {
+        "title": "Insurances"
+      },
+      "id": "ID",
+      "insurancesPercent": "Insurances Percent",
+      "affiliates": "Affiliates",
+      "toStateProvince": "To State Province",
+      "forStateProvince": "For State Province"
+    }
+  }
+}

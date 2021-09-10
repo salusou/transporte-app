@@ -1,0 +1,117 @@
+{
+  "name": "Cities",
+  "fields": [
+    {
+      "fieldName": "cityName",
+      "fieldType": "String",
+      "javadoc": "City Name. Example: São Paulo\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "companies",
+      "otherEntityRelationshipName": "cities",
+      "javadoc": "City of the Company\\n@type Cities",
+      "relationshipName": "companies"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "cities",
+      "relationshipName": "affiliates"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "customers",
+      "otherEntityRelationshipName": "cities",
+      "relationshipName": "customers"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "parking",
+      "otherEntityRelationshipName": "cities",
+      "relationshipName": "parking"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "suppliers",
+      "otherEntityRelationshipName": "cities",
+      "relationshipName": "suppliers"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "employees",
+      "otherEntityRelationshipName": "cities",
+      "relationshipName": "employees"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "origin",
+      "relationshipName": "originVehicleControls",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "destination",
+      "relationshipName": "destinationVehicleControls",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleLocationStatus",
+      "otherEntityRelationshipName": "cities",
+      "relationshipName": "vehicleLocationStatus"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlExpenses",
+      "otherEntityRelationshipName": "origin",
+      "relationshipName": "originVehicleControlExpenses",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlExpenses",
+      "otherEntityRelationshipName": "destination",
+      "relationshipName": "destinationVehicleControlExpenses",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housing",
+      "otherEntityRelationshipName": "cities",
+      "relationshipName": "housing"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "stateProvinces",
+      "otherEntityRelationshipName": "cities",
+      "relationshipValidateRules": "required",
+      "relationshipName": "stateProvinces",
+      "otherEntityField": "stateName"
+    }
+  ],
+  "javadoc": "Cities of the State Province.\\n@author Samuel Souza",
+  "entityTableName": "cities",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053722"
+}

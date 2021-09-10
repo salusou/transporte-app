@@ -1,0 +1,86 @@
+{
+  "name": "VehicleControlExpenses",
+  "fields": [
+    {
+      "fieldName": "vehicleControlExpensesDescription",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vehicleControlExpensesDriverType",
+      "fieldType": "DriverType",
+      "fieldValues": "EXTERNAL,INTERNAL"
+    },
+    {
+      "fieldName": "vehicleControlExpensesPurchaseOrder",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleControlExpensesDueDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "vehicleControlExpensesPaymentDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "vehicleControlExpensesBillingTotalValue",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "vehicleControlExpensesDriverCommission",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "vehicleControlExpenses",
+      "relationshipValidateRules": "required",
+      "relationshipName": "vehicleControls"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "suppliers",
+      "otherEntityRelationshipName": "vehicleControlExpenses",
+      "relationshipValidateRules": "required",
+      "relationshipName": "suppliers",
+      "otherEntityField": "supplierName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "originVehicleControlExpenses",
+      "relationshipValidateRules": "required",
+      "relationshipName": "origin",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "destinationVehicleControlExpenses",
+      "relationshipValidateRules": "required",
+      "relationshipName": "destination",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "vehicleControlItem",
+      "otherEntityRelationshipName": "vehicleControlExpenses",
+      "relationshipValidateRules": "required",
+      "relationshipName": "vehicleControlItem",
+      "otherEntityField": "vehicleControlItemPlate"
+    }
+  ],
+  "entityTableName": "vehicle_control_expenses",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053753"
+}

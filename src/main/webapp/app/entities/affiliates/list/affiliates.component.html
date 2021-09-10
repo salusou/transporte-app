@@ -1,0 +1,165 @@
+<div>
+  <h2 id="page-heading" data-cy="AffiliatesHeading">
+    <span jhiTranslate="transporteApp.affiliates.home.title">Affiliates</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.affiliates.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-affiliates"
+        [routerLink]="['/affiliates/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.affiliates.home.createLabel"> Create a new Affiliates </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="affiliates?.length === 0">
+    <span jhiTranslate="transporteApp.affiliates.home.notFound">No affiliates found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="affiliates && affiliates.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="branchName">
+            <span jhiTranslate="transporteApp.affiliates.branchName">Branch Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branchNumber">
+            <span jhiTranslate="transporteApp.affiliates.branchNumber">Branch Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="useSameCompanyAddress">
+            <span jhiTranslate="transporteApp.affiliates.useSameCompanyAddress">Use Same Company Address</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branchPostalCode">
+            <span jhiTranslate="transporteApp.affiliates.branchPostalCode">Branch Postal Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branchAddress">
+            <span jhiTranslate="transporteApp.affiliates.branchAddress">Branch Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branchAddressComplement">
+            <span jhiTranslate="transporteApp.affiliates.branchAddressComplement">Branch Address Complement</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branchAddressNumber">
+            <span jhiTranslate="transporteApp.affiliates.branchAddressNumber">Branch Address Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branchAddressNeighborhood">
+            <span jhiTranslate="transporteApp.affiliates.branchAddressNeighborhood">Branch Address Neighborhood</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branchTelephone">
+            <span jhiTranslate="transporteApp.affiliates.branchTelephone">Branch Telephone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branchEmail">
+            <span jhiTranslate="transporteApp.affiliates.branchEmail">Branch Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="responsibleContact">
+            <span jhiTranslate="transporteApp.affiliates.responsibleContact">Responsible Contact</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="stateProvinces.stateName">
+            <span jhiTranslate="transporteApp.affiliates.stateProvinces">State Provinces</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="cities.cityName">
+            <span jhiTranslate="transporteApp.affiliates.cities">Cities</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companies.companyName">
+            <span jhiTranslate="transporteApp.affiliates.companies">Companies</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let affiliates of affiliates; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/affiliates', affiliates.id, 'view']">{{ affiliates.id }}</a>
+          </td>
+          <td>{{ affiliates.branchName }}</td>
+          <td>{{ affiliates.branchNumber }}</td>
+          <td>{{ affiliates.useSameCompanyAddress }}</td>
+          <td>{{ affiliates.branchPostalCode }}</td>
+          <td>{{ affiliates.branchAddress }}</td>
+          <td>{{ affiliates.branchAddressComplement }}</td>
+          <td>{{ affiliates.branchAddressNumber }}</td>
+          <td>{{ affiliates.branchAddressNeighborhood }}</td>
+          <td>{{ affiliates.branchTelephone }}</td>
+          <td>{{ affiliates.branchEmail }}</td>
+          <td>{{ affiliates.responsibleContact }}</td>
+          <td>
+            <div *ngIf="affiliates.stateProvinces">
+              <a [routerLink]="['/state-provinces', affiliates.stateProvinces?.id, 'view']">{{ affiliates.stateProvinces?.stateName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="affiliates.cities">
+              <a [routerLink]="['/cities', affiliates.cities?.id, 'view']">{{ affiliates.cities?.cityName }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="affiliates.companies">
+              <a [routerLink]="['/companies', affiliates.companies?.id, 'view']">{{ affiliates.companies?.companyName }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/affiliates', affiliates.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/affiliates', affiliates.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(affiliates)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="affiliates && affiliates.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

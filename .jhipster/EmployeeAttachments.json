@@ -1,0 +1,50 @@
+{
+  "name": "EmployeeAttachments",
+  "fields": [
+    {
+      "fieldName": "attachImage",
+      "fieldType": "byte[]",
+      "javadoc": "Attach Image will only receive the file.\\n@type ImageBlob",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "attachUrl",
+      "fieldType": "String",
+      "javadoc": "Id generate in cloudinary.\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "attachDescription",
+      "fieldType": "String",
+      "javadoc": "description about the file attached.\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "attachedDate",
+      "fieldType": "ZonedDateTime",
+      "javadoc": "created date.\\n@type String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employees",
+      "otherEntityRelationshipName": "employeeAttachments",
+      "relationshipValidateRules": "required",
+      "relationshipName": "employees",
+      "otherEntityField": "employeeFullName"
+    }
+  ],
+  "javadoc": "Employee Attachments.\\nThis class list all employees attachments.\\n@author Samuel Souza",
+  "entityTableName": "employee_attachments",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053744"
+}

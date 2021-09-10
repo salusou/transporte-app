@@ -1,0 +1,110 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleInspectionsImagens">
+      <h2 data-cy="vehicleInspectionsImagensDetailsHeading">
+        <span jhiTranslate="transporteApp.vehicleInspectionsImagens.detail.title">Vehicle Inspections Imagens</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleInspectionsImagens.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensPositions"
+            >Vehicle Inspections Imagens Positions</span
+          >
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.InspectionPositions.' + vehicleInspectionsImagens.vehicleInspectionsImagensPositions }}">{{
+            vehicleInspectionsImagens.vehicleInspectionsImagensPositions
+          }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensStatus"
+            >Vehicle Inspections Imagens Status</span
+          >
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspectionsImagens.vehicleInspectionsImagensStatus }}">{{
+            vehicleInspectionsImagens.vehicleInspectionsImagensStatus
+          }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensObs">Vehicle Inspections Imagens Obs</span>
+        </dt>
+        <dd>
+          <span>{{ vehicleInspectionsImagens.vehicleInspectionsImagensObs }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensPhoto"
+            >Vehicle Inspections Imagens Photo</span
+          >
+        </dt>
+        <dd>
+          <div *ngIf="vehicleInspectionsImagens.vehicleInspectionsImagensPhoto">
+            <a
+              (click)="
+                openFile(
+                  vehicleInspectionsImagens.vehicleInspectionsImagensPhoto,
+                  vehicleInspectionsImagens.vehicleInspectionsImagensPhotoContentType
+                )
+              "
+            >
+              <img
+                [src]="
+                  'data:' +
+                  vehicleInspectionsImagens.vehicleInspectionsImagensPhotoContentType +
+                  ';base64,' +
+                  vehicleInspectionsImagens.vehicleInspectionsImagensPhoto
+                "
+                style="max-width: 100%"
+                alt="vehicleInspectionsImagens image"
+              />
+            </a>
+            {{ vehicleInspectionsImagens.vehicleInspectionsImagensPhotoContentType }},
+            {{ byteSize(vehicleInspectionsImagens.vehicleInspectionsImagensPhoto) }}
+          </div>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensPositionsX"
+            >Vehicle Inspections Imagens Positions X</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleInspectionsImagens.vehicleInspectionsImagensPositionsX }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensPositionsY"
+            >Vehicle Inspections Imagens Positions Y</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleInspectionsImagens.vehicleInspectionsImagensPositionsY }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspections">Vehicle Inspections</span></dt>
+        <dd>
+          <div *ngIf="vehicleInspectionsImagens.vehicleInspections">
+            <a [routerLink]="['/vehicle-inspections', vehicleInspectionsImagens.vehicleInspections?.id, 'view']">{{
+              vehicleInspectionsImagens.vehicleInspections?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-inspections-imagens', vehicleInspectionsImagens.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

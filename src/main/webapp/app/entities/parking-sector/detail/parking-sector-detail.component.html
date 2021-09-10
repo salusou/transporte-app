@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parkingSector">
+      <h2 data-cy="parkingSectorDetailsHeading"><span jhiTranslate="transporteApp.parkingSector.detail.title">Parking Sector</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ parkingSector.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.parkingSector.active" [ngbTooltip]="'transporteApp.parkingSector.help.active' | translate"
+            >Active</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parkingSector.active }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parkingSector.sectorName"
+            [ngbTooltip]="'transporteApp.parkingSector.help.sectorName' | translate"
+            >Sector Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parkingSector.sectorName }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parkingSector.parkingSpace"
+            [ngbTooltip]="'transporteApp.parkingSector.help.parkingSpace' | translate"
+            >Parking Space</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parkingSector.parkingSpace }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parkingSector.parkingNumbersBegin"
+            [ngbTooltip]="'transporteApp.parkingSector.help.parkingNumbersBegin' | translate"
+            >Parking Numbers Begin</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parkingSector.parkingNumbersBegin }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parkingSector.parkingNumbersFinal"
+            [ngbTooltip]="'transporteApp.parkingSector.help.parkingNumbersFinal' | translate"
+            >Parking Numbers Final</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parkingSector.parkingNumbersFinal }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.parkingSector.parking">Parking</span></dt>
+        <dd>
+          <div *ngIf="parkingSector.parking">
+            <a [routerLink]="['/parking', parkingSector.parking?.id, 'view']">{{ parkingSector.parking?.parkingName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parking-sector', parkingSector.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

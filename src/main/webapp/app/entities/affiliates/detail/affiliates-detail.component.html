@@ -1,0 +1,146 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="affiliates">
+      <h2 data-cy="affiliatesDetailsHeading"><span jhiTranslate="transporteApp.affiliates.detail.title">Affiliates</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ affiliates.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.affiliates.branchName">Branch Name</span></dt>
+        <dd>
+          <span>{{ affiliates.branchName }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.affiliates.branchNumber" [ngbTooltip]="'transporteApp.affiliates.help.branchNumber' | translate"
+            >Branch Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.branchNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.affiliates.useSameCompanyAddress"
+            [ngbTooltip]="'transporteApp.affiliates.help.useSameCompanyAddress' | translate"
+            >Use Same Company Address</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.useSameCompanyAddress }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.affiliates.branchPostalCode"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchPostalCode' | translate"
+            >Branch Postal Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.branchPostalCode }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.affiliates.branchAddress"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchAddress' | translate"
+            >Branch Address</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.branchAddress }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.affiliates.branchAddressComplement"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchAddressComplement' | translate"
+            >Branch Address Complement</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.branchAddressComplement }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.affiliates.branchAddressNumber"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchAddressNumber' | translate"
+            >Branch Address Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.branchAddressNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.affiliates.branchAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchAddressNeighborhood' | translate"
+            >Branch Address Neighborhood</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.branchAddressNeighborhood }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.affiliates.branchTelephone"
+            [ngbTooltip]="'transporteApp.affiliates.help.branchTelephone' | translate"
+            >Branch Telephone</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.branchTelephone }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.affiliates.branchEmail" [ngbTooltip]="'transporteApp.affiliates.help.branchEmail' | translate"
+            >Branch Email</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.branchEmail }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.affiliates.responsibleContact"
+            [ngbTooltip]="'transporteApp.affiliates.help.responsibleContact' | translate"
+            >Responsible Contact</span
+          >
+        </dt>
+        <dd>
+          <span>{{ affiliates.responsibleContact }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.affiliates.stateProvinces">State Provinces</span></dt>
+        <dd>
+          <div *ngIf="affiliates.stateProvinces">
+            <a [routerLink]="['/state-provinces', affiliates.stateProvinces?.id, 'view']">{{ affiliates.stateProvinces?.stateName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.affiliates.cities">Cities</span></dt>
+        <dd>
+          <div *ngIf="affiliates.cities">
+            <a [routerLink]="['/cities', affiliates.cities?.id, 'view']">{{ affiliates.cities?.cityName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.affiliates.companies">Companies</span></dt>
+        <dd>
+          <div *ngIf="affiliates.companies">
+            <a [routerLink]="['/companies', affiliates.companies?.id, 'view']">{{ affiliates.companies?.companyName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/affiliates', affiliates.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

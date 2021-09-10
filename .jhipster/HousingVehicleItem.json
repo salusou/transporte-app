@@ -1,0 +1,94 @@
+{
+  "name": "HousingVehicleItem",
+  "fields": [
+    {
+      "fieldName": "housingVehicleItemStatus",
+      "fieldType": "StatusType",
+      "fieldValues": "APPROVED,PENDENT,DISAPPROVED,CANCELLED",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "housingVehicleItemPlate",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "housingVehicleItemType",
+      "fieldType": "VehicleType",
+      "fieldValues": "MOTORBIKE,CAR,TRUCK,OTHER",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "housingVehicleItemFipeCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "housingVehicleItemYear",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "housingVehicleItemFuel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "housingVehicleItemBranch",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "housingVehicleItemModel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "housingVehicleItemFuelAbbreviation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "housingVehicleItemReferenceMonth",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "housingVehicleItemValue",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "housingVehicleItemShippingValue",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "housing",
+      "otherEntityRelationshipName": "housingVehicleItem",
+      "relationshipValidateRules": "required",
+      "relationshipName": "housing",
+      "otherEntityField": "housingReceiptNumber"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "parkingSector",
+      "otherEntityRelationshipName": "housingVehicleItem",
+      "relationshipName": "parkingSector",
+      "otherEntityField": "sectorName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "parkingSectorSpace",
+      "otherEntityRelationshipName": "housingVehicleItem",
+      "relationshipName": "parkingSectorSpace",
+      "otherEntityField": "parkingNumber"
+    }
+  ],
+  "entityTableName": "housing_vehicle_item",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053756"
+}

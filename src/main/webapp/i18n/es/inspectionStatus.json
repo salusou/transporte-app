@@ -1,0 +1,9 @@
+{
+  "transporteApp": {
+    "InspectionStatus": {
+      "null": "",
+      "ARRIVAL": "ARRIVAL",
+      "DEPARTURE": "DEPARTURE"
+    }
+  }
+}

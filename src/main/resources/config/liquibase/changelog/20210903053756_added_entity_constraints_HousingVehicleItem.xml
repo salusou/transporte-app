@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity HousingVehicleItem.
+    -->
+    <changeSet id="20210903053756-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="housing_id"
+                                 baseTableName="housing_vehicle_item"
+                                 constraintName="fk_housing_vehicle_item__housing_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="housing"/>
+
+        <addForeignKeyConstraint baseColumnNames="parking_sector_id"
+                                 baseTableName="housing_vehicle_item"
+                                 constraintName="fk_housing_vehicle_item__parking_sector_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parking_sector"/>
+
+        <addForeignKeyConstraint baseColumnNames="parking_sector_space_id"
+                                 baseTableName="housing_vehicle_item"
+                                 constraintName="fk_housing_vehicle_item__parking_sector_space_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="parking_sector_space"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,35 @@
+{
+  "transporteApp": {
+    "vehicleControlExpenses": {
+      "home": {
+        "title": "Vehicle Control Expenses",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Vehicle Control Expenses",
+        "createOrEditLabel": "Crear o editar Vehicle Control Expenses",
+        "notFound": "Ningún Vehicle Control Expenses encontrado"
+      },
+      "created": "Un nuevo Vehicle Control Expenses ha sido creado con el identificador {{ param }}",
+      "updated": "Un Vehicle Control Expenses ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Vehicle Control Expenses ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Vehicle Control Expenses {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Control Expenses"
+      },
+      "id": "ID",
+      "vehicleControlExpensesDescription": "Vehicle Control Expenses Description",
+      "vehicleControlExpensesDriverType": "Vehicle Control Expenses Driver Type",
+      "vehicleControlExpensesPurchaseOrder": "Vehicle Control Expenses Purchase Order",
+      "vehicleControlExpensesDueDate": "Vehicle Control Expenses Due Date",
+      "vehicleControlExpensesPaymentDate": "Vehicle Control Expenses Payment Date",
+      "vehicleControlExpensesBillingTotalValue": "Vehicle Control Expenses Billing Total Value",
+      "vehicleControlExpensesDriverCommission": "Vehicle Control Expenses Driver Commission",
+      "vehicleControls": "Vehicle Controls",
+      "suppliers": "Suppliers",
+      "origin": "Origin",
+      "destination": "Destination",
+      "vehicleControlItem": "Vehicle Control Item"
+    }
+  }
+}

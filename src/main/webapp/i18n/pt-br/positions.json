@@ -1,0 +1,26 @@
+{
+  "transporteApp": {
+    "positions": {
+      "home": {
+        "title": "Cargos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Cargo",
+        "createOrEditLabel": "Criar ou editar Cargo",
+        "notFound": "Nenhum Cargo encontrado"
+      },
+      "created": "Um novo Cargo foi criado com o identificador {{ param }}",
+      "updated": "Um Cargo foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Cargo foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir o Cargo {{ id }}?"
+      },
+      "detail": {
+        "title": "Cargo"
+      },
+      "id": "Código",
+      "positionName": "Nome do Cargo",
+      "employees": "Funcionários",
+      "affiliates": "Filial"
+    }
+  }
+}

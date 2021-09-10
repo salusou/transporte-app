@@ -1,0 +1,63 @@
+{
+  "name": "SupplierBanksInfo",
+  "fields": [
+    {
+      "fieldName": "supplierBankCode",
+      "fieldType": "Integer",
+      "javadoc": "Supplier Bank Code is the number of bank\\n@type Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "supplierBankName",
+      "fieldType": "String",
+      "javadoc": "Supplier Bank Name is the name of bank\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "supplierBankBranchCode",
+      "fieldType": "String",
+      "javadoc": "Supplier Bank Branch Code is the number of agency.\\n@type String"
+    },
+    {
+      "fieldName": "supplierBankAccountNumber",
+      "fieldType": "String",
+      "javadoc": "Supplier Bank Account Number.\\n@type String"
+    },
+    {
+      "fieldName": "supplierBankUserName",
+      "fieldType": "String",
+      "javadoc": "Supplier Bank Name.\\n@type String"
+    },
+    {
+      "fieldName": "supplierBankPixKey",
+      "fieldType": "String",
+      "javadoc": "Supplier Bank Pix .\\n@type String"
+    },
+    {
+      "fieldName": "supplierBankUserNumber",
+      "fieldType": "String",
+      "javadoc": "Supplier Bank User Number.\\n@type String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "suppliers",
+      "otherEntityRelationshipName": "supplierBanksInfo",
+      "relationshipValidateRules": "required",
+      "relationshipName": "suppliers",
+      "otherEntityField": "supplierName"
+    }
+  ],
+  "javadoc": "Supplier Banks Info\\nThis class are the list of the suppliers banks.\\n@author Samuel Souza",
+  "entityTableName": "supplier_banks_info",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053741"
+}

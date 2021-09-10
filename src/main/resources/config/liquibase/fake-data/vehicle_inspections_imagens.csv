@@ -1,0 +1,11 @@
+id;vehicle_inspections_imagens_positions;vehicle_inspections_imagens_status;vehicle_inspections_imagens_obs;vehicle_inspections_imagens_photo;vehicle_inspections_imagens_photo_content_type;vehicle_inspections_imagens_positions_x;vehicle_inspections_imagens_positions_y;vehicle_inspections_id
+1;LEFT_SIDE;BROKEN;bluetooth;../fake-data/blob/hipster.png;image/png;65230;64594;1
+2;FRONT;WITH;Congelado;../fake-data/blob/hipster.png;image/png;88267;99116;2
+3;FRONT;MASSAGED;Paradigm Agent Account;../fake-data/blob/hipster.png;image/png;24957;57010;3
+4;REAR;BORED;system;../fake-data/blob/hipster.png;image/png;94211;66754;4
+5;LEFT_DOOR_FRONT;WITH;Lindo;../fake-data/blob/hipster.png;image/png;9631;30399;5
+6;RIGHT_DOOR_REAR;ODOR;Bolívia Travessa synthesizing;../fake-data/blob/hipster.png;image/png;51386;26836;6
+7;RIGHT_DOOR_FRONT;CLEAN;Alagoas;../fake-data/blob/hipster.png;image/png;87169;75600;7
+8;LEFT_DOOR_FRONT;ODOR;Rodovia up;../fake-data/blob/hipster.png;image/png;88140;70847;8
+9;LEFT_DOOR_REAR;FULL;channels background haptic;../fake-data/blob/hipster.png;image/png;31090;71606;9
+10;RIGHT_DOOR_REAR;DIRTY;JSON;../fake-data/blob/hipster.png;image/png;58729;48361;10

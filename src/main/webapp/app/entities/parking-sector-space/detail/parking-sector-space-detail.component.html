@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parkingSectorSpace">
+      <h2 data-cy="parkingSectorSpaceDetailsHeading">
+        <span jhiTranslate="transporteApp.parkingSectorSpace.detail.title">Parking Sector Space</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ parkingSectorSpace.id }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.parkingSectorSpace.parkingNumber"
+            [ngbTooltip]="'transporteApp.parkingSectorSpace.help.parkingNumber' | translate"
+            >Parking Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ parkingSectorSpace.parkingNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.parkingSectorSpace.parkingStatus">Parking Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.ParkingSpaceStatus.' + parkingSectorSpace.parkingStatus }}">{{
+            parkingSectorSpace.parkingStatus
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.parkingSectorSpace.parkingEntryDate">Parking Entry Date</span></dt>
+        <dd>
+          <span>{{ parkingSectorSpace.parkingEntryDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.parkingSectorSpace.parkingDepartureDate">Parking Departure Date</span></dt>
+        <dd>
+          <span>{{ parkingSectorSpace.parkingDepartureDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.parkingSectorSpace.parkingHousingItemId">Parking Housing Item Id</span></dt>
+        <dd>
+          <span>{{ parkingSectorSpace.parkingHousingItemId }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.parkingSectorSpace.parkingSector">Parking Sector</span></dt>
+        <dd>
+          <div *ngIf="parkingSectorSpace.parkingSector">
+            <a [routerLink]="['/parking-sector', parkingSectorSpace.parkingSector?.id, 'view']">{{
+              parkingSectorSpace.parkingSector?.sectorName
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parking-sector-space', parkingSectorSpace.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

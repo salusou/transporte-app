@@ -1,0 +1,29 @@
+{
+  "transporteApp": {
+    "statusAttachments": {
+      "home": {
+        "title": "Status Attachments",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Status Attachments",
+        "createOrEditLabel": "Criar ou editar Status Attachments",
+        "notFound": "Nenhum Status Attachments encontrado"
+      },
+      "created": "Um novo Status Attachments foi criado com o identificador {{ param }}",
+      "updated": "Um Status Attachments foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Status Attachments foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Status Attachments {{ id }}?"
+      },
+      "detail": {
+        "title": "Status Attachments"
+      },
+      "id": "ID",
+      "statusName": "Status Name",
+      "statusDescriptions": "Status Descriptions",
+      "statusObs": "Status Obs",
+      "attachmentType": "Attachment Type",
+      "customerAttachments": "Customer Attachments",
+      "affiliates": "Affiliates"
+    }
+  }
+}

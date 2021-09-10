@@ -1,0 +1,67 @@
+{
+  "transporteApp": {
+    "vehicleInspections": {
+      "home": {
+        "title": "Vehicle Inspections",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Vehicle Inspections",
+        "createOrEditLabel": "Criar ou editar Vehicle Inspections",
+        "notFound": "Nenhum Vehicle Inspections encontrado"
+      },
+      "created": "Um novo Vehicle Inspections foi criado com o identificador {{ param }}",
+      "updated": "Um Vehicle Inspections foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Vehicle Inspections foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Vehicle Inspections {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Inspections"
+      },
+      "id": "ID",
+      "vehicleInspectionDate": "Vehicle Inspection Date",
+      "vehicleInspectionStatus": "Vehicle Inspection Status",
+      "vehicleInspectionModel": "Vehicle Inspection Model",
+      "vehicleInspectionLicensePlate": "Vehicle Inspection License Plate",
+      "vehicleInspectionKm": "Vehicle Inspection Km",
+      "vehicleInspectionLicenseYear": "Vehicle Inspection License Year",
+      "vehicleInspectionHasManual": "Vehicle Inspection Has Manual",
+      "vehicleInspectionHasExtraKey": "Vehicle Inspection Has Extra Key",
+      "vehicleInspectionHasStickers": "Vehicle Inspection Has Stickers",
+      "vehicleInspectionGas": "Vehicle Inspection Gas",
+      "vehicleInspectionRearView": "Vehicle Inspection Rear View",
+      "vehicleInspectionHorn": "Vehicle Inspection Horn",
+      "vehicleInspectionWindshieldWiper": "Vehicle Inspection Windshield Wiper",
+      "vehicleInspectionSquirt": "Vehicle Inspection Squirt",
+      "vehicleInspectionInternalLight": "Vehicle Inspection Internal Light",
+      "vehicleInspectionPanelLight": "Vehicle Inspection Panel Light",
+      "vehicleInspectionHighLight": "Vehicle Inspection High Light",
+      "vehicleInspectionLowLight": "Vehicle Inspection Low Light",
+      "vehicleInspectionTaillight": "Vehicle Inspection Taillight",
+      "vehicleInspectionIndicator": "Vehicle Inspection Indicator",
+      "vehicleInspectionBeacons": "Vehicle Inspection Beacons",
+      "vehicleInspectionBreakLight": "Vehicle Inspection Break Light",
+      "vehicleInspectionPlateLight": "Vehicle Inspection Plate Light",
+      "vehicleInspectionSpeedometer": "Vehicle Inspection Speedometer",
+      "vehicleInspectionTemperature": "Vehicle Inspection Temperature",
+      "vehicleInspectionTires": "Vehicle Inspection Tires",
+      "vehicleInspectionStep": "Vehicle Inspection Step",
+      "vehicleInspectionFireExtinguisher": "Vehicle Inspection Fire Extinguisher",
+      "vehicleInspectionSeatBelts": "Vehicle Inspection Seat Belts",
+      "vehicleInspectionMonkey": "Vehicle Inspection Monkey",
+      "vehicleInspectionTireIron": "Vehicle Inspection Tire Iron",
+      "vehicleInspectionRadiatorCap": "Vehicle Inspection Radiator Cap",
+      "vehicleInspectionTriangle": "Vehicle Inspection Triangle",
+      "vehicleInspectionServiceBrake": "Vehicle Inspection Service Brake",
+      "vehicleInspectionParkingBrake": "Vehicle Inspection Parking Brake",
+      "vehicleInspectionOilLeaks": "Vehicle Inspection Oil Leaks",
+      "vehicleInspectionGlassActuator": "Vehicle Inspection Glass Actuator",
+      "vehicleInspectionVehicleCleaning": "Vehicle Inspection Vehicle Cleaning",
+      "vehicleInspectionSeatState": "Vehicle Inspection Seat State",
+      "vehicleInspectionExhausts": "Vehicle Inspection Exhausts",
+      "vehicleInspectionsObs": "Vehicle Inspections Obs",
+      "vehicleInspectionsSignedUrl": "Vehicle Inspections Signed Url",
+      "vehicleInspectionsImagens": "Vehicle Inspections Imagens",
+      "vehicleControls": "Vehicle Controls"
+    }
+  }
+}

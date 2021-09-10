@@ -1,0 +1,52 @@
+{
+  "name": "Status",
+  "fields": [
+    {
+      "fieldName": "statusName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "screenType",
+      "fieldType": "ScreenType",
+      "fieldValues": "SUPPLIERS,VEHICLE_CONTROL,CUSTOMERS,HOUSING,QUOTATION,EMPLOYEE",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "statusDescriptions",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "status",
+      "relationshipName": "vehicleControls"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housing",
+      "otherEntityRelationshipName": "status",
+      "relationshipName": "housing"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "status",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    }
+  ],
+  "entityTableName": "status",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053736"
+}

@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="stateProvinces">
+      <h2 data-cy="stateProvincesDetailsHeading"><span jhiTranslate="transporteApp.stateProvinces.detail.title">State Provinces</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ stateProvinces.id }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.stateProvinces.stateName"
+            [ngbTooltip]="'transporteApp.stateProvinces.help.stateName' | translate"
+            >State Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ stateProvinces.stateName }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.stateProvinces.abbreviation"
+            [ngbTooltip]="'transporteApp.stateProvinces.help.abbreviation' | translate"
+            >Abbreviation</span
+          >
+        </dt>
+        <dd>
+          <span>{{ stateProvinces.abbreviation }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.stateProvinces.countries">Countries</span></dt>
+        <dd>
+          <div *ngIf="stateProvinces.countries">
+            <a [routerLink]="['/countries', stateProvinces.countries?.id, 'view']">{{ stateProvinces.countries?.countryName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/state-provinces', stateProvinces.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

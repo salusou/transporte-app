@@ -1,0 +1,11 @@
+{
+  "transporteApp": {
+    "VehicleType": {
+      "null": "",
+      "MOTORBIKE": "MOTORBIKE",
+      "CAR": "CAR",
+      "TRUCK": "TRUCK",
+      "OTHER": "OTHER"
+    }
+  }
+}

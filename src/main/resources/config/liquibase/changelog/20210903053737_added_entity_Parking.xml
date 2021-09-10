@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Parking.
+    -->
+    <changeSet id="20210903053737-1" author="jhipster">
+        <createTable tableName="parking" remarks="Parking\nThis class is the table parking.\n@author Samuel Souza">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="active" type="boolean" remarks="Release the parking to run.\n@type Boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="parking_name" type="varchar(255)" remarks="Parking Name\n@type String">
+                <constraints nullable="false" />
+            </column>
+            <column name="parking_trade_name" type="varchar(255)" remarks="Parking Trade Name\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_number" type="varchar(255)" remarks="Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_postal_code" type="varchar(9)" remarks="Postal code of address the matrix company.\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_address" type="varchar(255)" remarks="Branch Address.\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_address_complement" type="varchar(255)" remarks="Parking Address Complement.\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_address_number" type="integer" remarks="Number of address.\n@type Integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_address_neighborhood" type="varchar(255)" remarks="Neighborhood, District.\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_telephone" type="varchar(255)" remarks="Parking Contact Telephone\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_email" type="varchar(255)" remarks="Parking Contact Email\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="parking_contact_name" type="varchar(255)" remarks="Parking Contact Name\n@type String">
+                <constraints nullable="true" />
+            </column>
+            <column name="affiliates_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="cities_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20210903053737-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/parking.csv"
+                  separator=";"
+                  tableName="parking">
+            <column name="id" type="numeric"/>
+            <column name="active" type="boolean"/>
+            <column name="parking_name" type="string"/>
+            <column name="parking_trade_name" type="string"/>
+            <column name="parking_number" type="string"/>
+            <column name="parking_postal_code" type="string"/>
+            <column name="parking_address" type="string"/>
+            <column name="parking_address_complement" type="string"/>
+            <column name="parking_address_number" type="numeric"/>
+            <column name="parking_address_neighborhood" type="string"/>
+            <column name="parking_telephone" type="string"/>
+            <column name="parking_email" type="string"/>
+            <column name="parking_contact_name" type="string"/>
+            <column name="affiliates_id" type="numeric"/>
+            <column name="cities_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

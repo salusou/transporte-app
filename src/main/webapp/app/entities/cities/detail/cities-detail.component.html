@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="cities">
+      <h2 data-cy="citiesDetailsHeading"><span jhiTranslate="transporteApp.cities.detail.title">Cities</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ cities.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.cities.cityName" [ngbTooltip]="'transporteApp.cities.help.cityName' | translate"
+            >City Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ cities.cityName }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.cities.latitude">Latitude</span></dt>
+        <dd>
+          <span>{{ cities.latitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.cities.longitude">Longitude</span></dt>
+        <dd>
+          <span>{{ cities.longitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.cities.stateProvinces">State Provinces</span></dt>
+        <dd>
+          <div *ngIf="cities.stateProvinces">
+            <a [routerLink]="['/state-provinces', cities.stateProvinces?.id, 'view']">{{ cities.stateProvinces?.stateName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/cities', cities.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

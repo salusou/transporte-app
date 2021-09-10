@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Affiliates.
+    -->
+    <changeSet id="20210903053724-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="state_provinces_id"
+                                 baseTableName="affiliates"
+                                 constraintName="fk_affiliates__state_provinces_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="state_provinces"/>
+
+        <addForeignKeyConstraint baseColumnNames="cities_id"
+                                 baseTableName="affiliates"
+                                 constraintName="fk_affiliates__cities_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cities"/>
+
+        <addForeignKeyConstraint baseColumnNames="companies_id"
+                                 baseTableName="affiliates"
+                                 constraintName="fk_affiliates__companies_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="companies"/>
+    </changeSet>
+</databaseChangeLog>

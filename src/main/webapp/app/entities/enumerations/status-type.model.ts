@@ -1,0 +1,9 @@
+export enum StatusType {
+  APPROVED = 'APPROVED',
+
+  PENDENT = 'PENDENT',
+
+  DISAPPROVED = 'DISAPPROVED',
+
+  CANCELLED = 'CANCELLED',
+}

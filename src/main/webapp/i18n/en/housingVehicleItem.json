@@ -1,0 +1,38 @@
+{
+  "transporteApp": {
+    "housingVehicleItem": {
+      "home": {
+        "title": "Housing Vehicle Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Housing Vehicle Item",
+        "createOrEditLabel": "Create or edit a Housing Vehicle Item",
+        "notFound": "No Housing Vehicle Items found"
+      },
+      "created": "A new Housing Vehicle Item is created with identifier {{ param }}",
+      "updated": "A Housing Vehicle Item is updated with identifier {{ param }}",
+      "deleted": "A Housing Vehicle Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Housing Vehicle Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Housing Vehicle Item"
+      },
+      "id": "ID",
+      "housingVehicleItemStatus": "Housing Vehicle Item Status",
+      "housingVehicleItemPlate": "Housing Vehicle Item Plate",
+      "housingVehicleItemType": "Housing Vehicle Item Type",
+      "housingVehicleItemFipeCode": "Housing Vehicle Item Fipe Code",
+      "housingVehicleItemYear": "Housing Vehicle Item Year",
+      "housingVehicleItemFuel": "Housing Vehicle Item Fuel",
+      "housingVehicleItemBranch": "Housing Vehicle Item Branch",
+      "housingVehicleItemModel": "Housing Vehicle Item Model",
+      "housingVehicleItemFuelAbbreviation": "Housing Vehicle Item Fuel Abbreviation",
+      "housingVehicleItemReferenceMonth": "Housing Vehicle Item Reference Month",
+      "housingVehicleItemValue": "Housing Vehicle Item Value",
+      "housingVehicleItemShippingValue": "Housing Vehicle Item Shipping Value",
+      "housing": "Housing",
+      "parkingSector": "Parking Sector",
+      "parkingSectorSpace": "Parking Sector Space"
+    }
+  }
+}

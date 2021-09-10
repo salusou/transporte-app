@@ -1,0 +1,56 @@
+{
+  "transporteApp": {
+    "employees": {
+      "home": {
+        "title": "Employees",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Employees",
+        "createOrEditLabel": "Create or edit a Employees",
+        "notFound": "No Employees found"
+      },
+      "created": "A new Employees is created with identifier {{ param }}",
+      "updated": "A Employees is updated with identifier {{ param }}",
+      "deleted": "A Employees is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Employees {{ id }}?"
+      },
+      "detail": {
+        "title": "Employees"
+      },
+      "id": "ID",
+      "active": "Active",
+      "employeeFullName": "Employee Full Name",
+      "employeeEmail": "Employee Email",
+      "employeeIdentificationNumber": "Employee Identification Number",
+      "employeeNumber": "Employee Number",
+      "employeePostalCode": "Employee Postal Code",
+      "employeeAddress": "Employee Address",
+      "employeeAddressComplement": "Employee Address Complement",
+      "employeeAddressNumber": "Employee Address Number",
+      "employeeAddressNeighborhood": "Employee Address Neighborhood",
+      "employeeBirthday": "Employee Birthday",
+      "employeeAttachments": "Employee Attachments",
+      "employeeComponentsData": "Employee Components Data",
+      "vehicleControls": "Vehicle Controls",
+      "vehicleControlHistory": "Vehicle Control History",
+      "housing": "Housing",
+      "companies": "Companies",
+      "affiliates": "Affiliates",
+      "cities": "Cities",
+      "positions": "Positions",
+      "help": {
+        "active": "Employee Active. Check if employee is active\n@type Boolean",
+        "employeeFullName": "Employee Full Name.\n@type String",
+        "employeeEmail": "Employee E-mail\n@type String",
+        "employeeIdentificationNumber": "Employee Supplier Identification Number. Identidade.\n@type String",
+        "employeeNumber": "Employee Number. CPF.\n@type String",
+        "employeePostalCode": "Postal code employee.\n@type String",
+        "employeeAddress": "Branch Address.\n@type String",
+        "employeeAddressComplement": "Employee Address Complement.\n@type String",
+        "employeeAddressNumber": "Number of address.\n@type Integer",
+        "employeeAddressNeighborhood": "Neighborhood, District.\n@type String",
+        "employeeBirthday": "Employee Birthday.\n@type String"
+      }
+    }
+  }
+}

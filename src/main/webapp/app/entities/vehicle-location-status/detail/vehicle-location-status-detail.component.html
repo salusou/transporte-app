@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleLocationStatus">
+      <h2 data-cy="vehicleLocationStatusDetailsHeading">
+        <span jhiTranslate="transporteApp.vehicleLocationStatus.detail.title">Vehicle Location Status</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleLocationStatus.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleLocationStatus.vehicleLocationStatusDate">Vehicle Location Status Date</span></dt>
+        <dd>
+          <span>{{ vehicleLocationStatus.vehicleLocationStatusDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleLocationStatus.vehicleLocationStatusDescription"
+            >Vehicle Location Status Description</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleLocationStatus.vehicleLocationStatusDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleLocationStatus.vehicleControls">Vehicle Controls</span></dt>
+        <dd>
+          <div *ngIf="vehicleLocationStatus.vehicleControls">
+            <a [routerLink]="['/vehicle-controls', vehicleLocationStatus.vehicleControls?.id, 'view']">{{
+              vehicleLocationStatus.vehicleControls?.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleLocationStatus.cities">Cities</span></dt>
+        <dd>
+          <div *ngIf="vehicleLocationStatus.cities">
+            <a [routerLink]="['/cities', vehicleLocationStatus.cities?.id, 'view']">{{ vehicleLocationStatus.cities?.cityName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-location-status', vehicleLocationStatus.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

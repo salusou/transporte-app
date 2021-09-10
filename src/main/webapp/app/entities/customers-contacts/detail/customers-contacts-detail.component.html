@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customersContacts">
+      <h2 data-cy="customersContactsDetailsHeading">
+        <span jhiTranslate="transporteApp.customersContacts.detail.title">Customers Contacts</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customersContacts.id }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customersContacts.contactName"
+            [ngbTooltip]="'transporteApp.customersContacts.help.contactName' | translate"
+            >Contact Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customersContacts.contactName }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customersContacts.contactTelephone"
+            [ngbTooltip]="'transporteApp.customersContacts.help.contactTelephone' | translate"
+            >Contact Telephone</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customersContacts.contactTelephone }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.customersContacts.contactEmail"
+            [ngbTooltip]="'transporteApp.customersContacts.help.contactEmail' | translate"
+            >Contact Email</span
+          >
+        </dt>
+        <dd>
+          <span>{{ customersContacts.contactEmail }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.customersContacts.customers">Customers</span></dt>
+        <dd>
+          <div *ngIf="customersContacts.customers">
+            <a [routerLink]="['/customers', customersContacts.customers?.id, 'view']">{{ customersContacts.customers?.customerName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customers-contacts', customersContacts.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

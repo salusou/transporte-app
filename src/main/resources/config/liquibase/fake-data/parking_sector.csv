@@ -1,0 +1,11 @@
+id;active;sector_name;parking_space;parking_numbers_begin;parking_numbers_final;parking_id
+1;false;service-desk;57706;68049;49058;1
+2;false;deposit generate;98913;7649;59410;2
+3;true;hard Sapatos online;60027;4362;76150;3
+4;false;Usability grow withdrawal;23799;26204;92071;4
+5;false;Intranet killer;27590;74389;93078;5
+6;false;SMTP neural;77631;63917;14593;6
+7;false;Planner deposit;78730;76852;66034;7
+8;true;Travessa;67129;83386;70828;8
+9;true;Sabonete withdrawal open-source;59555;88972;48466;9
+10;true;Avenida;33644;98194;7266;10

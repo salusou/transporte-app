@@ -1,0 +1,245 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-customer-attachments-heading"
+        data-cy="CustomerAttachmentsCreateUpdateHeading"
+        jhiTranslate="transporteApp.customerAttachments.home.createOrEditLabel"
+      >
+        Create or edit a Customer Attachments
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.customerAttachments.attachImage"
+            for="field_attachImage"
+            [ngbTooltip]="'transporteApp.customerAttachments.help.attachImage' | translate"
+            >Attach Image</label
+          >
+          <div>
+            <img
+              [src]="'data:' + editForm.get('attachImageContentType')!.value + ';base64,' + editForm.get('attachImage')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('attachImage')!.value"
+              alt="customerAttachments image"
+            />
+            <div *ngIf="editForm.get('attachImage')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left"
+                >{{ editForm.get('attachImageContentType')!.value }}, {{ byteSize(editForm.get('attachImage')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('attachImage', 'attachImageContentType', 'file_attachImage')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_attachImage"
+              data-cy="attachImage"
+              (change)="setFileData($event, 'attachImage', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="attachImage"
+            id="field_attachImage"
+            data-cy="attachImage"
+            formControlName="attachImage"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="attachImageContentType"
+            id="field_attachImageContentType"
+            formControlName="attachImageContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.customerAttachments.attachUrl"
+            for="field_attachUrl"
+            [ngbTooltip]="'transporteApp.customerAttachments.help.attachUrl' | translate"
+            >Attach Url</label
+          >
+          <input type="text" class="form-control" name="attachUrl" id="field_attachUrl" data-cy="attachUrl" formControlName="attachUrl" />
+          <div *ngIf="editForm.get('attachUrl')!.invalid && (editForm.get('attachUrl')!.dirty || editForm.get('attachUrl')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('attachUrl')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.customerAttachments.attachDescription"
+            for="field_attachDescription"
+            [ngbTooltip]="'transporteApp.customerAttachments.help.attachDescription' | translate"
+            >Attach Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="attachDescription"
+            id="field_attachDescription"
+            data-cy="attachDescription"
+            formControlName="attachDescription"
+          />
+          <div
+            *ngIf="
+              editForm.get('attachDescription')!.invalid &&
+              (editForm.get('attachDescription')!.dirty || editForm.get('attachDescription')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('attachDescription')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.customerAttachments.attachedDate"
+            for="field_attachedDate"
+            [ngbTooltip]="'transporteApp.customerAttachments.help.attachedDate' | translate"
+            >Attached Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_attachedDate"
+              data-cy="attachedDate"
+              type="datetime-local"
+              class="form-control"
+              name="attachedDate"
+              formControlName="attachedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="editForm.get('attachedDate')!.invalid && (editForm.get('attachedDate')!.dirty || editForm.get('attachedDate')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('attachedDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('attachedDate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.customerAttachments.customers" for="field_customers"
+            >Customers</label
+          >
+          <select class="form-control" id="field_customers" data-cy="customers" name="customers" formControlName="customers">
+            <option *ngIf="!editForm.get('customers')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="customersOption.id === editForm.get('customers')!.value?.id ? editForm.get('customers')!.value : customersOption"
+              *ngFor="let customersOption of customersSharedCollection; trackBy: trackCustomersById"
+            >
+              {{ customersOption.customerName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['customers'])!.invalid && (editForm.get(['customers'])!.dirty || editForm.get(['customers'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['customers'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.customerAttachments.statusAttachments" for="field_statusAttachments"
+            >Status Attachments</label
+          >
+          <select
+            class="form-control"
+            id="field_statusAttachments"
+            data-cy="statusAttachments"
+            name="statusAttachments"
+            formControlName="statusAttachments"
+          >
+            <option *ngIf="!editForm.get('statusAttachments')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                statusAttachmentsOption.id === editForm.get('statusAttachments')!.value?.id
+                  ? editForm.get('statusAttachments')!.value
+                  : statusAttachmentsOption
+              "
+              *ngFor="let statusAttachmentsOption of statusAttachmentsSharedCollection; trackBy: trackStatusAttachmentsById"
+            >
+              {{ statusAttachmentsOption.statusName }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['statusAttachments'])!.invalid &&
+            (editForm.get(['statusAttachments'])!.dirty || editForm.get(['statusAttachments'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['statusAttachments'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleControlItem">
+      <h2 data-cy="vehicleControlItemDetailsHeading">
+        <span jhiTranslate="transporteApp.vehicleControlItem.detail.title">Vehicle Control Item</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlStatus">Vehicle Control Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.StatusType.' + vehicleControlItem.vehicleControlStatus }}">{{
+            vehicleControlItem.vehicleControlStatus
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemPlate">Vehicle Control Item Plate</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemPlate }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemType">Vehicle Control Item Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleType.' + vehicleControlItem.vehicleControlItemType }}">{{
+            vehicleControlItem.vehicleControlItemType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemFipeCode">Vehicle Control Item Fipe Code</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemFipeCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemYear">Vehicle Control Item Year</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemFuel">Vehicle Control Item Fuel</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemFuel }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemBranch">Vehicle Control Item Branch</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemBranch }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemModel">Vehicle Control Item Model</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemModel }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemFuelAbbreviation"
+            >Vehicle Control Item Fuel Abbreviation</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemFuelAbbreviation }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemReferenceMonth">Vehicle Control Item Reference Month</span>
+        </dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemReferenceMonth }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemValue">Vehicle Control Item Value</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemValue }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemShippingValue">Vehicle Control Item Shipping Value</span>
+        </dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemShippingValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemCTE">Vehicle Control Item CTE</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemCTE }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControlItemCTEDate">Vehicle Control Item CTE Date</span></dt>
+        <dd>
+          <span>{{ vehicleControlItem.vehicleControlItemCTEDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlItem.vehicleControls">Vehicle Controls</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlItem.vehicleControls">
+            <a [routerLink]="['/vehicle-controls', vehicleControlItem.vehicleControls?.id, 'view']">{{
+              vehicleControlItem.vehicleControls?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-control-item', vehicleControlItem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

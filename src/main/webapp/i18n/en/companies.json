@@ -1,0 +1,51 @@
+{
+  "transporteApp": {
+    "companies": {
+      "home": {
+        "title": "Companies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Companies",
+        "createOrEditLabel": "Create or edit a Companies",
+        "notFound": "No Companies found"
+      },
+      "created": "A new Companies is created with identifier {{ param }}",
+      "updated": "A Companies is updated with identifier {{ param }}",
+      "deleted": "A Companies is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Companies {{ id }}?"
+      },
+      "detail": {
+        "title": "Companies"
+      },
+      "id": "ID",
+      "companyName": "Company Name",
+      "tradeName": "Trade Name",
+      "companyNumber": "Company Number",
+      "postalCode": "Postal Code",
+      "companyAddress": "Company Address",
+      "companyAddressComplement": "Company Address Complement",
+      "companyAddressNumber": "Company Address Number",
+      "companyAddressNeighborhood": "Company Address Neighborhood",
+      "companyTelephone": "Company Telephone",
+      "companyEmail": "Company Email",
+      "responsibleContact": "Responsible Contact",
+      "affiliates": "Affiliates",
+      "employees": "Employees",
+      "cities": "Cities",
+      "stateProvinces": "State Provinces",
+      "help": {
+        "companyName": "Matrix Companies Name\n@type String",
+        "tradeName": "TradName\n@type String",
+        "companyNumber": "Company Number is like a CNPJ, EIN\n@type String",
+        "postalCode": "Postal code of address the matrix company.\n@type String",
+        "companyAddress": "Company Address\n@type String",
+        "companyAddressComplement": "Company Address Complement.\n@type String",
+        "companyAddressNumber": "Number of address.\n@type Integer",
+        "companyAddressNeighborhood": "Neighborhood, District.\n@type String",
+        "companyTelephone": "Phone of company\n@type String",
+        "companyEmail": "E-mail of the company\n@type String",
+        "responsibleContact": "Responsible Contact to call or send e-mail\n@type String"
+      }
+    }
+  }
+}

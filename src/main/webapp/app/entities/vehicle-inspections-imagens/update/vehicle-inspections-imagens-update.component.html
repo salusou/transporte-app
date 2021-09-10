@@ -1,0 +1,354 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vehicle-inspections-imagens-heading"
+        data-cy="VehicleInspectionsImagensCreateUpdateHeading"
+        jhiTranslate="transporteApp.vehicleInspectionsImagens.home.createOrEditLabel"
+      >
+        Create or edit a Vehicle Inspections Imagens
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensPositions"
+            for="field_vehicleInspectionsImagensPositions"
+            >Vehicle Inspections Imagens Positions</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionsImagensPositions"
+            formControlName="vehicleInspectionsImagensPositions"
+            id="field_vehicleInspectionsImagensPositions"
+            data-cy="vehicleInspectionsImagensPositions"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.InspectionPositions.null' | translate }}</option>
+            <option value="FRONT">{{ 'transporteApp.InspectionPositions.FRONT' | translate }}</option>
+            <option value="REAR">{{ 'transporteApp.InspectionPositions.REAR' | translate }}</option>
+            <option value="LEFT_DOOR_FRONT">{{ 'transporteApp.InspectionPositions.LEFT_DOOR_FRONT' | translate }}</option>
+            <option value="LEFT_DOOR_REAR">{{ 'transporteApp.InspectionPositions.LEFT_DOOR_REAR' | translate }}</option>
+            <option value="RIGHT_DOOR_FRONT">{{ 'transporteApp.InspectionPositions.RIGHT_DOOR_FRONT' | translate }}</option>
+            <option value="RIGHT_DOOR_REAR">{{ 'transporteApp.InspectionPositions.RIGHT_DOOR_REAR' | translate }}</option>
+            <option value="LEFT_SIDE">{{ 'transporteApp.InspectionPositions.LEFT_SIDE' | translate }}</option>
+            <option value="RIGHT_SIDE">{{ 'transporteApp.InspectionPositions.RIGHT_SIDE' | translate }}</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionsImagensPositions')!.invalid &&
+              (editForm.get('vehicleInspectionsImagensPositions')!.dirty || editForm.get('vehicleInspectionsImagensPositions')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionsImagensPositions')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensStatus"
+            for="field_vehicleInspectionsImagensStatus"
+            >Vehicle Inspections Imagens Status</label
+          >
+          <select
+            class="form-control"
+            name="vehicleInspectionsImagensStatus"
+            formControlName="vehicleInspectionsImagensStatus"
+            id="field_vehicleInspectionsImagensStatus"
+            data-cy="vehicleInspectionsImagensStatus"
+          >
+            <option [ngValue]="null">{{ 'transporteApp.VehicleStatus.null' | translate }}</option>
+            <option value="DIRTY">{{ 'transporteApp.VehicleStatus.DIRTY' | translate }}</option>
+            <option value="CLEAN">{{ 'transporteApp.VehicleStatus.CLEAN' | translate }}</option>
+            <option value="SCRATCHED">{{ 'transporteApp.VehicleStatus.SCRATCHED' | translate }}</option>
+            <option value="DAMAGED">{{ 'transporteApp.VehicleStatus.DAMAGED' | translate }}</option>
+            <option value="MASSAGED">{{ 'transporteApp.VehicleStatus.MASSAGED' | translate }}</option>
+            <option value="BROKEN">{{ 'transporteApp.VehicleStatus.BROKEN' | translate }}</option>
+            <option value="WITH">{{ 'transporteApp.VehicleStatus.WITH' | translate }}</option>
+            <option value="ODOR">{{ 'transporteApp.VehicleStatus.ODOR' | translate }}</option>
+            <option value="NORMAL">{{ 'transporteApp.VehicleStatus.NORMAL' | translate }}</option>
+            <option value="NEW">{{ 'transporteApp.VehicleStatus.NEW' | translate }}</option>
+            <option value="OLD">{{ 'transporteApp.VehicleStatus.OLD' | translate }}</option>
+            <option value="BORED">{{ 'transporteApp.VehicleStatus.BORED' | translate }}</option>
+            <option value="FULL">{{ 'transporteApp.VehicleStatus.FULL' | translate }}</option>
+            <option value="LEAKING">{{ 'transporteApp.VehicleStatus.LEAKING' | translate }}</option>
+            <option value="HAVE">{{ 'transporteApp.VehicleStatus.HAVE' | translate }}</option>
+            <option value="NO_HAVE">{{ 'transporteApp.VehicleStatus.NO_HAVE' | translate }}</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionsImagensStatus')!.invalid &&
+              (editForm.get('vehicleInspectionsImagensStatus')!.dirty || editForm.get('vehicleInspectionsImagensStatus')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionsImagensStatus')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensObs"
+            for="field_vehicleInspectionsImagensObs"
+            >Vehicle Inspections Imagens Obs</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleInspectionsImagensObs"
+            id="field_vehicleInspectionsImagensObs"
+            data-cy="vehicleInspectionsImagensObs"
+            formControlName="vehicleInspectionsImagensObs"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionsImagensObs')!.invalid &&
+              (editForm.get('vehicleInspectionsImagensObs')!.dirty || editForm.get('vehicleInspectionsImagensObs')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionsImagensObs')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 500 }"
+            >
+              This field cannot be longer than 500 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensPhoto"
+            for="field_vehicleInspectionsImagensPhoto"
+            >Vehicle Inspections Imagens Photo</label
+          >
+          <div>
+            <img
+              [src]="
+                'data:' +
+                editForm.get('vehicleInspectionsImagensPhotoContentType')!.value +
+                ';base64,' +
+                editForm.get('vehicleInspectionsImagensPhoto')!.value
+              "
+              style="max-height: 100px"
+              *ngIf="editForm.get('vehicleInspectionsImagensPhoto')!.value"
+              alt="vehicleInspectionsImagens image"
+            />
+            <div *ngIf="editForm.get('vehicleInspectionsImagensPhoto')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left"
+                >{{ editForm.get('vehicleInspectionsImagensPhotoContentType')!.value }},
+                {{ byteSize(editForm.get('vehicleInspectionsImagensPhoto')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="
+                  clearInputImage(
+                    'vehicleInspectionsImagensPhoto',
+                    'vehicleInspectionsImagensPhotoContentType',
+                    'file_vehicleInspectionsImagensPhoto'
+                  )
+                "
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_vehicleInspectionsImagensPhoto"
+              data-cy="vehicleInspectionsImagensPhoto"
+              (change)="setFileData($event, 'vehicleInspectionsImagensPhoto', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="vehicleInspectionsImagensPhoto"
+            id="field_vehicleInspectionsImagensPhoto"
+            data-cy="vehicleInspectionsImagensPhoto"
+            formControlName="vehicleInspectionsImagensPhoto"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="vehicleInspectionsImagensPhotoContentType"
+            id="field_vehicleInspectionsImagensPhotoContentType"
+            formControlName="vehicleInspectionsImagensPhotoContentType"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionsImagensPhoto')!.invalid &&
+              (editForm.get('vehicleInspectionsImagensPhoto')!.dirty || editForm.get('vehicleInspectionsImagensPhoto')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionsImagensPhoto')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensPositionsX"
+            for="field_vehicleInspectionsImagensPositionsX"
+            >Vehicle Inspections Imagens Positions X</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vehicleInspectionsImagensPositionsX"
+            id="field_vehicleInspectionsImagensPositionsX"
+            data-cy="vehicleInspectionsImagensPositionsX"
+            formControlName="vehicleInspectionsImagensPositionsX"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionsImagensPositionsX')!.invalid &&
+              (editForm.get('vehicleInspectionsImagensPositionsX')!.dirty || editForm.get('vehicleInspectionsImagensPositionsX')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionsImagensPositionsX')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('vehicleInspectionsImagensPositionsX')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspectionsImagensPositionsY"
+            for="field_vehicleInspectionsImagensPositionsY"
+            >Vehicle Inspections Imagens Positions Y</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="vehicleInspectionsImagensPositionsY"
+            id="field_vehicleInspectionsImagensPositionsY"
+            data-cy="vehicleInspectionsImagensPositionsY"
+            formControlName="vehicleInspectionsImagensPositionsY"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleInspectionsImagensPositionsY')!.invalid &&
+              (editForm.get('vehicleInspectionsImagensPositionsY')!.dirty || editForm.get('vehicleInspectionsImagensPositionsY')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleInspectionsImagensPositionsY')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('vehicleInspectionsImagensPositionsY')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleInspectionsImagens.vehicleInspections"
+            for="field_vehicleInspections"
+            >Vehicle Inspections</label
+          >
+          <select
+            class="form-control"
+            id="field_vehicleInspections"
+            data-cy="vehicleInspections"
+            name="vehicleInspections"
+            formControlName="vehicleInspections"
+          >
+            <option *ngIf="!editForm.get('vehicleInspections')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                vehicleInspectionsOption.id === editForm.get('vehicleInspections')!.value?.id
+                  ? editForm.get('vehicleInspections')!.value
+                  : vehicleInspectionsOption
+              "
+              *ngFor="let vehicleInspectionsOption of vehicleInspectionsSharedCollection; trackBy: trackVehicleInspectionsById"
+            >
+              {{ vehicleInspectionsOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['vehicleInspections'])!.invalid &&
+            (editForm.get(['vehicleInspections'])!.dirty || editForm.get(['vehicleInspections'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['vehicleInspections'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

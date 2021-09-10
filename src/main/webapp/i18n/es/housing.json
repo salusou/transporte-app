@@ -1,0 +1,38 @@
+{
+  "transporteApp": {
+    "housing": {
+      "home": {
+        "title": "Housings",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Housing",
+        "createOrEditLabel": "Crear o editar Housing",
+        "notFound": "Ningún Housings encontrado"
+      },
+      "created": "Un nuevo Housing ha sido creado con el identificador {{ param }}",
+      "updated": "Un Housing ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Housing ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Housing {{ id }}?"
+      },
+      "detail": {
+        "title": "Housing"
+      },
+      "id": "ID",
+      "housingDate": "Housing Date",
+      "housingEntranceDate": "Housing Entrance Date",
+      "housingExit": "Housing Exit",
+      "housingReceiptNumber": "Housing Receipt Number",
+      "housingDailyPrice": "Housing Daily Price",
+      "housingDescription": "Housing Description",
+      "housingVehicleItem": "Housing Vehicle Item",
+      "affiliates": "Affiliates",
+      "status": "Status",
+      "customers": "Customers",
+      "employees": "Employees",
+      "parking": "Parking",
+      "costCenter": "Cost Center",
+      "suppliers": "Suppliers",
+      "cities": "Cities"
+    }
+  }
+}

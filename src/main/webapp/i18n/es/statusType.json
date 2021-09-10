@@ -1,0 +1,11 @@
+{
+  "transporteApp": {
+    "StatusType": {
+      "null": "",
+      "APPROVED": "APPROVED",
+      "PENDENT": "PENDENT",
+      "DISAPPROVED": "DISAPPROVED",
+      "CANCELLED": "CANCELLED"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+export enum FuelLevel {
+  RESERVE = 'RESERVE',
+
+  LITTLE = 'LITTLE',
+
+  MEDIUM = 'MEDIUM',
+
+  ABOVE_AVERAGE = 'ABOVE_AVERAGE',
+
+  COMPLETE = 'COMPLETE',
+}

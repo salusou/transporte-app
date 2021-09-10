@@ -1,0 +1,183 @@
+<div>
+  <h2 id="page-heading" data-cy="VehicleControlBillingHeading">
+    <span jhiTranslate="transporteApp.vehicleControlBilling.home.title">Vehicle Control Billings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleControlBilling.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vehicle-control-billing"
+        [routerLink]="['/vehicle-control-billing/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleControlBilling.home.createLabel"> Create a new Vehicle Control Billing </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="vehicleControlBillings?.length === 0">
+    <span jhiTranslate="transporteApp.vehicleControlBilling.home.notFound">No vehicleControlBillings found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="vehicleControlBillings && vehicleControlBillings.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="vehicleControlBillingDate">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingDate">Vehicle Control Billing Date</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingExpirationDate">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingExpirationDate"
+              >Vehicle Control Billing Expiration Date</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingPaymentDate">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingPaymentDate"
+              >Vehicle Control Billing Payment Date</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingSellerCommission">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingSellerCommission"
+              >Vehicle Control Billing Seller Commission</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingDriverCommission">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingDriverCommission"
+              >Vehicle Control Billing Driver Commission</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingAmount">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingAmount">Vehicle Control Billing Amount</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingTotalValue">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingTotalValue"
+              >Vehicle Control Billing Total Value</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingInsuranceDiscount">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingInsuranceDiscount"
+              >Vehicle Control Billing Insurance Discount</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingCustomerBank">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingCustomerBank"
+              >Vehicle Control Billing Customer Bank</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingAnticipate">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingAnticipate"
+              >Vehicle Control Billing Anticipate</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControlBillingManifest">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControlBillingManifest">Vehicle Control Billing Manifest</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControls.id">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.vehicleControls">Vehicle Controls</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="fees.id">
+            <span jhiTranslate="transporteApp.vehicleControlBilling.fees">Fees</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicleControlBilling of vehicleControlBillings; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/vehicle-control-billing', vehicleControlBilling.id, 'view']">{{ vehicleControlBilling.id }}</a>
+          </td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingDate | formatMediumDate }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingExpirationDate | formatMediumDate }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingPaymentDate | formatMediumDate }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingSellerCommission }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingDriverCommission }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingAmount }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingTotalValue }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingInsuranceDiscount }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingCustomerBank }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingAnticipate }}</td>
+          <td>{{ vehicleControlBilling.vehicleControlBillingManifest }}</td>
+          <td>
+            <div *ngIf="vehicleControlBilling.vehicleControls">
+              <a [routerLink]="['/vehicle-controls', vehicleControlBilling.vehicleControls?.id, 'view']">{{
+                vehicleControlBilling.vehicleControls?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="vehicleControlBilling.fees">
+              <a [routerLink]="['/fees', vehicleControlBilling.fees?.id, 'view']">{{ vehicleControlBilling.fees?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-control-billing', vehicleControlBilling.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-control-billing', vehicleControlBilling.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(vehicleControlBilling)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="vehicleControlBillings && vehicleControlBillings.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

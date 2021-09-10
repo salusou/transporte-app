@@ -1,0 +1,181 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vehicle-control-history-heading"
+        data-cy="VehicleControlHistoryCreateUpdateHeading"
+        jhiTranslate="transporteApp.vehicleControlHistory.home.createOrEditLabel"
+      >
+        Create or edit a Vehicle Control History
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlHistory.vehicleControlHistoryDate"
+            for="field_vehicleControlHistoryDate"
+            >Vehicle Control History Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_vehicleControlHistoryDate"
+              data-cy="vehicleControlHistoryDate"
+              type="datetime-local"
+              class="form-control"
+              name="vehicleControlHistoryDate"
+              formControlName="vehicleControlHistoryDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('vehicleControlHistoryDate')!.invalid &&
+              (editForm.get('vehicleControlHistoryDate')!.dirty || editForm.get('vehicleControlHistoryDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleControlHistoryDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('vehicleControlHistoryDate')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="transporteApp.vehicleControlHistory.vehicleControlHistoryDescription"
+            for="field_vehicleControlHistoryDescription"
+            >Vehicle Control History Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleControlHistoryDescription"
+            id="field_vehicleControlHistoryDescription"
+            data-cy="vehicleControlHistoryDescription"
+            formControlName="vehicleControlHistoryDescription"
+          />
+          <div
+            *ngIf="
+              editForm.get('vehicleControlHistoryDescription')!.invalid &&
+              (editForm.get('vehicleControlHistoryDescription')!.dirty || editForm.get('vehicleControlHistoryDescription')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleControlHistoryDescription')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('vehicleControlHistoryDescription')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 500 }"
+            >
+              This field cannot be longer than 500 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControlHistory.vehicleControls" for="field_vehicleControls"
+            >Vehicle Controls</label
+          >
+          <select
+            class="form-control"
+            id="field_vehicleControls"
+            data-cy="vehicleControls"
+            name="vehicleControls"
+            formControlName="vehicleControls"
+          >
+            <option *ngIf="!editForm.get('vehicleControls')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="
+                vehicleControlsOption.id === editForm.get('vehicleControls')!.value?.id
+                  ? editForm.get('vehicleControls')!.value
+                  : vehicleControlsOption
+              "
+              *ngFor="let vehicleControlsOption of vehicleControlsSharedCollection; trackBy: trackVehicleControlsById"
+            >
+              {{ vehicleControlsOption.id }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['vehicleControls'])!.invalid &&
+            (editForm.get(['vehicleControls'])!.dirty || editForm.get(['vehicleControls'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['vehicleControls'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControlHistory.employees" for="field_employees"
+            >Employees</label
+          >
+          <select class="form-control" id="field_employees" data-cy="employees" name="employees" formControlName="employees">
+            <option *ngIf="!editForm.get('employees')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="employeesOption.id === editForm.get('employees')!.value?.id ? editForm.get('employees')!.value : employeesOption"
+              *ngFor="let employeesOption of employeesSharedCollection; trackBy: trackEmployeesById"
+            >
+              {{ employeesOption.employeeFullName }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['employees'])!.invalid && (editForm.get(['employees'])!.dirty || editForm.get(['employees'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['employees'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleControlHistory">
+      <h2 data-cy="vehicleControlHistoryDetailsHeading">
+        <span jhiTranslate="transporteApp.vehicleControlHistory.detail.title">Vehicle Control History</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleControlHistory.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlHistory.vehicleControlHistoryDate">Vehicle Control History Date</span></dt>
+        <dd>
+          <span>{{ vehicleControlHistory.vehicleControlHistoryDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleControlHistory.vehicleControlHistoryDescription"
+            >Vehicle Control History Description</span
+          >
+        </dt>
+        <dd>
+          <span>{{ vehicleControlHistory.vehicleControlHistoryDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlHistory.vehicleControls">Vehicle Controls</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlHistory.vehicleControls">
+            <a [routerLink]="['/vehicle-controls', vehicleControlHistory.vehicleControls?.id, 'view']">{{
+              vehicleControlHistory.vehicleControls?.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleControlHistory.employees">Employees</span></dt>
+        <dd>
+          <div *ngIf="vehicleControlHistory.employees">
+            <a [routerLink]="['/employees', vehicleControlHistory.employees?.id, 'view']">{{
+              vehicleControlHistory.employees?.employeeFullName
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-control-history', vehicleControlHistory.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

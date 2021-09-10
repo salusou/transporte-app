@@ -1,0 +1,27 @@
+{
+  "transporteApp": {
+    "vehicleLocationStatus": {
+      "home": {
+        "title": "Vehicle Location Statuses",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Vehicle Location Status",
+        "createOrEditLabel": "Criar ou editar Vehicle Location Status",
+        "notFound": "Nenhum Vehicle Location Status encontrado"
+      },
+      "created": "Um novo Vehicle Location Status foi criado com o identificador {{ param }}",
+      "updated": "Um Vehicle Location Status foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Vehicle Location Status foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Vehicle Location Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Location Status"
+      },
+      "id": "ID",
+      "vehicleLocationStatusDate": "Vehicle Location Status Date",
+      "vehicleLocationStatusDescription": "Vehicle Location Status Description",
+      "vehicleControls": "Vehicle Controls",
+      "cities": "Cities"
+    }
+  }
+}

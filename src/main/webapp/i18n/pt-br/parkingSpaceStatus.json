@@ -1,0 +1,11 @@
+{
+  "transporteApp": {
+    "ParkingSpaceStatus": {
+      "null": "",
+      "Free": "Free",
+      "Occupied": "Occupied",
+      "Disabled": "Disabled",
+      "Maintenance": "Maintenance"
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "name": "Employees",
+  "fields": [
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean",
+      "javadoc": "Employee Active. Check if employee is active\\n@type Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "employeeFullName",
+      "fieldType": "String",
+      "javadoc": "Employee Full Name.\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "employeeEmail",
+      "fieldType": "String",
+      "javadoc": "Employee E-mail\\n@type String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "employeeIdentificationNumber",
+      "fieldType": "String",
+      "javadoc": "Employee Supplier Identification Number. Identidade.\\n@type String"
+    },
+    {
+      "fieldName": "employeeNumber",
+      "fieldType": "String",
+      "javadoc": "Employee Number. CPF.\\n@type String"
+    },
+    {
+      "fieldName": "employeePostalCode",
+      "fieldType": "String",
+      "javadoc": "Postal code employee.\\n@type String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "9"
+    },
+    {
+      "fieldName": "employeeAddress",
+      "fieldType": "String",
+      "javadoc": "Branch Address.\\n@type String"
+    },
+    {
+      "fieldName": "employeeAddressComplement",
+      "fieldType": "String",
+      "javadoc": "Employee Address Complement.\\n@type String"
+    },
+    {
+      "fieldName": "employeeAddressNumber",
+      "fieldType": "Integer",
+      "javadoc": "Number of address.\\n@type Integer"
+    },
+    {
+      "fieldName": "employeeAddressNeighborhood",
+      "fieldType": "String",
+      "javadoc": "Neighborhood, District.\\n@type String"
+    },
+    {
+      "fieldName": "employeeBirthday",
+      "fieldType": "LocalDate",
+      "javadoc": "Employee Birthday.\\n@type String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "employeeAttachments",
+      "otherEntityRelationshipName": "employees",
+      "relationshipName": "employeeAttachments"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "employeeComponentsData",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "employeeComponentsData"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "employees",
+      "relationshipName": "vehicleControls"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControlHistory",
+      "otherEntityRelationshipName": "employees",
+      "relationshipName": "vehicleControlHistory"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "housing",
+      "otherEntityRelationshipName": "employees",
+      "relationshipName": "housing"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "companies",
+      "otherEntityRelationshipName": "employees",
+      "relationshipValidateRules": "required",
+      "relationshipName": "companies",
+      "otherEntityField": "companyName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "employees",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cities",
+      "otherEntityRelationshipName": "employees",
+      "relationshipValidateRules": "required",
+      "relationshipName": "cities",
+      "otherEntityField": "cityName"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "positions",
+      "otherEntityRelationshipName": "employees",
+      "relationshipValidateRules": "required",
+      "relationshipName": "positions",
+      "otherEntityField": "positionName"
+    }
+  ],
+  "entityTableName": "employees",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053743"
+}

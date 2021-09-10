@@ -1,0 +1,43 @@
+{
+  "name": "CustomersGroups",
+  "fields": [
+    {
+      "fieldName": "groupName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "customers",
+      "otherEntityRelationshipName": "customersGroups",
+      "relationshipName": "customers"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "vehicleControls",
+      "otherEntityRelationshipName": "customersGroups",
+      "relationshipName": "vehicleControls"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "customersGroups",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    }
+  ],
+  "javadoc": "Customers Groups\\nThis class are the customers group.\\n@author Samuel Souza",
+  "entityTableName": "customers_groups",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053729"
+}

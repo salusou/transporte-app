@@ -1,0 +1,52 @@
+{
+  "transporteApp": {
+    "suppliers": {
+      "home": {
+        "title": "Suppliers",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Suppliers",
+        "createOrEditLabel": "Crear o editar Suppliers",
+        "notFound": "Ningún Suppliers encontrado"
+      },
+      "created": "Un nuevo Suppliers ha sido creado con el identificador {{ param }}",
+      "updated": "Un Suppliers ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Suppliers ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Suppliers {{ id }}?"
+      },
+      "detail": {
+        "title": "Suppliers"
+      },
+      "id": "ID",
+      "supplierName": "Supplier Name",
+      "supplierNumber": "Supplier Number",
+      "supplierPostalCode": "Supplier Postal Code",
+      "supplierAddress": "Supplier Address",
+      "supplierAddressComplement": "Supplier Address Complement",
+      "supplierAddressNumber": "Supplier Address Number",
+      "supplierAddressNeighborhood": "Supplier Address Neighborhood",
+      "supplierTelephone": "Supplier Telephone",
+      "supplierEmail": "Supplier Email",
+      "supplierContactName": "Supplier Contact Name",
+      "supplierBanksInfo": "Supplier Banks Info",
+      "supplierContacts": "Supplier Contacts",
+      "vehicleControlExpenses": "Vehicle Control Expenses",
+      "housing": "Housing",
+      "affiliates": "Affiliates",
+      "cities": "Cities",
+      "serviceProvided": "Service Provided",
+      "help": {
+        "supplierName": "Supplier Name\n@type String",
+        "supplierNumber": "Customer Number is like a CNPJ, EIN, CPF, IDENTIFIED\n@type String",
+        "supplierPostalCode": "Postal code of address the matrix company.\n@type String",
+        "supplierAddress": "Branch Address.\n@type String",
+        "supplierAddressComplement": "Parking Address Complement.\n@type String",
+        "supplierAddressNumber": "Number of address.\n@type Integer",
+        "supplierAddressNeighborhood": "Neighborhood, District.\n@type String",
+        "supplierTelephone": "Parking Contact Telephone\n@type String",
+        "supplierEmail": "Parking Contact Email\n@type String",
+        "supplierContactName": "Parking Contact Name\n@type String"
+      }
+    }
+  }
+}

@@ -1,0 +1,274 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleInspections">
+      <h2 data-cy="vehicleInspectionsDetailsHeading">
+        <span jhiTranslate="transporteApp.vehicleInspections.detail.title">Vehicle Inspections</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionDate">Vehicle Inspection Date</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionStatus">Vehicle Inspection Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.InspectionStatus.' + vehicleInspections.vehicleInspectionStatus }}">{{
+            vehicleInspections.vehicleInspectionStatus
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionModel">Vehicle Inspection Model</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionModel }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLicensePlate">Vehicle Inspection License Plate</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionLicensePlate }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionKm">Vehicle Inspection Km</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionKm }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLicenseYear">Vehicle Inspection License Year</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionLicenseYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasManual">Vehicle Inspection Has Manual</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionHasManual }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasExtraKey">Vehicle Inspection Has Extra Key</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionHasExtraKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasStickers">Vehicle Inspection Has Stickers</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionHasStickers }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionGas">Vehicle Inspection Gas</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.FuelLevel.' + vehicleInspections.vehicleInspectionGas }}">{{
+            vehicleInspections.vehicleInspectionGas
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionRearView">Vehicle Inspection Rear View</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionRearView }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHorn">Vehicle Inspection Horn</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionHorn }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionWindshieldWiper">Vehicle Inspection Windshield Wiper</span>
+        </dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionWindshieldWiper }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSquirt">Vehicle Inspection Squirt</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionSquirt }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionInternalLight">Vehicle Inspection Internal Light</span>
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionInternalLight }}">{{
+            vehicleInspections.vehicleInspectionInternalLight
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionPanelLight">Vehicle Inspection Panel Light</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionPanelLight }}">{{
+            vehicleInspections.vehicleInspectionPanelLight
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHighLight">Vehicle Inspection High Light</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionHighLight }}">{{
+            vehicleInspections.vehicleInspectionHighLight
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLowLight">Vehicle Inspection Low Light</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionLowLight }}">{{
+            vehicleInspections.vehicleInspectionLowLight
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTaillight">Vehicle Inspection Taillight</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTaillight }}">{{
+            vehicleInspections.vehicleInspectionTaillight
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionIndicator">Vehicle Inspection Indicator</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionIndicator }}">{{
+            vehicleInspections.vehicleInspectionIndicator
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionBeacons">Vehicle Inspection Beacons</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionBeacons }}">{{
+            vehicleInspections.vehicleInspectionBeacons
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionBreakLight">Vehicle Inspection Break Light</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionBreakLight }}">{{
+            vehicleInspections.vehicleInspectionBreakLight
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionPlateLight">Vehicle Inspection Plate Light</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionPlateLight }}">{{
+            vehicleInspections.vehicleInspectionPlateLight
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSpeedometer">Vehicle Inspection Speedometer</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionSpeedometer }}">{{
+            vehicleInspections.vehicleInspectionSpeedometer
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTemperature">Vehicle Inspection Temperature</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTemperature }}">{{
+            vehicleInspections.vehicleInspectionTemperature
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTires">Vehicle Inspection Tires</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTires }}">{{
+            vehicleInspections.vehicleInspectionTires
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionStep">Vehicle Inspection Step</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionStep }}">{{
+            vehicleInspections.vehicleInspectionStep
+          }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionFireExtinguisher"
+            >Vehicle Inspection Fire Extinguisher</span
+          >
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionFireExtinguisher }}">{{
+            vehicleInspections.vehicleInspectionFireExtinguisher
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSeatBelts">Vehicle Inspection Seat Belts</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionSeatBelts }}">{{
+            vehicleInspections.vehicleInspectionSeatBelts
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionMonkey">Vehicle Inspection Monkey</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionMonkey }}">{{
+            vehicleInspections.vehicleInspectionMonkey
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTireIron">Vehicle Inspection Tire Iron</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTireIron }}">{{
+            vehicleInspections.vehicleInspectionTireIron
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionRadiatorCap">Vehicle Inspection Radiator Cap</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionRadiatorCap }}">{{
+            vehicleInspections.vehicleInspectionRadiatorCap
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTriangle">Vehicle Inspection Triangle</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTriangle }}">{{
+            vehicleInspections.vehicleInspectionTriangle
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionServiceBrake">Vehicle Inspection Service Brake</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionServiceBrake }}">{{
+            vehicleInspections.vehicleInspectionServiceBrake
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionParkingBrake">Vehicle Inspection Parking Brake</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionParkingBrake }}">{{
+            vehicleInspections.vehicleInspectionParkingBrake
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionOilLeaks">Vehicle Inspection Oil Leaks</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionOilLeaks }}">{{
+            vehicleInspections.vehicleInspectionOilLeaks
+          }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionGlassActuator">Vehicle Inspection Glass Actuator</span>
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionGlassActuator }}">{{
+            vehicleInspections.vehicleInspectionGlassActuator
+          }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionVehicleCleaning">Vehicle Inspection Vehicle Cleaning</span>
+        </dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionVehicleCleaning }}">{{
+            vehicleInspections.vehicleInspectionVehicleCleaning
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSeatState">Vehicle Inspection Seat State</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionSeatState }}">{{
+            vehicleInspections.vehicleInspectionSeatState
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionExhausts">Vehicle Inspection Exhausts</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionExhausts }}">{{
+            vehicleInspections.vehicleInspectionExhausts
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionsObs">Vehicle Inspections Obs</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionsObs }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionsSignedUrl">Vehicle Inspections Signed Url</span></dt>
+        <dd>
+          <span>{{ vehicleInspections.vehicleInspectionsSignedUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.vehicleInspections.vehicleControls">Vehicle Controls</span></dt>
+        <dd>
+          <div *ngIf="vehicleInspections.vehicleControls">
+            <a [routerLink]="['/vehicle-control-item', vehicleInspections.vehicleControls?.id, 'view']">{{
+              vehicleInspections.vehicleControls?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-inspections', vehicleInspections.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

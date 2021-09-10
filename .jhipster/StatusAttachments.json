@@ -1,0 +1,50 @@
+{
+  "name": "StatusAttachments",
+  "fields": [
+    {
+      "fieldName": "statusName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "statusDescriptions",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statusObs",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "attachmentType",
+      "fieldType": "AttachmentType",
+      "fieldValues": "SUPPLIERS,VEHICLE_CONTROL,CUSTOMERS,HOUSING,QUOTATION,EMPLOYEE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "customerAttachments",
+      "otherEntityRelationshipName": "statusAttachments",
+      "relationshipName": "customerAttachments"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "affiliates",
+      "otherEntityRelationshipName": "statusAttachments",
+      "relationshipValidateRules": "required",
+      "relationshipName": "affiliates",
+      "otherEntityField": "branchName"
+    }
+  ],
+  "javadoc": "Status Attachments\\nThis class list all status for all screens.\\n@author Samuel Souza",
+  "entityTableName": "status_attachments",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210903053735"
+}

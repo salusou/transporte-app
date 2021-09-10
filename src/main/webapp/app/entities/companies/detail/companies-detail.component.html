@@ -1,0 +1,140 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="companies">
+      <h2 data-cy="companiesDetailsHeading"><span jhiTranslate="transporteApp.companies.detail.title">Companies</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ companies.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.companies.companyName" [ngbTooltip]="'transporteApp.companies.help.companyName' | translate"
+            >Company Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.companyName }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.companies.tradeName" [ngbTooltip]="'transporteApp.companies.help.tradeName' | translate"
+            >Trade Name</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.tradeName }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.companies.companyNumber" [ngbTooltip]="'transporteApp.companies.help.companyNumber' | translate"
+            >Company Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.companyNumber }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.companies.postalCode" [ngbTooltip]="'transporteApp.companies.help.postalCode' | translate"
+            >Postal Code</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.postalCode }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.companies.companyAddress"
+            [ngbTooltip]="'transporteApp.companies.help.companyAddress' | translate"
+            >Company Address</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.companyAddress }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.companies.companyAddressComplement"
+            [ngbTooltip]="'transporteApp.companies.help.companyAddressComplement' | translate"
+            >Company Address Complement</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.companyAddressComplement }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.companies.companyAddressNumber"
+            [ngbTooltip]="'transporteApp.companies.help.companyAddressNumber' | translate"
+            >Company Address Number</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.companyAddressNumber }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.companies.companyAddressNeighborhood"
+            [ngbTooltip]="'transporteApp.companies.help.companyAddressNeighborhood' | translate"
+            >Company Address Neighborhood</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.companyAddressNeighborhood }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.companies.companyTelephone"
+            [ngbTooltip]="'transporteApp.companies.help.companyTelephone' | translate"
+            >Company Telephone</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.companyTelephone }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.companies.companyEmail" [ngbTooltip]="'transporteApp.companies.help.companyEmail' | translate"
+            >Company Email</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.companyEmail }}</span>
+        </dd>
+        <dt>
+          <span
+            jhiTranslate="transporteApp.companies.responsibleContact"
+            [ngbTooltip]="'transporteApp.companies.help.responsibleContact' | translate"
+            >Responsible Contact</span
+          >
+        </dt>
+        <dd>
+          <span>{{ companies.responsibleContact }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.companies.cities">Cities</span></dt>
+        <dd>
+          <div *ngIf="companies.cities">
+            <a [routerLink]="['/cities', companies.cities?.id, 'view']">{{ companies.cities?.cityName }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.companies.stateProvinces">State Provinces</span></dt>
+        <dd>
+          <div *ngIf="companies.stateProvinces">
+            <a [routerLink]="['/state-provinces', companies.stateProvinces?.id, 'view']">{{ companies.stateProvinces?.stateName }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/companies', companies.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

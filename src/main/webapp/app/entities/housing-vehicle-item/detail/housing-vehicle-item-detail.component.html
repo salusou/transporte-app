@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="housingVehicleItem">
+      <h2 data-cy="housingVehicleItemDetailsHeading">
+        <span jhiTranslate="transporteApp.housingVehicleItem.detail.title">Housing Vehicle Item</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ housingVehicleItem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemStatus">Housing Vehicle Item Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.StatusType.' + housingVehicleItem.housingVehicleItemStatus }}">{{
+            housingVehicleItem.housingVehicleItemStatus
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemPlate">Housing Vehicle Item Plate</span></dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemPlate }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemType">Housing Vehicle Item Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'transporteApp.VehicleType.' + housingVehicleItem.housingVehicleItemType }}">{{
+            housingVehicleItem.housingVehicleItemType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFipeCode">Housing Vehicle Item Fipe Code</span></dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemFipeCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemYear">Housing Vehicle Item Year</span></dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFuel">Housing Vehicle Item Fuel</span></dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemFuel }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemBranch">Housing Vehicle Item Branch</span></dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemBranch }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemModel">Housing Vehicle Item Model</span></dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemModel }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemFuelAbbreviation"
+            >Housing Vehicle Item Fuel Abbreviation</span
+          >
+        </dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemFuelAbbreviation }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemReferenceMonth">Housing Vehicle Item Reference Month</span>
+        </dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemReferenceMonth }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemValue">Housing Vehicle Item Value</span></dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemValue }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="transporteApp.housingVehicleItem.housingVehicleItemShippingValue">Housing Vehicle Item Shipping Value</span>
+        </dt>
+        <dd>
+          <span>{{ housingVehicleItem.housingVehicleItemShippingValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.housing">Housing</span></dt>
+        <dd>
+          <div *ngIf="housingVehicleItem.housing">
+            <a [routerLink]="['/housing', housingVehicleItem.housing?.id, 'view']">{{
+              housingVehicleItem.housing?.housingReceiptNumber
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.parkingSector">Parking Sector</span></dt>
+        <dd>
+          <div *ngIf="housingVehicleItem.parkingSector">
+            <a [routerLink]="['/parking-sector', housingVehicleItem.parkingSector?.id, 'view']">{{
+              housingVehicleItem.parkingSector?.sectorName
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="transporteApp.housingVehicleItem.parkingSectorSpace">Parking Sector Space</span></dt>
+        <dd>
+          <div *ngIf="housingVehicleItem.parkingSectorSpace">
+            <a [routerLink]="['/parking-sector-space', housingVehicleItem.parkingSectorSpace?.id, 'view']">{{
+              housingVehicleItem.parkingSectorSpace?.parkingNumber
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/housing-vehicle-item', housingVehicleItem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

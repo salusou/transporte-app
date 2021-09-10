@@ -1,0 +1,376 @@
+<div>
+  <h2 id="page-heading" data-cy="VehicleInspectionsHeading">
+    <span jhiTranslate="transporteApp.vehicleInspections.home.title">Vehicle Inspections</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleInspections.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vehicle-inspections"
+        [routerLink]="['/vehicle-inspections/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="transporteApp.vehicleInspections.home.createLabel"> Create a new Vehicle Inspections </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="vehicleInspections?.length === 0">
+    <span jhiTranslate="transporteApp.vehicleInspections.home.notFound">No vehicleInspections found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="vehicleInspections && vehicleInspections.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="vehicleInspectionDate">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionDate">Vehicle Inspection Date</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionStatus">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionStatus">Vehicle Inspection Status</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionModel">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionModel">Vehicle Inspection Model</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionLicensePlate">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLicensePlate">Vehicle Inspection License Plate</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionKm">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionKm">Vehicle Inspection Km</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionLicenseYear">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLicenseYear">Vehicle Inspection License Year</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionHasManual">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasManual">Vehicle Inspection Has Manual</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionHasExtraKey">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasExtraKey">Vehicle Inspection Has Extra Key</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionHasStickers">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHasStickers">Vehicle Inspection Has Stickers</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionGas">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionGas">Vehicle Inspection Gas</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionRearView">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionRearView">Vehicle Inspection Rear View</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionHorn">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHorn">Vehicle Inspection Horn</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionWindshieldWiper">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionWindshieldWiper"
+              >Vehicle Inspection Windshield Wiper</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionSquirt">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSquirt">Vehicle Inspection Squirt</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionInternalLight">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionInternalLight">Vehicle Inspection Internal Light</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionPanelLight">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionPanelLight">Vehicle Inspection Panel Light</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionHighLight">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionHighLight">Vehicle Inspection High Light</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionLowLight">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionLowLight">Vehicle Inspection Low Light</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionTaillight">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTaillight">Vehicle Inspection Taillight</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionIndicator">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionIndicator">Vehicle Inspection Indicator</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionBeacons">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionBeacons">Vehicle Inspection Beacons</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionBreakLight">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionBreakLight">Vehicle Inspection Break Light</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionPlateLight">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionPlateLight">Vehicle Inspection Plate Light</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionSpeedometer">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSpeedometer">Vehicle Inspection Speedometer</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionTemperature">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTemperature">Vehicle Inspection Temperature</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionTires">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTires">Vehicle Inspection Tires</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionStep">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionStep">Vehicle Inspection Step</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionFireExtinguisher">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionFireExtinguisher"
+              >Vehicle Inspection Fire Extinguisher</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionSeatBelts">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSeatBelts">Vehicle Inspection Seat Belts</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionMonkey">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionMonkey">Vehicle Inspection Monkey</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionTireIron">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTireIron">Vehicle Inspection Tire Iron</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionRadiatorCap">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionRadiatorCap">Vehicle Inspection Radiator Cap</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionTriangle">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionTriangle">Vehicle Inspection Triangle</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionServiceBrake">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionServiceBrake">Vehicle Inspection Service Brake</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionParkingBrake">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionParkingBrake">Vehicle Inspection Parking Brake</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionOilLeaks">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionOilLeaks">Vehicle Inspection Oil Leaks</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionGlassActuator">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionGlassActuator">Vehicle Inspection Glass Actuator</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionVehicleCleaning">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionVehicleCleaning"
+              >Vehicle Inspection Vehicle Cleaning</span
+            >
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionSeatState">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionSeatState">Vehicle Inspection Seat State</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionExhausts">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionExhausts">Vehicle Inspection Exhausts</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionsObs">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionsObs">Vehicle Inspections Obs</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleInspectionsSignedUrl">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleInspectionsSignedUrl">Vehicle Inspections Signed Url</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleControls.id">
+            <span jhiTranslate="transporteApp.vehicleInspections.vehicleControls">Vehicle Controls</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicleInspections of vehicleInspections; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/vehicle-inspections', vehicleInspections.id, 'view']">{{ vehicleInspections.id }}</a>
+          </td>
+          <td>{{ vehicleInspections.vehicleInspectionDate | formatMediumDatetime }}</td>
+          <td jhiTranslate="{{ 'transporteApp.InspectionStatus.' + vehicleInspections.vehicleInspectionStatus }}">
+            {{ vehicleInspections.vehicleInspectionStatus }}
+          </td>
+          <td>{{ vehicleInspections.vehicleInspectionModel }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionLicensePlate }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionKm }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionLicenseYear }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionHasManual }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionHasExtraKey }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionHasStickers }}</td>
+          <td jhiTranslate="{{ 'transporteApp.FuelLevel.' + vehicleInspections.vehicleInspectionGas }}">
+            {{ vehicleInspections.vehicleInspectionGas }}
+          </td>
+          <td>{{ vehicleInspections.vehicleInspectionRearView }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionHorn }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionWindshieldWiper }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionSquirt }}</td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionInternalLight }}">
+            {{ vehicleInspections.vehicleInspectionInternalLight }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionPanelLight }}">
+            {{ vehicleInspections.vehicleInspectionPanelLight }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionHighLight }}">
+            {{ vehicleInspections.vehicleInspectionHighLight }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionLowLight }}">
+            {{ vehicleInspections.vehicleInspectionLowLight }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTaillight }}">
+            {{ vehicleInspections.vehicleInspectionTaillight }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionIndicator }}">
+            {{ vehicleInspections.vehicleInspectionIndicator }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionBeacons }}">
+            {{ vehicleInspections.vehicleInspectionBeacons }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionBreakLight }}">
+            {{ vehicleInspections.vehicleInspectionBreakLight }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionPlateLight }}">
+            {{ vehicleInspections.vehicleInspectionPlateLight }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionSpeedometer }}">
+            {{ vehicleInspections.vehicleInspectionSpeedometer }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTemperature }}">
+            {{ vehicleInspections.vehicleInspectionTemperature }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTires }}">
+            {{ vehicleInspections.vehicleInspectionTires }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionStep }}">
+            {{ vehicleInspections.vehicleInspectionStep }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionFireExtinguisher }}">
+            {{ vehicleInspections.vehicleInspectionFireExtinguisher }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionSeatBelts }}">
+            {{ vehicleInspections.vehicleInspectionSeatBelts }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionMonkey }}">
+            {{ vehicleInspections.vehicleInspectionMonkey }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTireIron }}">
+            {{ vehicleInspections.vehicleInspectionTireIron }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionRadiatorCap }}">
+            {{ vehicleInspections.vehicleInspectionRadiatorCap }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionTriangle }}">
+            {{ vehicleInspections.vehicleInspectionTriangle }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionServiceBrake }}">
+            {{ vehicleInspections.vehicleInspectionServiceBrake }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionParkingBrake }}">
+            {{ vehicleInspections.vehicleInspectionParkingBrake }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionOilLeaks }}">
+            {{ vehicleInspections.vehicleInspectionOilLeaks }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionGlassActuator }}">
+            {{ vehicleInspections.vehicleInspectionGlassActuator }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionVehicleCleaning }}">
+            {{ vehicleInspections.vehicleInspectionVehicleCleaning }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionSeatState }}">
+            {{ vehicleInspections.vehicleInspectionSeatState }}
+          </td>
+          <td jhiTranslate="{{ 'transporteApp.VehicleStatus.' + vehicleInspections.vehicleInspectionExhausts }}">
+            {{ vehicleInspections.vehicleInspectionExhausts }}
+          </td>
+          <td>{{ vehicleInspections.vehicleInspectionsObs }}</td>
+          <td>{{ vehicleInspections.vehicleInspectionsSignedUrl }}</td>
+          <td>
+            <div *ngIf="vehicleInspections.vehicleControls">
+              <a [routerLink]="['/vehicle-control-item', vehicleInspections.vehicleControls?.id, 'view']">{{
+                vehicleInspections.vehicleControls?.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-inspections', vehicleInspections.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/vehicle-inspections', vehicleInspections.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(vehicleInspections)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="vehicleInspections && vehicleInspections.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
