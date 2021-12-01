@@ -159,6 +159,7 @@ public class CacheConfiguration {
             createCache(cm, com.genesisoft.transporte.domain.Housing.class.getName());
             createCache(cm, com.genesisoft.transporte.domain.Housing.class.getName() + ".housingVehicleItems");
             createCache(cm, com.genesisoft.transporte.domain.HousingVehicleItem.class.getName());
+            createCache(cm, com.genesisoft.transporte.domain.CompaniesXUsers.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

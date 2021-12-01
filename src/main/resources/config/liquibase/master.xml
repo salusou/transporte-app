@@ -52,6 +52,7 @@
     <include file="config/liquibase/changelog/20210903053754_added_entity_VehicleControlAttachments.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210903053755_added_entity_Housing.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210903053756_added_entity_HousingVehicleItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210910063104_added_entity_CompaniesXUsers.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20210903053721_added_entity_constraints_StateProvinces.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210903053722_added_entity_constraints_Cities.xml" relativeToChangelogFile="false"/>
@@ -88,6 +89,7 @@
     <include file="config/liquibase/changelog/20210903053754_added_entity_constraints_VehicleControlAttachments.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210903053755_added_entity_constraints_Housing.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20210903053756_added_entity_constraints_HousingVehicleItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210910063104_added_entity_constraints_CompaniesXUsers.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

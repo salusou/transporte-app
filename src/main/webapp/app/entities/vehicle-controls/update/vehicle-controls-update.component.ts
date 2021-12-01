@@ -23,6 +23,7 @@ import { StatusService } from 'app/entities/status/service/status.service';
 @Component({
   selector: 'jhi-vehicle-controls-update',
   templateUrl: './vehicle-controls-update.component.html',
+  styleUrls: ['../../entities-styles.scss'],
 })
 export class VehicleControlsUpdateComponent implements OnInit {
   isSaving = false;

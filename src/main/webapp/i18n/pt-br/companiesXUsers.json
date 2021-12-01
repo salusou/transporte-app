@@ -1,0 +1,25 @@
+{
+  "transporteApp": {
+    "companiesXUsers": {
+      "home": {
+        "title": "Companies X Users",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Companies X Users",
+        "createOrEditLabel": "Criar ou editar Companies X Users",
+        "notFound": "Nenhum Companies X Users encontrado"
+      },
+      "created": "Um novo Companies X Users foi criado com o identificador {{ param }}",
+      "updated": "Um Companies X Users foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Companies X Users foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Companies X Users {{ id }}?"
+      },
+      "detail": {
+        "title": "Companies X Users"
+      },
+      "id": "ID",
+      "companies": "Companies",
+      "user": "User"
+    }
+  }
+}

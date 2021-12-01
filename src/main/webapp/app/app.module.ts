@@ -20,7 +20,7 @@ import { EntityRoutingModule } from './entities/entity-routing.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { NgbDateDayjsAdapter } from './config/datepicker-adapter';
 import { fontAwesomeIcons } from './config/font-awesome-icons';
-import { httpInterceptorProviders } from 'app/core/interceptor/index';
+import { httpInterceptorProviders } from './core/interceptor';
 import { translatePartialLoader, missingTranslationHandler } from './config/translation.config';
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -28,6 +28,10 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
+import { loadMessages } from 'devextreme/localization/';
+import * as messagesPt from 'devextreme/localization/messages/pt.json';
+import * as messagesEs from 'devextreme/localization/messages/es.json';
+import * as messagesEn from 'devextreme/localization/messages/en.json';
 
 @NgModule({
   imports: [
@@ -75,8 +79,16 @@ export class AppModule {
     iconLibrary.addIcons(...fontAwesomeIcons);
     dpConfig.minDate = { year: dayjs().subtract(100, 'year').year(), month: 1, day: 1 };
     translateService.setDefaultLang('pt-br');
-    // if user have changed language and navigates away from the application and back to the application then use previously choosed language
+    // if user have changed language and navigates away from the application and back to the application then use previously chose language
     const langKey = sessionStorageService.retrieve('locale') ?? 'pt-br';
     translateService.use(langKey);
+
+    if (langKey === 'pt-br') {
+      loadMessages(messagesPt);
+    } else if (langKey === 'es') {
+      loadMessages(messagesEs);
+    } else {
+      loadMessages(messagesEn);
+    }
   }
 }

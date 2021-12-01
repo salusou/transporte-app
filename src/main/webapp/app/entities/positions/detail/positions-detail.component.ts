@@ -10,7 +10,7 @@ import { IPositions } from '../positions.model';
 export class PositionsDetailComponent implements OnInit {
   positions: IPositions | null = null;
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ positions }) => {

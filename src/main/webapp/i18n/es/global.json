@@ -49,6 +49,7 @@
         "reports": "Reporte",
         "housing-title": "Almacenamiento",
         "vehicleControlsTitle": "Control de Vehículos",
+        "companiesXUsers": "Companies X Users",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

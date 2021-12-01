@@ -1,6 +1,6 @@
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-dark">
   <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
-    <span class="logo-img"></span>
+    <!--    <span class="logo-img"></span>-->
     <span jhiTranslate="global.title" class="navbar-title">Transporte</span>
     <span class="navbar-version">{{ version }}</span>
   </a>
@@ -549,6 +549,18 @@
             >
               <fa-icon icon="car" [fixedWidth]="true"></fa-icon>
               <span jhiTranslate="global.menu.entities.parking">Parking</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="companies-x-users"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              (click)="collapseNavbar()"
+            >
+              <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+              <span jhiTranslate="global.menu.entities.companiesXUsers">Companies X Users</span>
             </a>
           </li>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->

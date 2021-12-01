@@ -1,0 +1,28 @@
+{
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipName": "companies",
+      "otherEntityName": "companies",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "companyName"
+    },
+    {
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"],
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "companiesXUsers"
+    }
+  ],
+  "service": "serviceClass",
+  "dto": "mapstruct",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "CompaniesXUsers",
+  "changelogDate": "20210910063104"
+}

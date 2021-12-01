@@ -192,6 +192,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'transporteApp.housingVehicleItem.home.title' },
         loadChildren: () => import('./housing-vehicle-item/housing-vehicle-item.module').then(m => m.HousingVehicleItemModule),
       },
+      {
+        path: 'companies-x-users',
+        data: { pageTitle: 'transporteApp.companiesXUsers.home.title' },
+        loadChildren: () => import('./companies-x-users/companies-x-users.module').then(m => m.CompaniesXUsersModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

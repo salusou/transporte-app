@@ -8,13 +8,98 @@
       >
         Create or edit a Vehicle Controls
       </h2>
+      <span> Registro: {{ editForm.get('id')!.value ?? 'Novo' }} </span>
 
-      <div>
-        <jhi-alert-error></jhi-alert-error>
+      <hr />
 
-        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
-          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
-          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+      <jhi-alert-error></jhi-alert-error>
+
+      <div class="grid grid-template">
+        <div>
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="transporteApp.vehicleControls.status" for="field_status">Status</label>
+            <select class="form-control" id="field_status" data-cy="status" name="status" formControlName="status">
+              <option *ngIf="!editForm.get('status')!.value" [ngValue]="null" selected></option>
+              <option
+                [ngValue]="statusOption.id === editForm.get('status')!.value?.id ? editForm.get('status')!.value : statusOption"
+                *ngFor="let statusOption of statusesSharedCollection; trackBy: trackStatusById"
+              >
+                {{ statusOption.statusName }}
+              </option>
+            </select>
+          </div>
+          <div *ngIf="editForm.get(['status'])!.invalid && (editForm.get(['status'])!.dirty || editForm.get(['status'])!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get(['status'])?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="transporteApp.vehicleControls.vehicleControlDate" for="field_vehicleControlDate"
+              >Vehicle Control Date</label
+            >
+            <div class="input-group">
+              <input
+                id="field_vehicleControlDate"
+                data-cy="vehicleControlDate"
+                type="text"
+                class="form-control"
+                name="vehicleControlDate"
+                ngbDatepicker
+                #vehicleControlDateDp="ngbDatepicker"
+                formControlName="vehicleControlDate"
+              />
+              <span class="input-group-append">
+                <button type="button" class="btn btn-secondary" (click)="vehicleControlDateDp.toggle()">
+                  <fa-icon icon="calendar-alt"></fa-icon>
+                </button>
+              </span>
+            </div>
+            <div
+              *ngIf="
+                editForm.get('vehicleControlDate')!.invalid &&
+                (editForm.get('vehicleControlDate')!.dirty || editForm.get('vehicleControlDate')!.touched)
+              "
+            >
+              <small
+                class="form-text text-danger"
+                *ngIf="editForm.get('vehicleControlDate')?.errors?.required"
+                jhiTranslate="entity.validation.required"
+              >
+                This field is required.
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="transporteApp.vehicleControls.customers" for="field_customers">Customers</label>
+            <select class="form-control" id="field_customers" data-cy="customers" name="customers" formControlName="customers">
+              <option *ngIf="!editForm.get('customers')!.value" [ngValue]="null" selected></option>
+              <option
+                [ngValue]="customersOption.id === editForm.get('customers')!.value?.id ? editForm.get('customers')!.value : customersOption"
+                *ngFor="let customersOption of customersSharedCollection; trackBy: trackCustomersById"
+              >
+                {{ customersOption.customerName }}
+              </option>
+            </select>
+          </div>
+          <div *ngIf="editForm.get(['customers'])!.invalid && (editForm.get(['customers'])!.dirty || editForm.get(['customers'])!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get(['customers'])?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
         </div>
 
         <div class="form-group">
@@ -66,43 +151,6 @@
             data-cy="vehicleControlSinister"
             formControlName="vehicleControlSinister"
           />
-        </div>
-
-        <div class="form-group">
-          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControls.vehicleControlDate" for="field_vehicleControlDate"
-            >Vehicle Control Date</label
-          >
-          <div class="input-group">
-            <input
-              id="field_vehicleControlDate"
-              data-cy="vehicleControlDate"
-              type="text"
-              class="form-control"
-              name="vehicleControlDate"
-              ngbDatepicker
-              #vehicleControlDateDp="ngbDatepicker"
-              formControlName="vehicleControlDate"
-            />
-            <span class="input-group-append">
-              <button type="button" class="btn btn-secondary" (click)="vehicleControlDateDp.toggle()">
-                <fa-icon icon="calendar-alt"></fa-icon>
-              </button>
-            </span>
-          </div>
-          <div
-            *ngIf="
-              editForm.get('vehicleControlDate')!.invalid &&
-              (editForm.get('vehicleControlDate')!.dirty || editForm.get('vehicleControlDate')!.touched)
-            "
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('vehicleControlDate')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
-              This field is required.
-            </small>
-          </div>
         </div>
 
         <div class="form-group">
@@ -338,28 +386,6 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControls.customers" for="field_customers">Customers</label>
-          <select class="form-control" id="field_customers" data-cy="customers" name="customers" formControlName="customers">
-            <option *ngIf="!editForm.get('customers')!.value" [ngValue]="null" selected></option>
-            <option
-              [ngValue]="customersOption.id === editForm.get('customers')!.value?.id ? editForm.get('customers')!.value : customersOption"
-              *ngFor="let customersOption of customersSharedCollection; trackBy: trackCustomersById"
-            >
-              {{ customersOption.customerName }}
-            </option>
-          </select>
-        </div>
-        <div *ngIf="editForm.get(['customers'])!.invalid && (editForm.get(['customers'])!.dirty || editForm.get(['customers'])!.touched)">
-          <small
-            class="form-text text-danger"
-            *ngIf="editForm.get(['customers'])?.errors?.required"
-            jhiTranslate="entity.validation.required"
-          >
-            This field is required.
-          </small>
-        </div>
-
-        <div class="form-group">
           <label class="form-control-label" jhiTranslate="transporteApp.vehicleControls.customersGroups" for="field_customersGroups"
             >Customers Groups</label
           >
@@ -460,24 +486,6 @@
             *ngIf="editForm.get(['destination'])?.errors?.required"
             jhiTranslate="entity.validation.required"
           >
-            This field is required.
-          </small>
-        </div>
-
-        <div class="form-group">
-          <label class="form-control-label" jhiTranslate="transporteApp.vehicleControls.status" for="field_status">Status</label>
-          <select class="form-control" id="field_status" data-cy="status" name="status" formControlName="status">
-            <option *ngIf="!editForm.get('status')!.value" [ngValue]="null" selected></option>
-            <option
-              [ngValue]="statusOption.id === editForm.get('status')!.value?.id ? editForm.get('status')!.value : statusOption"
-              *ngFor="let statusOption of statusesSharedCollection; trackBy: trackStatusById"
-            >
-              {{ statusOption.statusName }}
-            </option>
-          </select>
-        </div>
-        <div *ngIf="editForm.get(['status'])!.invalid && (editForm.get(['status'])!.dirty || editForm.get(['status'])!.touched)">
-          <small class="form-text text-danger" *ngIf="editForm.get(['status'])?.errors?.required" jhiTranslate="entity.validation.required">
             This field is required.
           </small>
         </div>

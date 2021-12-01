@@ -1,10 +1,6 @@
 <div class="row">
-  <div class="col-md-3">
-    <span class="hipster img-fluid rounded"></span>
-  </div>
-
   <div class="col-md-9">
-    <h1 class="display-4"><span jhiTranslate="home.title">Welcome, Java Hipster!</span> (Transporte)</h1>
+    <h1 class="display-4"><span jhiTranslate="home.title">Welcome, Java Hipster!</span> (Sistema InfoLog)</h1>
 
     <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
 
@@ -29,50 +25,57 @@
         <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
       </div>
     </div>
-
-    <p jhiTranslate="home.question">If you have any question on JHipster:</p>
-
-    <ul>
-      <li>
-        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
-          >JHipster homepage</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://stackoverflow.com/tags/jhipster/info"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.stackoverflow"
-          >JHipster on Stack Overflow</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.bugtracker"
-          >JHipster bug tracker</a
-        >
-      </li>
-      <li>
-        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
-          >JHipster public chat room</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
-          >follow @jhipster on Twitter</a
-        >
-      </li>
-    </ul>
-
-    <p>
-      <span jhiTranslate="home.like">If you like JHipster, don't forget to give us a star on</span>
-      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
-        >GitHub</a
-      >!
-    </p>
   </div>
+</div>
+
+<div class="grid grid-template" *ngIf="account">
+  <dx-pie-chart
+    *ngFor="let options of pies"
+    class="chart-layout pie"
+    [title]="options.title"
+    [palette]="options.palette"
+    [dataSource]="options.dataSource"
+    sizeGroup="piesGroup"
+  >
+    <dxi-series width="30px" argumentField="name" valueField="area">
+      <dxo-label [visible]="true" format="percent"></dxo-label>
+    </dxi-series>
+    <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="right" [rowCount]="2"> </dxo-legend>
+  </dx-pie-chart>
+
+  <dx-circular-gauge id="gauge" class="chart-layout" [value]="85" [subvalues]="[40, 90]">
+    <dxo-subvalue-indicator [offset]="-25"></dxo-subvalue-indicator>
+    <dxo-value-indicator [offset]="50"></dxo-value-indicator>
+    <dxo-scale [startValue]="0" [endValue]="100" [tickInterval]="10">
+      <dxo-tick color="#536878"></dxo-tick>
+      <dxo-label [indentFromTick]="3"></dxo-label>
+    </dxo-scale>
+    <dxo-range-container [offset]="10">
+      <dxi-range [startValue]="0" [endValue]="30" color="#92000A"></dxi-range>
+      <dxi-range [startValue]="30" [endValue]="70" color="#E6E200"></dxi-range>
+      <dxi-range [startValue]="70" [endValue]="100" color="#77DD77"></dxi-range>
+    </dxo-range-container>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxo-title text="Coleta Efetivada">
+      <dxo-font [size]="28"></dxo-font>
+    </dxo-title>
+  </dx-circular-gauge>
+
+  <dx-circular-gauge id="gauge" class="chart-layout" [value]="85" [subvalues]="[40, 90]">
+    <dxo-subvalue-indicator [offset]="-25"></dxo-subvalue-indicator>
+    <dxo-value-indicator [offset]="50"></dxo-value-indicator>
+    <dxo-scale [startValue]="0" [endValue]="100" [tickInterval]="10">
+      <dxo-tick color="#536878"></dxo-tick>
+      <dxo-label [indentFromTick]="3"></dxo-label>
+    </dxo-scale>
+    <dxo-range-container [offset]="10">
+      <dxi-range [startValue]="0" [endValue]="30" color="#92000A"></dxi-range>
+      <dxi-range [startValue]="30" [endValue]="70" color="#E6E200"></dxi-range>
+      <dxi-range [startValue]="70" [endValue]="100" color="#77DD77"></dxi-range>
+    </dxo-range-container>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxo-title text="Atraso Na Coleta">
+      <dxo-font [size]="28"></dxo-font>
+    </dxo-title>
+  </dx-circular-gauge>
 </div>

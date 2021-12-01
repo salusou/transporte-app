@@ -10,6 +10,28 @@ Main page styles
   background-size: contain;
 }
 
+.grid {
+  display: grid;
+  gap: 10px;
+}
+
+.grid-template {
+  grid-template-columns: 1fr 1fr;
+}
+
+.chart-layout {
+  border: 1px solid #3a3f44;
+  border-radius: 33px;
+  padding: 15px;
+  margin: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .grid-template {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
   only screen and (-moz-min-device-pixel-ratio: 2),

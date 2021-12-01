@@ -31,14 +31,6 @@ export class PositionsComponent implements OnInit {
     protected modalService: NgbModal
   ) {}
 
-  ngOnInit(): void {
-    this.handleNavigation();
-  }
-
-  trackId(index: number, item: IPositions): number {
-    return item.id!;
-  }
-
   loadPage(page?: number, dontNavigate?: boolean): void {
     this.isLoading = true;
     const pageToLoad: number = page ?? this.page ?? 1;
@@ -59,6 +51,14 @@ export class PositionsComponent implements OnInit {
           this.onError();
         }
       );
+  }
+
+  ngOnInit(): void {
+    this.handleNavigation();
+  }
+
+  trackId(index: number, item: IPositions): number {
+    return item.id!;
   }
 
   delete(positions: IPositions): void {

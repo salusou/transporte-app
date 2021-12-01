@@ -1,0 +1,12 @@
+.grid {
+  display: grid;
+  gap: 10px;
+}
+
+.grid-template {
+  grid-template-columns: 1fr 1fr;
+}
+
+hr {
+  background-color: white;
+}
