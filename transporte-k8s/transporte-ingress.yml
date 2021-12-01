@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: transporte
+  namespace: transporte
+spec:
+  rules:
+    - host: transporte.transporte.192.168.99.100.nip.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: transporte
+              servicePort: 8080

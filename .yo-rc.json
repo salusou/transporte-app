@@ -84,7 +84,19 @@
       "HousingVehicleItem",
       "CompaniesXUsers"
     ],
-    "lastLiquibaseTimestamp": 1631255464000
+    "lastLiquibaseTimestamp": 1631255464000,
+    "appsFolders": ["transporte-app"],
+    "directoryPath": "../",
+    "clusteredDbApps": {},
+    "dockerRepositoryName": "genesisoft",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "transporte",
+    "kubernetesServiceType": "Ingress",
+    "kubernetesUseDynamicStorage": false,
+    "ingressType": "nginx",
+    "ingressDomain": "192.168.99.100.nip.io",
+    "monitoring": "no",
+    "istio": false
   },
   "git-provider": "GitHub",
   "git-company": "salusou",

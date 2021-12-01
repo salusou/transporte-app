@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: transporte
+  namespace: transporte
+  labels:
+    app: transporte
+spec:
+  selector:
+    app: transporte
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 8080

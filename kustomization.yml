@@ -1,0 +1,17 @@
+commonLabels:
+  app.kubernetes.io/genereted-by: JHipster
+
+namespace: transporte
+
+resources:
+  - namespace.yml
+  # Individual apps
+  - transporte-k8s/transporte-deployment.yml
+  - transporte-k8s/transporte-service.yml
+  - transporte-k8s/transporte-postgresql.yml
+  - transporte-k8s/transporte-ingress.yml
+  # service discovery eureka/consul
+  - registry-k8s/jhipster-registry.yml
+  - registry-k8s/application-configmap.yml
+
+patchesJson6902:

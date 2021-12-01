@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: transporte-postgresql
+  namespace: transporte
+  labels:
+    app: transporte-postgresql
+type: Opaque
+data:
+  postgresql-password: YWNmMWVkZDI5MTg0ZWFmN2M5ZjBjODMzMDgyZDNhNWUyMzJjZGZiYjIxYjAwOWEzNzc4YTljNTVlYzM5
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transporte-postgresql
+  namespace: transporte
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transporte-postgresql
+  template:
+    metadata:
+      labels:
+        app: transporte-postgresql
+    spec:
+      volumes:
+        - name: data
+          emptyDir: {}
+      containers:
+        - name: postgres
+          image: postgres:13.3
+          env:
+            - name: POSTGRES_USER
+              value: transporte
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: transporte-postgresql
+                  key: postgresql-password
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres
+          resources:
+            requests:
+              memory: '512Mi'
+              cpu: '500m'
+            limits:
+              memory: '1Gi'
+              cpu: '1'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: transporte-postgresql
+  namespace: transporte
+spec:
+  selector:
+    app: transporte-postgresql
+  ports:
+    - port: 5432
